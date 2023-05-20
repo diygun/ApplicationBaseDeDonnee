@@ -30,6 +30,13 @@ namespace ApplicationBaseDeDonnee
         private void InitializeComponent()
         {
             this.dgvArticles = new System.Windows.Forms.DataGridView();
+            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPrixAchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prixVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
@@ -51,13 +58,6 @@ namespace ApplicationBaseDeDonnee
             this.tbSeuilStock = new System.Windows.Forms.TextBox();
             this.lbSeuilStock = new System.Windows.Forms.Label();
             this.btnTest = new System.Windows.Forms.Button();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPrixAchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prixVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +82,64 @@ namespace ApplicationBaseDeDonnee
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticles.Size = new System.Drawing.Size(622, 328);
             this.dgvArticles.TabIndex = 0;
+            // 
+            // cID
+            // 
+            this.cID.DataPropertyName = "ID";
+            this.cID.HeaderText = "ID";
+            this.cID.Name = "cID";
+            this.cID.ReadOnly = true;
+            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cID.Width = 30;
+            // 
+            // cNom
+            // 
+            this.cNom.DataPropertyName = "Nom";
+            this.cNom.HeaderText = "Nom";
+            this.cNom.Name = "cNom";
+            this.cNom.ReadOnly = true;
+            this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cPrixAchat
+            // 
+            this.cPrixAchat.DataPropertyName = "prixAchat";
+            this.cPrixAchat.HeaderText = "Prix d\'achat";
+            this.cPrixAchat.Name = "cPrixAchat";
+            this.cPrixAchat.ReadOnly = true;
+            this.cPrixAchat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // prixVente
+            // 
+            this.prixVente.DataPropertyName = "prixVente";
+            this.prixVente.HeaderText = "Prix de vente";
+            this.prixVente.Name = "prixVente";
+            this.prixVente.ReadOnly = true;
+            this.prixVente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cTVA
+            // 
+            this.cTVA.DataPropertyName = "TVA";
+            this.cTVA.HeaderText = "T.V.A.";
+            this.cTVA.Name = "cTVA";
+            this.cTVA.ReadOnly = true;
+            this.cTVA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cTVA.Width = 45;
+            // 
+            // cQteStock
+            // 
+            this.cQteStock.DataPropertyName = "qteStock";
+            this.cQteStock.HeaderText = "Quantite en stock";
+            this.cQteStock.Name = "cQteStock";
+            this.cQteStock.ReadOnly = true;
+            this.cQteStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Quantite
+            // 
+            this.Quantite.DataPropertyName = "seuilStock";
+            this.Quantite.HeaderText = "Seuil de stock";
+            this.Quantite.Name = "Quantite";
+            this.Quantite.ReadOnly = true;
+            this.Quantite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // btnAjouter
             // 
@@ -179,49 +237,49 @@ namespace ApplicationBaseDeDonnee
             this.tbID.Name = "tbID";
             this.tbID.ReadOnly = true;
             this.tbID.Size = new System.Drawing.Size(184, 20);
-            this.tbID.TabIndex = 10;
+            this.tbID.TabIndex = 0;
             // 
             // tbNom
             // 
             this.tbNom.Location = new System.Drawing.Point(144, 29);
             this.tbNom.Name = "tbNom";
             this.tbNom.Size = new System.Drawing.Size(184, 20);
-            this.tbNom.TabIndex = 11;
+            this.tbNom.TabIndex = 1;
             // 
             // tbPrixVente
             // 
             this.tbPrixVente.Location = new System.Drawing.Point(144, 55);
             this.tbPrixVente.Name = "tbPrixVente";
             this.tbPrixVente.Size = new System.Drawing.Size(184, 20);
-            this.tbPrixVente.TabIndex = 12;
+            this.tbPrixVente.TabIndex = 2;
             // 
             // tbPrixAchat
             // 
             this.tbPrixAchat.Location = new System.Drawing.Point(144, 81);
             this.tbPrixAchat.Name = "tbPrixAchat";
             this.tbPrixAchat.Size = new System.Drawing.Size(184, 20);
-            this.tbPrixAchat.TabIndex = 13;
+            this.tbPrixAchat.TabIndex = 3;
             // 
             // tbTVA
             // 
             this.tbTVA.Location = new System.Drawing.Point(144, 107);
             this.tbTVA.Name = "tbTVA";
             this.tbTVA.Size = new System.Drawing.Size(184, 20);
-            this.tbTVA.TabIndex = 14;
+            this.tbTVA.TabIndex = 4;
             // 
             // tbStock
             // 
             this.tbStock.Location = new System.Drawing.Point(144, 133);
             this.tbStock.Name = "tbStock";
             this.tbStock.Size = new System.Drawing.Size(184, 20);
-            this.tbStock.TabIndex = 15;
+            this.tbStock.TabIndex = 5;
             // 
             // btnAnnuler
             // 
             this.btnAnnuler.Location = new System.Drawing.Point(215, 190);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(113, 20);
-            this.btnAnnuler.TabIndex = 16;
+            this.btnAnnuler.TabIndex = 8;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
@@ -231,7 +289,7 @@ namespace ApplicationBaseDeDonnee
             this.btnConfirmer.Location = new System.Drawing.Point(52, 190);
             this.btnConfirmer.Name = "btnConfirmer";
             this.btnConfirmer.Size = new System.Drawing.Size(113, 20);
-            this.btnConfirmer.TabIndex = 17;
+            this.btnConfirmer.TabIndex = 7;
             this.btnConfirmer.Text = "Confirmer";
             this.btnConfirmer.UseVisualStyleBackColor = true;
             this.btnConfirmer.Click += new System.EventHandler(this.btnConfirmer_Click);
@@ -264,7 +322,7 @@ namespace ApplicationBaseDeDonnee
             this.tbSeuilStock.Location = new System.Drawing.Point(144, 159);
             this.tbSeuilStock.Name = "tbSeuilStock";
             this.tbSeuilStock.Size = new System.Drawing.Size(184, 20);
-            this.tbSeuilStock.TabIndex = 19;
+            this.tbSeuilStock.TabIndex = 6;
             // 
             // lbSeuilStock
             // 
@@ -286,64 +344,6 @@ namespace ApplicationBaseDeDonnee
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
-            // cID
-            // 
-            this.cID.DataPropertyName = "ID";
-            this.cID.HeaderText = "ID";
-            this.cID.Name = "cID";
-            this.cID.ReadOnly = true;
-            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cID.Width = 30;
-            // 
-            // cNom
-            // 
-            this.cNom.DataPropertyName = "Nom";
-            this.cNom.HeaderText = "Nom";
-            this.cNom.Name = "cNom";
-            this.cNom.ReadOnly = true;
-            this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cPrixAchat
-            // 
-            this.cPrixAchat.DataPropertyName = "prixAchat";
-            this.cPrixAchat.HeaderText = "Prix d\'achat";
-            this.cPrixAchat.Name = "cPrixAchat";
-            this.cPrixAchat.ReadOnly = true;
-            this.cPrixAchat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // prixVente
-            // 
-            this.prixVente.DataPropertyName = "prixVente";
-            this.prixVente.HeaderText = "Prix de vente";
-            this.prixVente.Name = "prixVente";
-            this.prixVente.ReadOnly = true;
-            this.prixVente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cTVA
-            // 
-            this.cTVA.DataPropertyName = "TVA";
-            this.cTVA.HeaderText = "T.V.A.";
-            this.cTVA.Name = "cTVA";
-            this.cTVA.ReadOnly = true;
-            this.cTVA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cTVA.Width = 45;
-            // 
-            // cQteStock
-            // 
-            this.cQteStock.DataPropertyName = "qteStock";
-            this.cQteStock.HeaderText = "Quantite en stock";
-            this.cQteStock.Name = "cQteStock";
-            this.cQteStock.ReadOnly = true;
-            this.cQteStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Quantite
-            // 
-            this.Quantite.DataPropertyName = "seuilStock";
-            this.Quantite.HeaderText = "Seuil de stock";
-            this.Quantite.Name = "Quantite";
-            this.Quantite.ReadOnly = true;
-            this.Quantite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // ListesArticles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,7 +356,8 @@ namespace ApplicationBaseDeDonnee
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.dgvArticles);
             this.Name = "ListesArticles";
-            this.Text = "ListesArticles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Listes des articles";
             this.Load += new System.EventHandler(this.ListesArticles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
             this.panel.ResumeLayout(false);

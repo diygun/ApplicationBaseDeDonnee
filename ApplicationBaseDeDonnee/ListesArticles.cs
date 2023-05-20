@@ -16,11 +16,6 @@ namespace ApplicationBaseDeDonnee
 {
     public partial class ListesArticles : Form
     {
-        /*
-        En commentaire,
-            tbPrenom
-        */
-
         String sConnexion;
         private DataTable dtArticles; // joue un peu le role de dataset, on stock les donnee dedans
         private BindingSource bsArticles;
@@ -81,7 +76,6 @@ namespace ApplicationBaseDeDonnee
             Activer(false);
             tbNom.Focus();
             RemplirDGV();
-
         }
 
         private void btnModifier_Click(object sender, EventArgs e)
@@ -123,46 +117,57 @@ namespace ApplicationBaseDeDonnee
         {
             if (tbNom.Text.Trim() == "")
             {
-                MessageBox.Show("Veuillez renseigner le nom.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (string.IsNullOrEmpty(tbID.Text)) // Ajout si id est vide
                 {
                     // il faut parse / convertir chaque element des tb avant de les envoyer. Afficher une pop up warning + text a chaque key down ?
-                    if (float.TryParse(tbPrixVente.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out float prixVente)
-                        && float.TryParse(tbPrixAchat.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out float prixAchat)
+                    if (decimal.TryParse(tbPrixVente.Text.Replace('.', ','), out decimal prixVente)
+                        && decimal.TryParse(tbPrixAchat.Text.Replace('.', ','), out decimal prixAchat)
                         && int.TryParse(tbStock.Text, out int stock)
                         && int.TryParse(tbTVA.Text, out int tva)
                         && int.TryParse(tbSeuilStock.Text, out int seuilStock)
                         )
                     {
                         Console.WriteLine(prixVente);
-                        new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), new decimal(prixVente), new decimal(prixAchat), stock, tva, seuilStock);
+                        new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
+                        RemplirDGV();
+                        Activer(true);
+
                     }
-                    RemplirDGV();
+                    else
+                    {
+                        MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else // Modification si id est remplie
                 {
-                    if (float.TryParse(tbPrixVente.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out float prixVente)
-                        && float.TryParse(tbPrixAchat.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out float prixAchat)
+                    if (decimal.TryParse(tbPrixVente.Text.Replace('.', ','), out decimal prixVente)
+                        && decimal.TryParse(tbPrixAchat.Text.Replace('.', ','), out decimal prixAchat)
                         && int.TryParse(tbStock.Text, out int stock)
                         && int.TryParse(tbTVA.Text, out int tva)
                         && int.TryParse(tbSeuilStock.Text, out int seuilStock)
                         )
                     {
-                        new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), Math.Round(new decimal(prixVente), 2), Math.Round(new decimal(prixAchat), 2), stock, tva, seuilStock);
+                        new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock);
                         RemplirDGV();
-                        bsArticles.EndEdit();
+                        Activer(true);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-            Activer(true);
-
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
+            tbID.Text = tbNom.Text = tbPrixVente.Text = tbPrixAchat.Text = tbStock.Text = tbSeuilStock.Text = "";
             Activer(true);
         }
 
