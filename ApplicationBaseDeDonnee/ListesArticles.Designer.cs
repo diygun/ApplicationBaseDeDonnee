@@ -47,7 +47,9 @@ namespace ApplicationBaseDeDonnee
             this.tbStock = new System.Windows.Forms.TextBox();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnConfirmer = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel = new System.Windows.Forms.Panel();
+            this.tbSeuilStock = new System.Windows.Forms.TextBox();
+            this.lbSeuilStock = new System.Windows.Forms.Label();
             this.btnTest = new System.Windows.Forms.Button();
             this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,10 +58,8 @@ namespace ApplicationBaseDeDonnee
             this.cTVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbSeuilStock = new System.Windows.Forms.TextBox();
-            this.lbSeuilStock = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvArticles
@@ -236,28 +236,45 @@ namespace ApplicationBaseDeDonnee
             this.btnConfirmer.UseVisualStyleBackColor = true;
             this.btnConfirmer.Click += new System.EventHandler(this.btnConfirmer_Click);
             // 
-            // panel1
+            // panel
             // 
-            this.panel1.Controls.Add(this.tbSeuilStock);
-            this.panel1.Controls.Add(this.lbSeuilStock);
-            this.panel1.Controls.Add(this.tbID);
-            this.panel1.Controls.Add(this.btnAnnuler);
-            this.panel1.Controls.Add(this.btnConfirmer);
-            this.panel1.Controls.Add(this.lbID);
-            this.panel1.Controls.Add(this.lbNom);
-            this.panel1.Controls.Add(this.tbStock);
-            this.panel1.Controls.Add(this.lbPrixVente);
-            this.panel1.Controls.Add(this.tbTVA);
-            this.panel1.Controls.Add(this.lbPrixAchat);
-            this.panel1.Controls.Add(this.tbPrixAchat);
-            this.panel1.Controls.Add(this.lbStock);
-            this.panel1.Controls.Add(this.tbPrixVente);
-            this.panel1.Controls.Add(this.lbTVA);
-            this.panel1.Controls.Add(this.tbNom);
-            this.panel1.Location = new System.Drawing.Point(211, 338);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(331, 213);
-            this.panel1.TabIndex = 18;
+            this.panel.Controls.Add(this.tbSeuilStock);
+            this.panel.Controls.Add(this.lbSeuilStock);
+            this.panel.Controls.Add(this.tbID);
+            this.panel.Controls.Add(this.btnAnnuler);
+            this.panel.Controls.Add(this.btnConfirmer);
+            this.panel.Controls.Add(this.lbID);
+            this.panel.Controls.Add(this.lbNom);
+            this.panel.Controls.Add(this.tbStock);
+            this.panel.Controls.Add(this.lbPrixVente);
+            this.panel.Controls.Add(this.tbTVA);
+            this.panel.Controls.Add(this.lbPrixAchat);
+            this.panel.Controls.Add(this.tbPrixAchat);
+            this.panel.Controls.Add(this.lbStock);
+            this.panel.Controls.Add(this.tbPrixVente);
+            this.panel.Controls.Add(this.lbTVA);
+            this.panel.Controls.Add(this.tbNom);
+            this.panel.Location = new System.Drawing.Point(211, 338);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(331, 213);
+            this.panel.TabIndex = 18;
+            // 
+            // tbSeuilStock
+            // 
+            this.tbSeuilStock.Location = new System.Drawing.Point(144, 159);
+            this.tbSeuilStock.Name = "tbSeuilStock";
+            this.tbSeuilStock.Size = new System.Drawing.Size(184, 20);
+            this.tbSeuilStock.TabIndex = 19;
+            // 
+            // lbSeuilStock
+            // 
+            this.lbSeuilStock.AutoSize = true;
+            this.lbSeuilStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSeuilStock.Location = new System.Drawing.Point(30, 159);
+            this.lbSeuilStock.Name = "lbSeuilStock";
+            this.lbSeuilStock.Size = new System.Drawing.Size(108, 20);
+            this.lbSeuilStock.TabIndex = 18;
+            this.lbSeuilStock.Text = "Seuil de stock";
             // 
             // btnTest
             // 
@@ -309,6 +326,7 @@ namespace ApplicationBaseDeDonnee
             this.cTVA.Name = "cTVA";
             this.cTVA.ReadOnly = true;
             this.cTVA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cTVA.Width = 45;
             // 
             // cQteStock
             // 
@@ -326,30 +344,13 @@ namespace ApplicationBaseDeDonnee
             this.Quantite.ReadOnly = true;
             this.Quantite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // tbSeuilStock
-            // 
-            this.tbSeuilStock.Location = new System.Drawing.Point(144, 159);
-            this.tbSeuilStock.Name = "tbSeuilStock";
-            this.tbSeuilStock.Size = new System.Drawing.Size(184, 20);
-            this.tbSeuilStock.TabIndex = 19;
-            // 
-            // lbSeuilStock
-            // 
-            this.lbSeuilStock.AutoSize = true;
-            this.lbSeuilStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSeuilStock.Location = new System.Drawing.Point(30, 159);
-            this.lbSeuilStock.Name = "lbSeuilStock";
-            this.lbSeuilStock.Size = new System.Drawing.Size(108, 20);
-            this.lbSeuilStock.TabIndex = 18;
-            this.lbSeuilStock.Text = "Seuil de stock";
-            // 
             // ListesArticles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 563);
             this.Controls.Add(this.btnTest);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.btnAjouter);
@@ -358,8 +359,8 @@ namespace ApplicationBaseDeDonnee
             this.Text = "ListesArticles";
             this.Load += new System.EventHandler(this.ListesArticles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -384,8 +385,10 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.TextBox tbStock;
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Button btnConfirmer;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.TextBox tbSeuilStock;
+        private System.Windows.Forms.Label lbSeuilStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn cID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cNom;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPrixAchat;
@@ -393,7 +396,5 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.DataGridViewTextBoxColumn cTVA;
         private System.Windows.Forms.DataGridViewTextBoxColumn cQteStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantite;
-        private System.Windows.Forms.TextBox tbSeuilStock;
-        private System.Windows.Forms.Label lbSeuilStock;
     }
 }

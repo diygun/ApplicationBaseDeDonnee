@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace ApplicationBaseDeDonnee
 
             dgvArticles.Enabled = lPrincipale;
             btnAjouter.Enabled = btnModifier.Enabled = btnSupprimer.Enabled = lPrincipale;
-            //tbPrenom.Enabled = tbNom.Enabled = dtpNaissance.Enabled = !lPrincipale;
+            tbID.Enabled = tbNom.Enabled = tbNom.Enabled = tbPrixVente.Enabled = tbPrixAchat.Enabled = tbTVA.Enabled = tbStock.Enabled = tbSeuilStock.Enabled = !lPrincipale;
             btnConfirmer.Enabled = btnAnnuler.Enabled = !lPrincipale;
         }
 
@@ -79,6 +80,8 @@ namespace ApplicationBaseDeDonnee
             tbTVA.Text = "21";
             Activer(false);
             tbNom.Focus();
+            RemplirDGV();
+
         }
 
         private void btnModifier_Click(object sender, EventArgs e)
@@ -88,11 +91,11 @@ namespace ApplicationBaseDeDonnee
                 tbID.Text = dgvArticles.SelectedRows[0].Cells["cID"].Value.ToString();
                 C_t_produit pImp = new G_t_produit(sConnexion).Lire_ID(int.Parse(tbID.Text));
                 tbNom.Text = pImp.Nom;
-                tbPrixVente.Text = pImp.Prix_vente.ToString();
-                tbPrixAchat.Text = pImp.Prix_achat.ToString();
+                tbPrixVente.Text = Math.Round(pImp.Prix_vente, 2).ToString();
+                tbPrixAchat.Text = Math.Round(pImp.Prix_achat, 2).ToString();
                 tbTVA.Text = pImp.TVA.ToString();
+                tbStock.Text = pImp.Quantite_stock.ToString();
                 tbSeuilStock.Text = pImp.Seuil_stock.ToString();
-                tbNom.Text = pImp.Nom;
                 Activer(false);
             }
             else
@@ -111,8 +114,6 @@ namespace ApplicationBaseDeDonnee
                     int iID = (int)dgvArticles.SelectedRows[0].Cells["cID"].Value;
                     new G_t_produit(sConnexion).Supprimer(iID);
                     bsArticles.RemoveCurrent();
-
-
                 }
             }
 
@@ -126,20 +127,38 @@ namespace ApplicationBaseDeDonnee
             }
             else
             {
-                if (string.IsNullOrEmpty(tbID.Text)) // Ajout 
+                if (string.IsNullOrEmpty(tbID.Text)) // Ajout si id est vide
                 {
-                    //int iID = new G_t_produit(sConnexion).Ajouter(tbNom.Text, tbPrenom.Text, dtpNaissance.Value);
-                    //tbID.Text = iID.ToString();
-                    //dtArticles.Rows.Add(iID, tbPrenom.Text + " " + tbNom.Text);
+                    // il faut parse / convertir chaque element des tb avant de les envoyer. Afficher une pop up warning + text a chaque key down ?
+                    if (float.TryParse(tbPrixVente.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out float prixVente)
+                        && float.TryParse(tbPrixAchat.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out float prixAchat)
+                        && int.TryParse(tbStock.Text, out int stock)
+                        && int.TryParse(tbTVA.Text, out int tva)
+                        && int.TryParse(tbSeuilStock.Text, out int seuilStock)
+                        )
+                    {
+                        Console.WriteLine(prixVente);
+                        new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), new decimal(prixVente), new decimal(prixAchat), stock, tva, seuilStock);
+                    }
+                    RemplirDGV();
                 }
-                else // Modification
+                else // Modification si id est remplie
                 {
-                    //new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text, tbPrenom.Text, dtpNaissance.Value);
-                    //dgvArticles.SelectedRows[0].Cells["cAfficher"].Value = tbPrenom.Text + " " + tbNom.Text;
-                    bsArticles.EndEdit();
-
+                    if (float.TryParse(tbPrixVente.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out float prixVente)
+                        && float.TryParse(tbPrixAchat.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out float prixAchat)
+                        && int.TryParse(tbStock.Text, out int stock)
+                        && int.TryParse(tbTVA.Text, out int tva)
+                        && int.TryParse(tbSeuilStock.Text, out int seuilStock)
+                        )
+                    {
+                        new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), Math.Round(new decimal(prixVente), 2), Math.Round(new decimal(prixAchat), 2), stock, tva, seuilStock);
+                        RemplirDGV();
+                        bsArticles.EndEdit();
+                    }
                 }
             }
+            Activer(true);
+
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -149,7 +168,7 @@ namespace ApplicationBaseDeDonnee
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            new G_t_produit(sConnexion).Ajouter("Carte mere", 100, 50, 10, 21, 1 );
+            new G_t_produit(sConnexion).Ajouter("Carte mere", 100, 50, 10, 21, 1);
         }
     }
 }
