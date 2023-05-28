@@ -37,7 +37,7 @@ namespace ApplicationBaseDeDonnee
         private void RemplirDGV()
         {
             dtArticles = new DataTable();
-            dtArticles.Columns.Add(new DataColumn("ID", System.Type.GetType("System.Int32")));
+            dtArticles.Columns.Add(new DataColumn("cID", System.Type.GetType("System.Int32")));
             dtArticles.Columns.Add(new DataColumn("Nom"));
             dtArticles.Columns.Add(new DataColumn("prixAchat"));
             dtArticles.Columns.Add(new DataColumn("prixVente"));
@@ -170,7 +170,7 @@ namespace ApplicationBaseDeDonnee
             tbID.Text = tbNom.Text = tbPrixVente.Text = tbPrixAchat.Text = tbStock.Text = tbSeuilStock.Text = "";
             Activer(true);
         }
-
+        
         private void btnTest_Click(object sender, EventArgs e)
         {
             new G_t_produit(sConnexion).Ajouter("Carte mere", 100, 50, 10, 21, 1);

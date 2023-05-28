@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjouterAchat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AjouterAchat.Designer.cs">
+      <DependentUpon>AjouterAchat.cs</DependentUpon>
+    </Compile>
     <Compile Include="A_Base.cs" />
     <Compile Include="A_t_client.cs" />
     <Compile Include="A_t_commande_client.cs" />
@@ -64,6 +70,12 @@
     <Compile Include="A_t_detail_vente.cs" />
     <Compile Include="A_t_frn.cs" />
     <Compile Include="A_t_produit.cs" />
+    <Compile Include="CommandesFournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommandesFournisseur.Designer.cs">
+      <DependentUpon>CommandesFournisseur.cs</DependentUpon>
+    </Compile>
     <Compile Include="C_t_client.cs" />
     <Compile Include="C_t_commande_client.cs" />
     <Compile Include="C_t_commande_frn.cs" />
@@ -85,6 +97,12 @@
     <Compile Include="ListesArticles.Designer.cs">
       <DependentUpon>ListesArticles.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListesFournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListesFournisseur.Designer.cs">
+      <DependentUpon>ListesFournisseur.cs</DependentUpon>
+    </Compile>
     <Compile Include="PageAcueille.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,8 +117,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AjouterAchat.resx">
+      <DependentUpon>AjouterAchat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommandesFournisseur.resx">
+      <DependentUpon>CommandesFournisseur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListesArticles.resx">
       <DependentUpon>ListesArticles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListesFournisseur.resx">
+      <DependentUpon>ListesFournisseur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PageAcueille.resx">
       <DependentUpon>PageAcueille.cs</DependentUpon>

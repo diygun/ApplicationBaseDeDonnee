@@ -30,13 +30,6 @@ namespace ApplicationBaseDeDonnee
         private void InitializeComponent()
         {
             this.dgvArticles = new System.Windows.Forms.DataGridView();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPrixAchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prixVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
@@ -58,6 +51,13 @@ namespace ApplicationBaseDeDonnee
             this.tbSeuilStock = new System.Windows.Forms.TextBox();
             this.lbSeuilStock = new System.Windows.Forms.Label();
             this.btnTest = new System.Windows.Forms.Button();
+            this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prixVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPrixAchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -83,64 +83,6 @@ namespace ApplicationBaseDeDonnee
             this.dgvArticles.Size = new System.Drawing.Size(622, 328);
             this.dgvArticles.TabIndex = 0;
             // 
-            // cID
-            // 
-            this.cID.DataPropertyName = "ID";
-            this.cID.HeaderText = "ID";
-            this.cID.Name = "cID";
-            this.cID.ReadOnly = true;
-            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cID.Width = 30;
-            // 
-            // cNom
-            // 
-            this.cNom.DataPropertyName = "Nom";
-            this.cNom.HeaderText = "Nom";
-            this.cNom.Name = "cNom";
-            this.cNom.ReadOnly = true;
-            this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cPrixAchat
-            // 
-            this.cPrixAchat.DataPropertyName = "prixAchat";
-            this.cPrixAchat.HeaderText = "Prix d\'achat";
-            this.cPrixAchat.Name = "cPrixAchat";
-            this.cPrixAchat.ReadOnly = true;
-            this.cPrixAchat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // prixVente
-            // 
-            this.prixVente.DataPropertyName = "prixVente";
-            this.prixVente.HeaderText = "Prix de vente";
-            this.prixVente.Name = "prixVente";
-            this.prixVente.ReadOnly = true;
-            this.prixVente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cTVA
-            // 
-            this.cTVA.DataPropertyName = "TVA";
-            this.cTVA.HeaderText = "T.V.A.";
-            this.cTVA.Name = "cTVA";
-            this.cTVA.ReadOnly = true;
-            this.cTVA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cTVA.Width = 45;
-            // 
-            // cQteStock
-            // 
-            this.cQteStock.DataPropertyName = "qteStock";
-            this.cQteStock.HeaderText = "Quantite en stock";
-            this.cQteStock.Name = "cQteStock";
-            this.cQteStock.ReadOnly = true;
-            this.cQteStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Quantite
-            // 
-            this.Quantite.DataPropertyName = "seuilStock";
-            this.Quantite.HeaderText = "Seuil de stock";
-            this.Quantite.Name = "Quantite";
-            this.Quantite.ReadOnly = true;
-            this.Quantite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // btnAjouter
             // 
             this.btnAjouter.Location = new System.Drawing.Point(12, 341);
@@ -157,7 +99,7 @@ namespace ApplicationBaseDeDonnee
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(113, 29);
             this.btnModifier.TabIndex = 2;
-            this.btnModifier.Text = "Modifier un article";
+            this.btnModifier.Text = "Modifier l\'article";
             this.btnModifier.UseVisualStyleBackColor = true;
             this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
@@ -167,7 +109,7 @@ namespace ApplicationBaseDeDonnee
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(113, 29);
             this.btnSupprimer.TabIndex = 3;
-            this.btnSupprimer.Text = "Supprimer un article";
+            this.btnSupprimer.Text = "Supprimer l\'article";
             this.btnSupprimer.UseVisualStyleBackColor = true;
             this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
@@ -312,7 +254,7 @@ namespace ApplicationBaseDeDonnee
             this.panel.Controls.Add(this.tbPrixVente);
             this.panel.Controls.Add(this.lbTVA);
             this.panel.Controls.Add(this.tbNom);
-            this.panel.Location = new System.Drawing.Point(211, 338);
+            this.panel.Location = new System.Drawing.Point(296, 341);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(331, 213);
             this.panel.TabIndex = 18;
@@ -344,11 +286,69 @@ namespace ApplicationBaseDeDonnee
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
+            // Quantite
+            // 
+            this.Quantite.DataPropertyName = "seuilStock";
+            this.Quantite.HeaderText = "Seuil de stock";
+            this.Quantite.Name = "Quantite";
+            this.Quantite.ReadOnly = true;
+            this.Quantite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cQteStock
+            // 
+            this.cQteStock.DataPropertyName = "qteStock";
+            this.cQteStock.HeaderText = "Quantite en stock";
+            this.cQteStock.Name = "cQteStock";
+            this.cQteStock.ReadOnly = true;
+            this.cQteStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cTVA
+            // 
+            this.cTVA.DataPropertyName = "TVA";
+            this.cTVA.HeaderText = "T.V.A.";
+            this.cTVA.Name = "cTVA";
+            this.cTVA.ReadOnly = true;
+            this.cTVA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cTVA.Width = 45;
+            // 
+            // prixVente
+            // 
+            this.prixVente.DataPropertyName = "prixVente";
+            this.prixVente.HeaderText = "Prix de vente";
+            this.prixVente.Name = "prixVente";
+            this.prixVente.ReadOnly = true;
+            this.prixVente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cPrixAchat
+            // 
+            this.cPrixAchat.DataPropertyName = "prixAchat";
+            this.cPrixAchat.HeaderText = "Prix d\'achat";
+            this.cPrixAchat.Name = "cPrixAchat";
+            this.cPrixAchat.ReadOnly = true;
+            this.cPrixAchat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cNom
+            // 
+            this.cNom.DataPropertyName = "Nom";
+            this.cNom.HeaderText = "Nom";
+            this.cNom.Name = "cNom";
+            this.cNom.ReadOnly = true;
+            this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cID
+            // 
+            this.cID.DataPropertyName = "ID";
+            this.cID.HeaderText = "ID";
+            this.cID.Name = "cID";
+            this.cID.ReadOnly = true;
+            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cID.Width = 30;
+            // 
             // ListesArticles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 563);
+            this.ClientSize = new System.Drawing.Size(639, 561);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.btnSupprimer);
