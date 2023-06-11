@@ -131,8 +131,9 @@ namespace ApplicationBaseDeDonnee
                         Console.WriteLine($"lastID = {lastID}");
                         int idincre = lastID++;
                         new G_t_commande_frn(sConnexion).Ajouter(
-                            lastID,
-                            int.Parse(cbIDFRn.SelectedItem.ToString()),
+                            //lastID,
+                            //int.Parse(cbIDFRn.SelectedItem.ToString()),
+                            2,2,
                             dtpCmd.Value);
                         RemplirDGV();
                         Activer(true);
