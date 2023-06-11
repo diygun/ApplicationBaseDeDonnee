@@ -19,7 +19,7 @@ namespace ApplicationBaseDeDonnee
         String sConnexion;
         private DataTable dtCmdFrn; // joue un peu le role de dataset, on stock les donnee dedans
         private BindingSource bsCmdFrn;
-        int lastID = -1;
+        int lastID = 1;
 
         public CommandesFournisseur(string sConnexion)
         {
@@ -61,7 +61,15 @@ namespace ApplicationBaseDeDonnee
             foreach (C_t_commande_frn p in listeTemporaire)
             {
                 dtCmdFrn.Rows.Add(p.ID_frn, p.ID_commande_frn, p.Date_commande);
+                if(p.ID_frn >= 0)
+                {
                 lastID = p.ID_frn;
+                }
+                else
+                {
+                    Console.WriteLine("ERRUER du lastID !!");
+                    lastID = 0;
+                }
             }
             bsCmdFrn = new BindingSource();
             bsCmdFrn.DataSource = dtCmdFrn;
@@ -86,9 +94,9 @@ namespace ApplicationBaseDeDonnee
             List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
             foreach (C_t_frn p in listeTemporaire)
             {
-                cbIDFRn.Items.Add(p.ID_frn);
+                cbIDFRn.Items.Add(p.Nom);
             }
-            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text =  tbNmCompte.Text = "";
+            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text = tbNmCompte.Text = "";
 
         }
 
@@ -97,7 +105,7 @@ namespace ApplicationBaseDeDonnee
             // ---------------------------
             tbIDCmdFrn.Text = "";
             cbIDFRn.SelectedItem = "";
-            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text =  tbNmCompte.Text = "";
+            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text = tbNmCompte.Text = "";
             dtpCmd.Value = DateTime.Today;
             // ---------------------------
             Activer(true);
@@ -120,7 +128,12 @@ namespace ApplicationBaseDeDonnee
                 {
                     if (tbNom.Text != "") // verifier s'il y a un nom suffit car sans frn pas de lien
                     {
-                        new G_t_commande_frn(sConnexion).Ajouter(lastID++, (int)cbIDFRn.SelectedItem, dtpCmd.Value);
+                        Console.WriteLine($"lastID = {lastID}");
+                        int idincre = lastID++;
+                        new G_t_commande_frn(sConnexion).Ajouter(
+                            lastID,
+                            int.Parse(cbIDFRn.SelectedItem.ToString()),
+                            dtpCmd.Value);
                         RemplirDGV();
                         Activer(true);
                     }
@@ -128,7 +141,6 @@ namespace ApplicationBaseDeDonnee
                     {
                         MessageBox.Show(" 22222 Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
                 else // Modification si id est remplie
                 {
@@ -149,7 +161,19 @@ namespace ApplicationBaseDeDonnee
 
         private void cbIDFRn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            C_t_frn pImp = new G_t_frn(sConnexion).Lire_ID(int.Parse(cbIDFRn.SelectedItem.ToString()));
+            Console.WriteLine($"lastID = {lastID}");
+
+            int idDuFRNselectionnnee = -1;
+            List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
+            foreach (C_t_frn p in listeTemporaire)
+            {
+                if (p.Nom == cbIDFRn.SelectedItem.ToString())
+                {
+                    idDuFRNselectionnnee = p.ID_frn;
+                }
+            }
+
+            C_t_frn pImp = new G_t_frn(sConnexion).Lire_ID(idDuFRNselectionnnee);
             tbNom.Text = pImp.Nom;
             tbAdresse.Text = pImp.Adresse;
             tbEmail.Text = pImp.Email;

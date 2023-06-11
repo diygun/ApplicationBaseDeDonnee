@@ -75,7 +75,7 @@ namespace ApplicationBaseDeDonnee
             this.dgvCmdFrn.ReadOnly = true;
             this.dgvCmdFrn.RowHeadersVisible = false;
             this.dgvCmdFrn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCmdFrn.Size = new System.Drawing.Size(355, 328);
+            this.dgvCmdFrn.Size = new System.Drawing.Size(354, 328);
             this.dgvCmdFrn.TabIndex = 1;
             // 
             // cID

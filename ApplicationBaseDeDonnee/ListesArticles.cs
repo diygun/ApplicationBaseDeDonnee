@@ -136,13 +136,11 @@ namespace ApplicationBaseDeDonnee
                         new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
                         RemplirDGV();
                         Activer(true);
-
                     }
                     else
                     {
                         MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
                 else // Modification si id est remplie
                 {
@@ -156,7 +154,6 @@ namespace ApplicationBaseDeDonnee
                         new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock);
                         RemplirDGV();
                         Activer(true);
-
                     }
                     else
                     {

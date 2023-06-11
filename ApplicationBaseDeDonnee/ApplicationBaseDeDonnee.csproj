@@ -62,39 +62,39 @@
     <Compile Include="AjouterAchat.Designer.cs">
       <DependentUpon>AjouterAchat.cs</DependentUpon>
     </Compile>
-    <Compile Include="A_Base.cs" />
-    <Compile Include="A_t_client.cs" />
-    <Compile Include="A_t_commande_client.cs" />
-    <Compile Include="A_t_commande_frn.cs" />
-    <Compile Include="A_t_detail_achat.cs" />
-    <Compile Include="A_t_detail_vente.cs" />
-    <Compile Include="A_t_frn.cs" />
-    <Compile Include="A_t_produit.cs" />
+    <Compile Include="Acc_Gest_Classes\A_Base.cs" />
+    <Compile Include="Acc_Gest_Classes\A_t_client.cs" />
+    <Compile Include="Acc_Gest_Classes\A_t_commande_client.cs" />
+    <Compile Include="Acc_Gest_Classes\A_t_commande_frn.cs" />
+    <Compile Include="Acc_Gest_Classes\A_t_detail_achat.cs" />
+    <Compile Include="Acc_Gest_Classes\A_t_detail_vente.cs" />
+    <Compile Include="Acc_Gest_Classes\A_t_frn.cs" />
+    <Compile Include="Acc_Gest_Classes\A_t_produit.cs" />
     <Compile Include="CommandesFournisseur.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CommandesFournisseur.Designer.cs">
       <DependentUpon>CommandesFournisseur.cs</DependentUpon>
     </Compile>
-    <Compile Include="C_t_client.cs" />
-    <Compile Include="C_t_commande_client.cs" />
-    <Compile Include="C_t_commande_frn.cs" />
-    <Compile Include="C_t_detail_achat.cs" />
-    <Compile Include="C_t_detail_vente.cs" />
-    <Compile Include="C_t_frn.cs" />
-    <Compile Include="C_t_produit.cs" />
-    <Compile Include="G_Base.cs" />
-    <Compile Include="G_t_client.cs" />
-    <Compile Include="G_t_commande_client.cs" />
-    <Compile Include="G_t_commande_frn.cs" />
-    <Compile Include="G_t_detail_achat.cs" />
-    <Compile Include="G_t_detail_vente.cs" />
-    <Compile Include="G_t_frn.cs" />
-    <Compile Include="G_t_produit.cs" />
-    <Compile Include="ListesClient.cs">
+    <Compile Include="Acc_Gest_Classes\C_t_client.cs" />
+    <Compile Include="Acc_Gest_Classes\C_t_commande_client.cs" />
+    <Compile Include="Acc_Gest_Classes\C_t_commande_frn.cs" />
+    <Compile Include="Acc_Gest_Classes\C_t_detail_achat.cs" />
+    <Compile Include="Acc_Gest_Classes\C_t_detail_vente.cs" />
+    <Compile Include="Acc_Gest_Classes\C_t_frn.cs" />
+    <Compile Include="Acc_Gest_Classes\C_t_produit.cs" />
+    <Compile Include="Acc_Gest_Classes\G_Base.cs" />
+    <Compile Include="Acc_Gest_Classes\G_t_client.cs" />
+    <Compile Include="Acc_Gest_Classes\G_t_commande_client.cs" />
+    <Compile Include="Acc_Gest_Classes\G_t_commande_frn.cs" />
+    <Compile Include="Acc_Gest_Classes\G_t_detail_achat.cs" />
+    <Compile Include="Acc_Gest_Classes\G_t_detail_vente.cs" />
+    <Compile Include="Acc_Gest_Classes\G_t_frn.cs" />
+    <Compile Include="Acc_Gest_Classes\G_t_produit.cs" />
+    <Compile Include="Clients\ListesClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListesClient.Designer.cs">
+    <Compile Include="Clients\ListesClient.Designer.cs">
       <DependentUpon>ListesClient.cs</DependentUpon>
     </Compile>
     <Compile Include="ListesArticles.cs">
@@ -103,10 +103,10 @@
     <Compile Include="ListesArticles.Designer.cs">
       <DependentUpon>ListesArticles.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListesFournisseur.cs">
+    <Compile Include="Fournisseurs\ListesFournisseur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListesFournisseur.Designer.cs">
+    <Compile Include="Fournisseurs\ListesFournisseur.Designer.cs">
       <DependentUpon>ListesFournisseur.cs</DependentUpon>
     </Compile>
     <Compile Include="PageAcueille.cs">
@@ -132,10 +132,10 @@
     <EmbeddedResource Include="ListesArticles.resx">
       <DependentUpon>ListesArticles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListesClient.resx">
+    <EmbeddedResource Include="Clients\ListesClient.resx">
       <DependentUpon>ListesClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListesFournisseur.resx">
+    <EmbeddedResource Include="Fournisseurs\ListesFournisseur.resx">
       <DependentUpon>ListesFournisseur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PageAcueille.resx">
@@ -169,8 +169,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Acc_Gest_Classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
