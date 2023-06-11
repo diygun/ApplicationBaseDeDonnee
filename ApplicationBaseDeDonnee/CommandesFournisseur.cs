@@ -19,7 +19,7 @@ namespace ApplicationBaseDeDonnee
         String sConnexion;
         private DataTable dtCmdFrn; // joue un peu le role de dataset, on stock les donnee dedans
         private BindingSource bsCmdFrn;
-
+        int lastID = -1;
 
         public CommandesFournisseur(string sConnexion)
         {
@@ -33,7 +33,7 @@ namespace ApplicationBaseDeDonnee
             btnAjouter.Enabled = btnModifier.Enabled = btnSupprimer.Enabled = lPrincipale;
             panelCmdFrn.Enabled = !lPrincipale;
             btnConfirmer.Enabled = btnAnnuler.Enabled = !lPrincipale;
-            panelFrn.Enabled = true;
+            //panelFrn.Enabled = true;
         }
 
         private void CommandesFournisseur_Load(object sender, EventArgs e)
@@ -41,13 +41,14 @@ namespace ApplicationBaseDeDonnee
             RemplirDGV();
             if (dgvCmdFrn.Rows.Count > 0)
             {
-                Activer(true);
+                Activer(false);
             }
             else
             {
-                Activer(false);
+                Activer(true);
             }
         }
+
         private void RemplirDGV()
         {
             dtCmdFrn = new DataTable();
@@ -56,9 +57,11 @@ namespace ApplicationBaseDeDonnee
             dtCmdFrn.Columns.Add(new DataColumn("dateCommande"));
 
             List<C_t_commande_frn> listeTemporaire = new G_t_commande_frn(sConnexion).Lire("Nom");
+
             foreach (C_t_commande_frn p in listeTemporaire)
             {
                 dtCmdFrn.Rows.Add(p.ID_frn, p.ID_commande_frn, p.Date_commande);
+                lastID = p.ID_frn;
             }
             bsCmdFrn = new BindingSource();
             bsCmdFrn.DataSource = dtCmdFrn;
@@ -68,22 +71,35 @@ namespace ApplicationBaseDeDonnee
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             tbIDCmdFrn.Text = "";
-            cbIDFRn.SelectedItem = null;
+            cbIDFRn.SelectedItem = "";
             dtpCmd.Value = DateTime.Today;
             Activer(false);
             tbNom.Focus();
             RemplirDGV();
             Activer(false);
+
+
+            // quand je clique sur ajouter
+            tbNom.Text = "ACCES NOM";
+            // ----
+            cbIDFRn.Items.Clear();
+            List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
+            foreach (C_t_frn p in listeTemporaire)
+            {
+                cbIDFRn.Items.Add(p.ID_frn);
+            }
+            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text =  tbNmCompte.Text = "";
+
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             // ---------------------------
             tbIDCmdFrn.Text = "";
-            cbIDFRn.SelectedItem = null;
+            cbIDFRn.SelectedItem = "";
+            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text =  tbNmCompte.Text = "";
             dtpCmd.Value = DateTime.Today;
             // ---------------------------
-
             Activer(true);
         }
 
@@ -96,23 +112,21 @@ namespace ApplicationBaseDeDonnee
         {
             if (tbNom.Text.Trim() == "")
             {
-                MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(" 1111   Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (string.IsNullOrEmpty(tbIDCmdFrn.Text)) // Ajout si id est vide
                 {
-                    // il faut parse / convertir chaque element des tb avant de les envoyer. Afficher une pop up warning + text a chaque key down ?
-                    if ( /*CONDITION AVANT D'AJOUTER*/ false)
+                    if (tbNom.Text != "") // verifier s'il y a un nom suffit car sans frn pas de lien
                     {
-                        int numID = 0;
-                        //new G_t_commande_frn(sConnexion).Ajouter(numID, (int)cbIDFRn.SelectedIndex, dtpCmd.Value);
+                        new G_t_commande_frn(sConnexion).Ajouter(lastID++, (int)cbIDFRn.SelectedItem, dtpCmd.Value);
                         RemplirDGV();
                         Activer(true);
                     }
                     else
                     {
-                        MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(" 22222 Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -121,16 +135,27 @@ namespace ApplicationBaseDeDonnee
                     if ( /*CONDITION AVANT D'AJOUTER*/ false)
                     {
                         //new G_t_commande_frn(sConnexion).Modifier(int.Parse(tbIDCmdFrn.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock);
-                        RemplirDGV();
+                        RemplirDGV(); // ! mettre a true 
                         Activer(true);
 
                     }
                     else
                     {
-                        MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(" 33333  Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
+        }
+
+        private void cbIDFRn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            C_t_frn pImp = new G_t_frn(sConnexion).Lire_ID(int.Parse(cbIDFRn.SelectedItem.ToString()));
+            tbNom.Text = pImp.Nom;
+            tbAdresse.Text = pImp.Adresse;
+            tbEmail.Text = pImp.Email;
+            tbGSM.Text = pImp.GSM;
+            tbNmCompte.Text = pImp.N_compte;
+            //tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text =  tbNmCompte.Text = "";
         }
 
         /*

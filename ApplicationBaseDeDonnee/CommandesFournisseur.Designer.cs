@@ -263,7 +263,7 @@ namespace ApplicationBaseDeDonnee
             // 
             this.lbID.AutoSize = true;
             this.lbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbID.Location = new System.Drawing.Point(148, 57);
+            this.lbID.Location = new System.Drawing.Point(148, 60);
             this.lbID.Name = "lbID";
             this.lbID.Size = new System.Drawing.Size(114, 20);
             this.lbID.TabIndex = 4;
@@ -291,6 +291,7 @@ namespace ApplicationBaseDeDonnee
             this.cbIDFRn.Name = "cbIDFRn";
             this.cbIDFRn.Size = new System.Drawing.Size(184, 21);
             this.cbIDFRn.TabIndex = 30;
+            this.cbIDFRn.SelectedIndexChanged += new System.EventHandler(this.cbIDFRn_SelectedIndexChanged);
             // 
             // dtpCmd
             // 
@@ -311,7 +312,7 @@ namespace ApplicationBaseDeDonnee
             // 
             this.lbIDCmdFrn.AutoSize = true;
             this.lbIDCmdFrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIDCmdFrn.Location = new System.Drawing.Point(24, 11);
+            this.lbIDCmdFrn.Location = new System.Drawing.Point(24, 5);
             this.lbIDCmdFrn.Name = "lbIDCmdFrn";
             this.lbIDCmdFrn.Size = new System.Drawing.Size(238, 20);
             this.lbIDCmdFrn.TabIndex = 4;
@@ -321,7 +322,7 @@ namespace ApplicationBaseDeDonnee
             // 
             this.lbDateCmd.AutoSize = true;
             this.lbDateCmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDateCmd.Location = new System.Drawing.Point(97, 31);
+            this.lbDateCmd.Location = new System.Drawing.Point(97, 30);
             this.lbDateCmd.Name = "lbDateCmd";
             this.lbDateCmd.Size = new System.Drawing.Size(165, 20);
             this.lbDateCmd.TabIndex = 5;

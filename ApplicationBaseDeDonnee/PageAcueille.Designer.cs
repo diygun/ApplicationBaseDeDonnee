@@ -35,8 +35,12 @@ namespace ApplicationBaseDeDonnee
             this.msArticles = new System.Windows.Forms.ToolStripMenuItem();
             this.msFournisseur = new System.Windows.Forms.ToolStripMenuItem();
             this.commandesFournisseurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbAvertissement = new System.Windows.Forms.Label();
             this.ajouterUnAchatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionsDesClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msAjouterClient = new System.Windows.Forms.ToolStripMenuItem();
+            this.msAjouterCmdClient = new System.Windows.Forms.ToolStripMenuItem();
+            this.msAjouterDetailVente = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbAvertissement = new System.Windows.Forms.Label();
             this.msPageAcueille.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +51,8 @@ namespace ApplicationBaseDeDonnee
             this.msArticles,
             this.msFournisseur,
             this.commandesFournisseurToolStripMenuItem,
-            this.ajouterUnAchatToolStripMenuItem});
+            this.ajouterUnAchatToolStripMenuItem,
+            this.gestionsDesClientsToolStripMenuItem});
             this.msPageAcueille.Location = new System.Drawing.Point(0, 0);
             this.msPageAcueille.Name = "msPageAcueille";
             this.msPageAcueille.Size = new System.Drawing.Size(800, 24);
@@ -90,23 +95,52 @@ namespace ApplicationBaseDeDonnee
             this.commandesFournisseurToolStripMenuItem.Text = "Commandes Fournisseur";
             this.commandesFournisseurToolStripMenuItem.Click += new System.EventHandler(this.commandesFournisseurToolStripMenuItem_Click);
             // 
-            // lbAvertissement
-            // 
-            this.lbAvertissement.AutoSize = true;
-            this.lbAvertissement.Font = new System.Drawing.Font("Perpetua Titling MT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAvertissement.ForeColor = System.Drawing.Color.Red;
-            this.lbAvertissement.Location = new System.Drawing.Point(12, 24);
-            this.lbAvertissement.Name = "lbAvertissement";
-            this.lbAvertissement.Size = new System.Drawing.Size(383, 34);
-            this.lbAvertissement.TabIndex = 1;
-            this.lbAvertissement.Text = "Serveur SQL ouvert ?";
-            // 
             // ajouterUnAchatToolStripMenuItem
             // 
             this.ajouterUnAchatToolStripMenuItem.Name = "ajouterUnAchatToolStripMenuItem";
             this.ajouterUnAchatToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
             this.ajouterUnAchatToolStripMenuItem.Text = "Ajouter un achat";
             this.ajouterUnAchatToolStripMenuItem.Click += new System.EventHandler(this.ajouterUnAchatToolStripMenuItem_Click);
+            // 
+            // gestionsDesClientsToolStripMenuItem
+            // 
+            this.gestionsDesClientsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msAjouterClient,
+            this.msAjouterCmdClient,
+            this.msAjouterDetailVente});
+            this.gestionsDesClientsToolStripMenuItem.Name = "gestionsDesClientsToolStripMenuItem";
+            this.gestionsDesClientsToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.gestionsDesClientsToolStripMenuItem.Text = "Gestions des clients";
+            // 
+            // msAjouterClient
+            // 
+            this.msAjouterClient.Name = "msAjouterClient";
+            this.msAjouterClient.Size = new System.Drawing.Size(258, 22);
+            this.msAjouterClient.Text = "Ajouter un client";
+            this.msAjouterClient.Click += new System.EventHandler(this.msAjouterClient_Click);
+            // 
+            // msAjouterCmdClient
+            // 
+            this.msAjouterCmdClient.Name = "msAjouterCmdClient";
+            this.msAjouterCmdClient.Size = new System.Drawing.Size(258, 22);
+            this.msAjouterCmdClient.Text = "Ajouter une commande client";
+            // 
+            // msAjouterDetailVente
+            // 
+            this.msAjouterDetailVente.Name = "msAjouterDetailVente";
+            this.msAjouterDetailVente.Size = new System.Drawing.Size(258, 22);
+            this.msAjouterDetailVente.Text = "Ajouter un detail de vente au client";
+            // 
+            // lbAvertissement
+            // 
+            this.lbAvertissement.AutoSize = true;
+            this.lbAvertissement.Font = new System.Drawing.Font("Perpetua Titling MT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAvertissement.ForeColor = System.Drawing.Color.Red;
+            this.lbAvertissement.Location = new System.Drawing.Point(12, 407);
+            this.lbAvertissement.Name = "lbAvertissement";
+            this.lbAvertissement.Size = new System.Drawing.Size(383, 34);
+            this.lbAvertissement.TabIndex = 1;
+            this.lbAvertissement.Text = "Serveur SQL ouvert ?";
             // 
             // PageAcueille
             // 
@@ -117,7 +151,7 @@ namespace ApplicationBaseDeDonnee
             this.Controls.Add(this.msPageAcueille);
             this.MainMenuStrip = this.msPageAcueille;
             this.Name = "PageAcueille";
-            this.Text = "E-COM MANAGER";
+            this.Text = "A";
             this.Load += new System.EventHandler(this.PageAcueille_Load);
             this.msPageAcueille.ResumeLayout(false);
             this.msPageAcueille.PerformLayout();
@@ -136,6 +170,10 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.ToolStripMenuItem msArticles;
         private System.Windows.Forms.ToolStripMenuItem commandesFournisseurToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterUnAchatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionsDesClientsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem msAjouterClient;
+        private System.Windows.Forms.ToolStripMenuItem msAjouterCmdClient;
+        private System.Windows.Forms.ToolStripMenuItem msAjouterDetailVente;
     }
 }
 

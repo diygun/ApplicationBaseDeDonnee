@@ -89,5 +89,17 @@ namespace ApplicationBaseDeDonnee
             ajouterAchat.Show();
             ajouterAchat.Activate();
         }
+
+        private void msAjouterClient_Click(object sender, EventArgs e)
+        {
+            var ajouterClient = new ListesClient(sConnexion);
+            ajouterClient.Closed += delegate (object s, EventArgs args)
+            {
+                this.Show();
+            };
+
+            ajouterClient.Show();
+            ajouterClient.Activate();
+        }
     }
 }

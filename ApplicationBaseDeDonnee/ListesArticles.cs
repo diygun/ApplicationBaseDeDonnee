@@ -25,6 +25,7 @@ namespace ApplicationBaseDeDonnee
             this.sConnexion = sConnexion;
             InitializeComponent();
         }
+
         private void Activer(bool lPrincipale)
         {
 
@@ -37,7 +38,7 @@ namespace ApplicationBaseDeDonnee
         private void RemplirDGV()
         {
             dtArticles = new DataTable();
-            dtArticles.Columns.Add(new DataColumn("cID", System.Type.GetType("System.Int32")));
+            dtArticles.Columns.Add(new DataColumn("ID", System.Type.GetType("System.Int32")));
             dtArticles.Columns.Add(new DataColumn("Nom"));
             dtArticles.Columns.Add(new DataColumn("prixAchat"));
             dtArticles.Columns.Add(new DataColumn("prixVente"));
