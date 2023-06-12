@@ -20,6 +20,7 @@ namespace ApplicationBaseDeDonnee
         private DataTable dtCmdFrn; // joue un peu le role de dataset, on stock les donnee dedans
         private BindingSource bsCmdFrn;
         int lastID = 1;
+        int idDuFRNselectionnnee = -1;
 
         public CommandesFournisseur(string sConnexion)
         {
@@ -61,9 +62,9 @@ namespace ApplicationBaseDeDonnee
             foreach (C_t_commande_frn p in listeTemporaire)
             {
                 dtCmdFrn.Rows.Add(p.ID_frn, p.ID_commande_frn, p.Date_commande);
-                if(p.ID_frn >= 0)
+                if (p.ID_frn >= 0)
                 {
-                lastID = p.ID_frn;
+                    lastID = p.ID_frn;
                 }
                 else
                 {
@@ -71,6 +72,7 @@ namespace ApplicationBaseDeDonnee
                     lastID = 0;
                 }
             }
+
             bsCmdFrn = new BindingSource();
             bsCmdFrn.DataSource = dtCmdFrn;
             dgvCmdFrn.DataSource = bsCmdFrn;
@@ -128,13 +130,11 @@ namespace ApplicationBaseDeDonnee
                 {
                     if (tbNom.Text != "") // verifier s'il y a un nom suffit car sans frn pas de lien
                     {
-                        Console.WriteLine($"lastID = {lastID}");
+                        Console.WriteLine($"ENTREE DANS 1.2 = {lastID}");
                         int idincre = lastID++;
-                        new G_t_commande_frn(sConnexion).Ajouter(
-                            //lastID,
-                            //int.Parse(cbIDFRn.SelectedItem.ToString()),
-                            2,2,
-                            dtpCmd.Value);
+                        DateTime dateAtransmettre = dtpCmd.Value;
+                        new G_t_commande_frn(sConnexion).Ajouter(2, 2, dateAtransmettre);
+                            //idincre, idDuFRNselectionnnee, dtpCmd.Value);
                         RemplirDGV();
                         Activer(true);
                     }
@@ -150,6 +150,8 @@ namespace ApplicationBaseDeDonnee
                         //new G_t_commande_frn(sConnexion).Modifier(int.Parse(tbIDCmdFrn.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock);
                         RemplirDGV(); // ! mettre a true 
                         Activer(true);
+                        int idincre = lastID++;
+                        new G_t_commande_frn(sConnexion).Ajouter(lastID, idDuFRNselectionnnee, dtpCmd.Value);
 
                     }
                     else
@@ -164,7 +166,6 @@ namespace ApplicationBaseDeDonnee
         {
             Console.WriteLine($"lastID = {lastID}");
 
-            int idDuFRNselectionnnee = -1;
             List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
             foreach (C_t_frn p in listeTemporaire)
             {

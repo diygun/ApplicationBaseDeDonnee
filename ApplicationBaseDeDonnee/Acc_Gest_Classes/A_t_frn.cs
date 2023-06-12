@@ -26,11 +26,14 @@ namespace Projet_DB_ManagmentAPP.Acces
    int res = 0;
    Commande.Parameters.Add("ID_frn", SqlDbType.Int);
    Direction("ID_frn", ParameterDirection.Output);
+
+
    Commande.Parameters.AddWithValue("@Nom", Nom);
    Commande.Parameters.AddWithValue("@Adresse", Adresse);
    Commande.Parameters.AddWithValue("@Email", Email);
    Commande.Parameters.AddWithValue("@GSM", GSM);
    Commande.Parameters.AddWithValue("@N_compte", N_compte);
+
    Commande.Connection.Open();
    Commande.ExecuteNonQuery();
    res = int.Parse(LireParametre("ID_frn"));
