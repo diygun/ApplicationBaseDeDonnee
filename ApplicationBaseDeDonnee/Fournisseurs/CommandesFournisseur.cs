@@ -42,29 +42,27 @@ namespace ApplicationBaseDeDonnee
             RemplirDGV();
             if (dgvCmdFrn.Rows.Count > 0)
             {
-                Activer(false);
+                Activer(true);
             }
             else
             {
-                Activer(true);
+                Activer(false);
             }
         }
 
         private void RemplirDGV()
         {
             dtCmdFrn = new DataTable();
-            dtCmdFrn.Columns.Add(new DataColumn("ID", System.Type.GetType("System.Int32")));
+            dtCmdFrn.Columns.Add(new DataColumn("cID", System.Type.GetType("System.Int32")));
             dtCmdFrn.Columns.Add(new DataColumn("IDFournisseur"));
             dtCmdFrn.Columns.Add(new DataColumn("dateCommande"));
 
             List<C_t_commande_frn> listeTemporaire = new G_t_commande_frn(sConnexion).Lire("ID_frn");
             foreach (C_t_commande_frn p in listeTemporaire)
             {
-                dtCmdFrn.Rows.Add(p.ID_commande_frn, p.ID_frn, p.Date_commande.ToString("dddd dd-MM-yyyy"));
+                dtCmdFrn.Rows.Add((int)p.ID_commande_frn, p.ID_frn, p.Date_commande.ToString("dddd dd-MM-yyyy"));
                 
             }
-
-            //dtCmdFrn.Rows.Add((int)2, (int)2, DateTime.Today);
             
             bsCmdFrn = new BindingSource();
             bsCmdFrn.DataSource = dtCmdFrn;
@@ -81,10 +79,6 @@ namespace ApplicationBaseDeDonnee
             RemplirDGV();
             Activer(false);
 
-
-            // quand je clique sur ajouter
-            tbNom.Text = "ACCES NOM";
-            // ----
             cbIDFRn.Items.Clear();
             List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
             foreach (C_t_frn p in listeTemporaire)
@@ -112,7 +106,6 @@ namespace ApplicationBaseDeDonnee
             {
                 tbIDCmdFrn.Text = dgvCmdFrn.SelectedRows[0].Cells["cID"].Value.ToString();
                 C_t_commande_frn pImp = new G_t_commande_frn(sConnexion).Lire_ID(int.Parse(tbIDCmdFrn.Text));
-                //cbIDFRn.SelectedItem = pImp.ID_frn.ToString();
                 cbIDFRn.Items.Clear();
                 List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
                 foreach (C_t_frn p in listeTemporaire)
@@ -134,7 +127,7 @@ namespace ApplicationBaseDeDonnee
         {
             if (tbNom.Text.Trim() == "")
             {
-                MessageBox.Show(" 1111   Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -142,33 +135,31 @@ namespace ApplicationBaseDeDonnee
                 {
                     if (tbNom.Text != "") // verifier s'il y a un nom suffit car sans frn pas de lien
                     {
-                        Console.WriteLine($"ENTREE DANS 1.2 = {lastID}");
                         //int idincre = lastID++;
                         DateTime dateAtransmettre = dtpCmd.Value;
                         new G_t_commande_frn(sConnexion).Ajouter(0, idDuFRNselectionnnee, dtpCmd.Value);
-                        Console.WriteLine($"id = {lastID} ,id du frn = {idDuFRNselectionnnee} ,date  = {dtpCmd.Value} ");
                         RemplirDGV();
                         Activer(true);
                     }
                     else
                     {
-                        MessageBox.Show(" 22222 Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else // Modification si id est remplie
                 {
-                    if ( /*CONDITION AVANT D'AJOUTER*/ false)
+                    if (cbIDFRn.SelectedItem != null)
                     {
                         //new G_t_commande_frn(sConnexion).Modifier(int.Parse(tbIDCmdFrn.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock);
                         RemplirDGV(); // ! mettre a true 
                         Activer(true);
-                        int idincre = lastID++;
-                        new G_t_commande_frn(sConnexion).Modifier(lastID, idDuFRNselectionnnee, dtpCmd.Value);
-
+                        new G_t_commande_frn(sConnexion).Modifier(int.Parse(tbIDCmdFrn.Text), idDuFRNselectionnnee, dtpCmd.Value);
+                        RemplirDGV();
+                        Activer(true);
                     }
                     else
                     {
-                        MessageBox.Show(" 33333  Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

@@ -50,9 +50,9 @@ namespace ApplicationBaseDeDonnee
             this.panelCmdFrn = new System.Windows.Forms.Panel();
             this.cbIDFRn = new System.Windows.Forms.ComboBox();
             this.dtpCmd = new System.Windows.Forms.DateTimePicker();
-            this.tbIDCmdFrn = new System.Windows.Forms.TextBox();
             this.lbIDCmdFrn = new System.Windows.Forms.Label();
             this.lbDateCmd = new System.Windows.Forms.Label();
+            this.tbIDCmdFrn = new System.Windows.Forms.TextBox();
             this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cIDFrn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -247,9 +247,9 @@ namespace ApplicationBaseDeDonnee
             // 
             // panelCmdFrn
             // 
+            this.panelCmdFrn.Controls.Add(this.tbIDCmdFrn);
             this.panelCmdFrn.Controls.Add(this.cbIDFRn);
             this.panelCmdFrn.Controls.Add(this.dtpCmd);
-            this.panelCmdFrn.Controls.Add(this.tbIDCmdFrn);
             this.panelCmdFrn.Controls.Add(this.lbIDCmdFrn);
             this.panelCmdFrn.Controls.Add(this.btnAnnuler);
             this.panelCmdFrn.Controls.Add(this.btnConfirmer);
@@ -276,14 +276,6 @@ namespace ApplicationBaseDeDonnee
             this.dtpCmd.Size = new System.Drawing.Size(184, 20);
             this.dtpCmd.TabIndex = 29;
             // 
-            // tbIDCmdFrn
-            // 
-            this.tbIDCmdFrn.Location = new System.Drawing.Point(273, 5);
-            this.tbIDCmdFrn.Name = "tbIDCmdFrn";
-            this.tbIDCmdFrn.ReadOnly = true;
-            this.tbIDCmdFrn.Size = new System.Drawing.Size(184, 20);
-            this.tbIDCmdFrn.TabIndex = 0;
-            // 
             // lbIDCmdFrn
             // 
             this.lbIDCmdFrn.AutoSize = true;
@@ -304,9 +296,17 @@ namespace ApplicationBaseDeDonnee
             this.lbDateCmd.TabIndex = 5;
             this.lbDateCmd.Text = "Date de la commande";
             // 
+            // tbIDCmdFrn
+            // 
+            this.tbIDCmdFrn.Location = new System.Drawing.Point(273, 5);
+            this.tbIDCmdFrn.Name = "tbIDCmdFrn";
+            this.tbIDCmdFrn.ReadOnly = true;
+            this.tbIDCmdFrn.Size = new System.Drawing.Size(184, 20);
+            this.tbIDCmdFrn.TabIndex = 29;
+            // 
             // cID
             // 
-            this.cID.DataPropertyName = "ID";
+            this.cID.DataPropertyName = "cID";
             this.cID.HeaderText = "ID Commande";
             this.cID.Name = "cID";
             this.cID.ReadOnly = true;
@@ -373,11 +373,11 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.Label lbGSM;
         private System.Windows.Forms.TextBox tbNom;
         private System.Windows.Forms.Panel panelCmdFrn;
-        private System.Windows.Forms.TextBox tbIDCmdFrn;
         private System.Windows.Forms.Label lbIDCmdFrn;
         private System.Windows.Forms.Label lbDateCmd;
         private System.Windows.Forms.DateTimePicker dtpCmd;
         private System.Windows.Forms.ComboBox cbIDFRn;
+        private System.Windows.Forms.TextBox tbIDCmdFrn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIDFrn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDateCommande;

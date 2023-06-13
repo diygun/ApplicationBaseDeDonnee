@@ -101,7 +101,7 @@ namespace Projet_DB_ManagmentAPP.Acces
             C_t_commande_frn res = new C_t_commande_frn();
             while (dr.Read())
             {
-                res.ID_commande_frn = int.Parse(dr["ID_commande_frn"].ToString());
+                //res.ID_commande_frn = int.Parse(dr["ID_commande_frn"].ToString());
                 res.ID_frn = int.Parse(dr["ID_frn"].ToString());
                 res.Date_commande = DateTime.Parse(dr["Date_commande"].ToString());
             }
