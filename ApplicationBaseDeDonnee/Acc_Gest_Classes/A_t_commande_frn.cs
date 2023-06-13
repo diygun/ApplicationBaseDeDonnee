@@ -20,7 +20,7 @@ namespace Projet_DB_ManagmentAPP.Acces
             : base(sChaineConnexion)
         { }
         #endregion
-        
+
         public int Ajouter(int ID_commande_frn, int ID_frn, DateTime Date_commande)
         {
             CreerCommande("Ajoutert_commande_frn");
@@ -35,6 +35,31 @@ namespace Projet_DB_ManagmentAPP.Acces
             Commande.Connection.Close();
             return res;
         }
+
+        /*
+            public int Ajouter(int ID_commande_frn, int ID_frn, DateTime? Date_commande)
+            {
+            CreerCommande("Ajoutert_commande_frn");
+            int res = 0;
+            Commande.Parameters.Add("ID_commande_frn", SqlDbType.Int); // ajout en plus a la place de Commande.Parameters.AddWithValue("@ID_commande_frn", ID_commande_frn);
+            Direction("ID_commande_frn", ParameterDirection.Output); // ajout de se que vous avez demandé
+            Commande.Parameters.AddWithValue("@ID_frn", ID_frn);
+            if (Date_commande == null)
+            {
+                Commande.Parameters.AddWithValue("@Date_commande", DateTime.Today);
+
+            }
+            else
+            {
+                Commande.Parameters.AddWithValue("@Date_commande", Date_commande);
+            }
+            Commande.Connection.Open();
+            Commande.ExecuteNonQuery();
+            res = int.Parse(LireParametre("ID_commande_frn"));
+            Commande.Connection.Close();
+            return res;
+            }
+        */
 
         public int Modifier(int ID_commande_frn, int ID_frn, DateTime Date_commande)
         {

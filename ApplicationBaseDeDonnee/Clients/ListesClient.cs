@@ -43,7 +43,6 @@ namespace ApplicationBaseDeDonnee
             dtClient.Columns.Add(new DataColumn("Email"));
             dtClient.Columns.Add(new DataColumn("GSM"));
 
-            // !!!!! SI ERRUEUR ICI, CA VEUT DIRE QUE LE SERVEUR SQL N'EST PAS OUVERT 
             List<C_t_client> listeTemporaire = new G_t_client(sConnexion).Lire("Nom");
             foreach (C_t_client p in listeTemporaire)
             {

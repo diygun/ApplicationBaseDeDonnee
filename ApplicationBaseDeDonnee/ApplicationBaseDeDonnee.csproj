@@ -56,11 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fournisseurs\AjouterAchat.cs">
+    <Compile Include="Fournisseurs\DetailAchat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fournisseurs\AjouterAchat.Designer.cs">
-      <DependentUpon>AjouterAchat.cs</DependentUpon>
+    <Compile Include="Fournisseurs\DetailAchat.Designer.cs">
+      <DependentUpon>DetailAchat.cs</DependentUpon>
     </Compile>
     <Compile Include="Acc_Gest_Classes\A_Base.cs" />
     <Compile Include="Acc_Gest_Classes\A_t_client.cs" />
@@ -123,8 +123,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Fournisseurs\AjouterAchat.resx">
-      <DependentUpon>AjouterAchat.cs</DependentUpon>
+    <EmbeddedResource Include="Fournisseurs\DetailAchat.resx">
+      <DependentUpon>DetailAchat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fournisseurs\CommandesFournisseur.resx">
       <DependentUpon>CommandesFournisseur.cs</DependentUpon>

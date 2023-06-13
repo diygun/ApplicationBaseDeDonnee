@@ -30,6 +30,11 @@ namespace ApplicationBaseDeDonnee
         private void InitializeComponent()
         {
             this.dgvClient = new System.Windows.Forms.DataGridView();
+            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAdresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
@@ -46,11 +51,6 @@ namespace ApplicationBaseDeDonnee
             this.tbAdresse = new System.Windows.Forms.TextBox();
             this.lbGSM = new System.Windows.Forms.Label();
             this.tbNom = new System.Windows.Forms.TextBox();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cAdresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).BeginInit();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +73,51 @@ namespace ApplicationBaseDeDonnee
             this.dgvClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClient.Size = new System.Drawing.Size(661, 328);
             this.dgvClient.TabIndex = 11;
+            // 
+            // cID
+            // 
+            this.cID.DataPropertyName = "ID";
+            this.cID.HeaderText = "ID";
+            this.cID.Name = "cID";
+            this.cID.ReadOnly = true;
+            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cID.Width = 30;
+            // 
+            // cNom
+            // 
+            this.cNom.DataPropertyName = "Nom";
+            this.cNom.HeaderText = "Nom";
+            this.cNom.Name = "cNom";
+            this.cNom.ReadOnly = true;
+            this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cNom.Width = 125;
+            // 
+            // cAdresse
+            // 
+            this.cAdresse.DataPropertyName = "adresse";
+            this.cAdresse.HeaderText = "Adresse";
+            this.cAdresse.Name = "cAdresse";
+            this.cAdresse.ReadOnly = true;
+            this.cAdresse.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cAdresse.Width = 200;
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "E-mail";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.email.Width = 155;
+            // 
+            // GSM
+            // 
+            this.GSM.DataPropertyName = "GSM";
+            this.GSM.HeaderText = "GSM";
+            this.GSM.Name = "GSM";
+            this.GSM.ReadOnly = true;
+            this.GSM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GSM.Width = 115;
             // 
             // btnModifier
             // 
@@ -118,7 +163,7 @@ namespace ApplicationBaseDeDonnee
             this.panel.Controls.Add(this.tbAdresse);
             this.panel.Controls.Add(this.lbGSM);
             this.panel.Controls.Add(this.tbNom);
-            this.panel.Location = new System.Drawing.Point(218, 337);
+            this.panel.Location = new System.Drawing.Point(328, 337);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(338, 213);
             this.panel.TabIndex = 26;
@@ -228,51 +273,6 @@ namespace ApplicationBaseDeDonnee
             this.tbNom.Name = "tbNom";
             this.tbNom.Size = new System.Drawing.Size(184, 20);
             this.tbNom.TabIndex = 1;
-            // 
-            // cID
-            // 
-            this.cID.DataPropertyName = "ID";
-            this.cID.HeaderText = "ID";
-            this.cID.Name = "cID";
-            this.cID.ReadOnly = true;
-            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cID.Width = 30;
-            // 
-            // cNom
-            // 
-            this.cNom.DataPropertyName = "Nom";
-            this.cNom.HeaderText = "Nom";
-            this.cNom.Name = "cNom";
-            this.cNom.ReadOnly = true;
-            this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cNom.Width = 125;
-            // 
-            // cAdresse
-            // 
-            this.cAdresse.DataPropertyName = "adresse";
-            this.cAdresse.HeaderText = "Adresse";
-            this.cAdresse.Name = "cAdresse";
-            this.cAdresse.ReadOnly = true;
-            this.cAdresse.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cAdresse.Width = 200;
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "E-mail";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.email.Width = 155;
-            // 
-            // GSM
-            // 
-            this.GSM.DataPropertyName = "GSM";
-            this.GSM.HeaderText = "GSM";
-            this.GSM.Name = "GSM";
-            this.GSM.ReadOnly = true;
-            this.GSM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.GSM.Width = 115;
             // 
             // ListesClient
             // 

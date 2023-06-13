@@ -30,9 +30,6 @@ namespace ApplicationBaseDeDonnee
         private void InitializeComponent()
         {
             this.dgvCmdFrn = new System.Windows.Forms.DataGridView();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cIDFrn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
@@ -56,6 +53,9 @@ namespace ApplicationBaseDeDonnee
             this.tbIDCmdFrn = new System.Windows.Forms.TextBox();
             this.lbIDCmdFrn = new System.Windows.Forms.Label();
             this.lbDateCmd = new System.Windows.Forms.Label();
+            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cIDFrn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCmdFrn)).BeginInit();
             this.panelFrn.SuspendLayout();
             this.panelCmdFrn.SuspendLayout();
@@ -78,31 +78,6 @@ namespace ApplicationBaseDeDonnee
             this.dgvCmdFrn.Size = new System.Drawing.Size(371, 328);
             this.dgvCmdFrn.TabIndex = 1;
             // 
-            // cID
-            // 
-            this.cID.DataPropertyName = "ID";
-            this.cID.HeaderText = "ID Commande";
-            this.cID.Name = "cID";
-            this.cID.ReadOnly = true;
-            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cIDFrn
-            // 
-            this.cIDFrn.DataPropertyName = "IDFournisseur";
-            this.cIDFrn.HeaderText = "ID Fournisseur";
-            this.cIDFrn.Name = "cIDFrn";
-            this.cIDFrn.ReadOnly = true;
-            this.cIDFrn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cDateCommande
-            // 
-            this.cDateCommande.DataPropertyName = "dateCommande";
-            this.cDateCommande.HeaderText = "Date de la commande";
-            this.cDateCommande.Name = "cDateCommande";
-            this.cDateCommande.ReadOnly = true;
-            this.cDateCommande.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cDateCommande.Width = 150;
-            // 
             // btnModifier
             // 
             this.btnModifier.Location = new System.Drawing.Point(12, 390);
@@ -121,6 +96,7 @@ namespace ApplicationBaseDeDonnee
             this.btnSupprimer.TabIndex = 24;
             this.btnSupprimer.Text = "Supprimer la commande fourniseur";
             this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // btnAjouter
             // 
@@ -328,6 +304,31 @@ namespace ApplicationBaseDeDonnee
             this.lbDateCmd.TabIndex = 5;
             this.lbDateCmd.Text = "Date de la commande";
             // 
+            // cID
+            // 
+            this.cID.DataPropertyName = "ID";
+            this.cID.HeaderText = "ID Commande";
+            this.cID.Name = "cID";
+            this.cID.ReadOnly = true;
+            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cIDFrn
+            // 
+            this.cIDFrn.DataPropertyName = "IDFournisseur";
+            this.cIDFrn.HeaderText = "ID Fournisseur";
+            this.cIDFrn.Name = "cIDFrn";
+            this.cIDFrn.ReadOnly = true;
+            this.cIDFrn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cDateCommande
+            // 
+            this.cDateCommande.DataPropertyName = "dateCommande";
+            this.cDateCommande.HeaderText = "Date de la commande";
+            this.cDateCommande.Name = "cDateCommande";
+            this.cDateCommande.ReadOnly = true;
+            this.cDateCommande.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cDateCommande.Width = 150;
+            // 
             // CommandesFournisseur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,9 +358,6 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnAjouter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cIDFrn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDateCommande;
         private System.Windows.Forms.Panel panelFrn;
         private System.Windows.Forms.TextBox tbNmCompte;
         private System.Windows.Forms.TextBox tbGSM;
@@ -380,5 +378,8 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.Label lbDateCmd;
         private System.Windows.Forms.DateTimePicker dtpCmd;
         private System.Windows.Forms.ComboBox cbIDFRn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cIDFrn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDateCommande;
     }
 }

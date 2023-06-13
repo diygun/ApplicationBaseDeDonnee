@@ -30,7 +30,7 @@ namespace ApplicationBaseDeDonnee
         private void Activer(bool lPrincipale)
         {
 
-            dgvCmdFrn.Enabled = lPrincipale;
+            dgvCmdFrn.Enabled = true;
             btnAjouter.Enabled = btnModifier.Enabled = btnSupprimer.Enabled = lPrincipale;
             panelCmdFrn.Enabled = !lPrincipale;
             btnConfirmer.Enabled = btnAnnuler.Enabled = !lPrincipale;
@@ -57,22 +57,15 @@ namespace ApplicationBaseDeDonnee
             dtCmdFrn.Columns.Add(new DataColumn("IDFournisseur"));
             dtCmdFrn.Columns.Add(new DataColumn("dateCommande"));
 
-            List<C_t_commande_frn> listeTemporaire = new G_t_commande_frn(sConnexion).Lire("Nom");
-
+            List<C_t_commande_frn> listeTemporaire = new G_t_commande_frn(sConnexion).Lire("ID_frn");
             foreach (C_t_commande_frn p in listeTemporaire)
             {
-                dtCmdFrn.Rows.Add(p.ID_frn, p.ID_commande_frn, p.Date_commande);
-                if (p.ID_frn >= 0)
-                {
-                    lastID = p.ID_frn;
-                }
-                else
-                {
-                    Console.WriteLine("ERRUER du lastID !!");
-                    lastID = 0;
-                }
+                dtCmdFrn.Rows.Add(p.ID_commande_frn, p.ID_frn, p.Date_commande.ToString("dddd dd-MM-yyyy"));
+                
             }
 
+            //dtCmdFrn.Rows.Add((int)2, (int)2, DateTime.Today);
+            
             bsCmdFrn = new BindingSource();
             bsCmdFrn.DataSource = dtCmdFrn;
             dgvCmdFrn.DataSource = bsCmdFrn;
@@ -115,7 +108,26 @@ namespace ApplicationBaseDeDonnee
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
+            if (dgvCmdFrn.SelectedRows.Count > 0)
+            {
+                tbIDCmdFrn.Text = dgvCmdFrn.SelectedRows[0].Cells["cID"].Value.ToString();
+                C_t_commande_frn pImp = new G_t_commande_frn(sConnexion).Lire_ID(int.Parse(tbIDCmdFrn.Text));
+                //cbIDFRn.SelectedItem = pImp.ID_frn.ToString();
+                cbIDFRn.Items.Clear();
+                List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
+                foreach (C_t_frn p in listeTemporaire)
+                {
+                    cbIDFRn.Items.Add(p.Nom);
+                }
+                    cbIDFRn.SelectedIndex = 1;
 
+                dtpCmd.Value = pImp.Date_commande == null ? DateTime.Today : (DateTime)pImp.Date_commande;
+                Activer(false);
+            }
+            else
+            {
+                MessageBox.Show("Sélectionnez l'enregistrement à éditer");
+            }
         }
 
         private void btnConfirmer_Click(object sender, EventArgs e)
@@ -131,10 +143,10 @@ namespace ApplicationBaseDeDonnee
                     if (tbNom.Text != "") // verifier s'il y a un nom suffit car sans frn pas de lien
                     {
                         Console.WriteLine($"ENTREE DANS 1.2 = {lastID}");
-                        int idincre = lastID++;
+                        //int idincre = lastID++;
                         DateTime dateAtransmettre = dtpCmd.Value;
-                        new G_t_commande_frn(sConnexion).Ajouter(2, 2, dateAtransmettre);
-                            //idincre, idDuFRNselectionnnee, dtpCmd.Value);
+                        new G_t_commande_frn(sConnexion).Ajouter(0, idDuFRNselectionnnee, dtpCmd.Value);
+                        Console.WriteLine($"id = {lastID} ,id du frn = {idDuFRNselectionnnee} ,date  = {dtpCmd.Value} ");
                         RemplirDGV();
                         Activer(true);
                     }
@@ -151,7 +163,7 @@ namespace ApplicationBaseDeDonnee
                         RemplirDGV(); // ! mettre a true 
                         Activer(true);
                         int idincre = lastID++;
-                        new G_t_commande_frn(sConnexion).Ajouter(lastID, idDuFRNselectionnnee, dtpCmd.Value);
+                        new G_t_commande_frn(sConnexion).Modifier(lastID, idDuFRNselectionnnee, dtpCmd.Value);
 
                     }
                     else
@@ -182,6 +194,19 @@ namespace ApplicationBaseDeDonnee
             tbGSM.Text = pImp.GSM;
             tbNmCompte.Text = pImp.N_compte;
             //tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text =  tbNmCompte.Text = "";
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (dgvCmdFrn.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Voulez-vous vraiment supprimer cet enregistrement ?", "Confirmer la suppression", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    int iID = (int)dgvCmdFrn.SelectedRows[0].Cells["cID"].Value;
+                    new G_t_commande_frn(sConnexion).Supprimer(iID);
+                    bsCmdFrn.RemoveCurrent();
+                }
+            }
         }
 
         /*
