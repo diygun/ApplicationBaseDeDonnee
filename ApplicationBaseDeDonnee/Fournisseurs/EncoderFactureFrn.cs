@@ -24,7 +24,7 @@ namespace ApplicationBaseDeDonnee
         private BindingSource bsCmdFrn;
 
         int idCommSelectionnee = -1;
-
+        int idFrnSelectionnee = -1;
         public EncoderFactureFrn(string sConnexion)
         {
             this.sConnexion = sConnexion;
@@ -93,7 +93,7 @@ namespace ApplicationBaseDeDonnee
                         {
                             if (a.ID_commande_frn == c.ID_commande_frn && a.ID_produit == p.ID_produit && idCommSelectionnee == a.ID_commande_frn)
                             {
-                                dtArticles.Rows.Add(/*a.ID_detail_achat, a.ID_commande_frn,*/ a.ID_produit, p.Nom, a.Quantite, a.Prix_unitaire, a.TVA);
+                                dtArticles.Rows.Add(/*a.ID_detail_achat, a.ID_commande_frn,*/ a.ID_produit, p.Nom, p.Prix_achat, p.Prix_vente, a.TVA, p.Quantite_stock, p.Seuil_stock);
                             }
                         }
                 }
@@ -113,15 +113,20 @@ namespace ApplicationBaseDeDonnee
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            if()
+            if (idCommSelectionnee != -1)
+            {
+                tbID.Text = tbNom.Text = tbPrixVente.Text = tbPrixAchat.Text = tbStock.Text = tbSeuilStock.Text = "";
+                tbTVA.Text = "21";
+                Activer(false);
+                tbNom.Focus();
+                RemplirDGV();
+            }
+            else
+            {
+                MessageBox.Show("Sélectionnez une facture !");
+            }
 
 
-
-            tbID.Text = tbNom.Text = tbPrixVente.Text = tbPrixAchat.Text = tbStock.Text = tbSeuilStock.Text = "";
-            tbTVA.Text = "21";
-            Activer(false);
-            tbNom.Focus();
-            RemplirDGV();
         }
 
         private void btnModifier_Click(object sender, EventArgs e)
@@ -153,6 +158,8 @@ namespace ApplicationBaseDeDonnee
                 {
                     int iID = (int)dgvArticles.SelectedRows[0].Cells["cID"].Value;
                     new G_t_produit(sConnexion).Supprimer(iID);
+                    new G_t_detail_achat(sConnexion).Supprimer(idCommSelectionnee);
+
                     bsArticles.RemoveCurrent();
                 }
             }
@@ -178,8 +185,11 @@ namespace ApplicationBaseDeDonnee
                         )
                     {
                         Console.WriteLine(prixVente);
-                        new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
-                        
+                        int idProduitAjoutee = new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
+
+                        new G_t_detail_achat(sConnexion).Ajouter(idCommSelectionnee, idProduitAjoutee, stock, prixAchat, tva);
+
+
                         RemplirDGV();
                         Activer(true);
                     }
@@ -197,7 +207,8 @@ namespace ApplicationBaseDeDonnee
                         && int.TryParse(tbSeuilStock.Text, out int seuilStock)
                         )
                     {
-                        new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock);
+                        int idProduitModifiee = new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
+                        new G_t_detail_achat(sConnexion).Modifier(int.Parse(tbIDCmdFrn.Text), idFrnSelectionnee, idProduitModifiee, stock, Math.Round(prixAchat, 2), tva);
                         RemplirDGV();
                         Activer(true);
                     }
@@ -244,9 +255,6 @@ namespace ApplicationBaseDeDonnee
             dgvCmdFrn.DataSource = bsCmdFrn;
         }
 
-
-        #endregion
-
         private void btnTest_Click(object sender, EventArgs e)
         {
             new G_t_produit(sConnexion).Ajouter("Generic prod", 100, 50, 10, 21, 1);
@@ -286,10 +294,14 @@ namespace ApplicationBaseDeDonnee
                 tbIDCmdFrn.Text = row.Cells[0].Value.ToString();
                 idCommSelectionnee = int.Parse(row.Cells[0].Value.ToString());
                 tbIDFRn.Text = row.Cells[1].Value.ToString();
+                idFrnSelectionnee = int.Parse(row.Cells[1].Value.ToString());
                 tbNomfrn.Text = row.Cells[2].Value.ToString();
             }
             RemplirDGV();
+            Activer(true);
         }
+
+        #endregion
 
     }
 }

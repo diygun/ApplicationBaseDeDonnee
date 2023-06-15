@@ -115,12 +115,12 @@ namespace ApplicationBaseDeDonnee.Fournisseurs
             this.Quantite,
             this.PrixUnitaire,
             this.TVA});
-            this.dgvArticles.Location = new System.Drawing.Point(12, 37);
+            this.dgvArticles.Location = new System.Drawing.Point(2, 37);
             this.dgvArticles.Name = "dgvArticles";
             this.dgvArticles.ReadOnly = true;
             this.dgvArticles.RowHeadersVisible = false;
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticles.Size = new System.Drawing.Size(854, 349);
+            this.dgvArticles.Size = new System.Drawing.Size(706, 349);
             this.dgvArticles.TabIndex = 31;
             // 
             // panel
@@ -336,7 +336,7 @@ namespace ApplicationBaseDeDonnee.Fournisseurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 722);
+            this.ClientSize = new System.Drawing.Size(713, 722);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.dgvArticles);
             this.Controls.Add(this.lbDetailAchat);

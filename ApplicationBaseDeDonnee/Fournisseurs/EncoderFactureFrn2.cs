@@ -116,7 +116,6 @@ namespace ApplicationBaseDeDonnee.Fournisseurs
             if (dgvArticles.SelectedRows.Count > 0)
             {
                 tbID.Text = dgvArticles.SelectedRows[0].Cells["ID_detail_articles"].Value.ToString();
-
                 C_t_detail_achat pImp = new G_t_detail_achat(sConnexion).Lire_ID(int.Parse(tbID.Text));
                 tbID.Text = pImp.ID_detail_achat.ToString();
                 cbIDCommandeFrn.Text = pImp.ID_commande_frn.ToString();
@@ -163,7 +162,7 @@ namespace ApplicationBaseDeDonnee.Fournisseurs
                 tbTVA.Text == ""
                 )
             {
-                MessageBox.Show(" AAAA Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -182,7 +181,7 @@ namespace ApplicationBaseDeDonnee.Fournisseurs
                     }
                     else
                     {
-                        MessageBox.Show(" 111 Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else // Modification si id est remplie
@@ -198,7 +197,7 @@ namespace ApplicationBaseDeDonnee.Fournisseurs
                     }
                     else
                     {
-                        MessageBox.Show(" SSSSS Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Veuillez renseigner toute les informations correctement.", "Erreur de saisie", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -207,13 +206,10 @@ namespace ApplicationBaseDeDonnee.Fournisseurs
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             Activer(true);
-
         }
 
         private void tbIDCommandeFrn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Console.WriteLine($"lastID = {lastID}");
-
             List<C_t_commande_frn> listeTemporaire = new G_t_commande_frn(sConnexion).Lire("ID_frn"); // !!!!! id frn sinon ca n'affiche pas
             foreach (C_t_commande_frn p in listeTemporaire)
             {
@@ -224,13 +220,6 @@ namespace ApplicationBaseDeDonnee.Fournisseurs
             }
 
             Console.WriteLine("IDcommandeFrnSelectionnee = " + IDcommandeFrnSelectionnee);
-            //C_t_commande_frn pImp = new G_t_commande_frn(sConnexion).Lire_ID(IDcommandeFrnSelectionnee);
-            //tbNom.Text = pImp.Nom;
-            //tbAdresse.Text = pImp.Adresse;
-            //tbEmail.Text = pImp.Email;
-            //tbGSM.Text = pImp.GSM;
-            //tbNmCompte.Text = pImp.N_compte;
-            ////tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text =  tbNmCompte.Text = "";
         }
 
         private void cbIDproduit_SelectedIndexChanged(object sender, EventArgs e)
@@ -259,46 +248,5 @@ namespace ApplicationBaseDeDonnee.Fournisseurs
                 }
             }
         }
-
-
-
-
-        /*
-                    private void RemplirDGV()
-                {
-                    dtEncoderFacture = new DataTable();
-                    dtEncoderFacture.Columns.Add(new DataColumn("ID", System.Type.GetType("System.Int32")));
-                    dtEncoderFacture.Columns.Add(new DataColumn("Nom"));
-                    dtEncoderFacture.Columns.Add(new DataColumn("ID_commande_frn")); // id de la table commande frn (nomé !n de commande )
-                    dtEncoderFacture.Columns.Add(new DataColumn("Nom_frn"));// + nom depuis la table table frn ( nomé nom du fournisseur)
-
-                    dtEncoderFacture.Columns.Add(new DataColumn("ID_produit")); // id depuis table produit, nulero du prioduit, et nom du produit
-                    dtEncoderFacture.Columns.Add(new DataColumn("Nom_produit")); // id depuis table produit, nulero du prioduit, et nom du produit
-
-                    dtEncoderFacture.Columns.Add(new DataColumn("prixAchat"));
-                    dtEncoderFacture.Columns.Add(new DataColumn("prixVente"));
-                    dtEncoderFacture.Columns.Add(new DataColumn("TVA"));
-                    dtEncoderFacture.Columns.Add(new DataColumn("qteStock"));
-                    dtEncoderFacture.Columns.Add(new DataColumn("seuilStock"));
-
-                    List<C_t_produit> listeProduit = new G_t_produit(sConnexion).Lire("Nom");
-                    List<C_t_frn> l2 = new G_t_frn(sConnexion).Lire("Nom");
-                    foreach (C_t_frn f in l2)
-                    {
-                        //foreach (C_t_frn p in l2)
-                        {
-                            foreach (C_t_produit p in listeProduit)
-                            {
-                                dtEncoderFacture.Rows.Add(p.ID_produit, p.Nom, f.Nom, p.Prix_achat, p.Prix_vente, p.TVA, p.Quantite_stock, p.Seuil_stock);
-                            }
-                        }
-                    }
-
-                    bsEncoderFacture = new BindingSource();
-                    bsEncoderFacture.DataSource = dtEncoderFacture;
-                    dgvArticles.DataSource = bsEncoderFacture;
-                }
-
-         */
     }
 }

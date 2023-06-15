@@ -50,10 +50,20 @@ namespace ApplicationBaseDeDonnee
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.dgvArticles = new System.Windows.Forms.DataGridView();
+            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPrixAchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prixVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnTest = new System.Windows.Forms.Button();
             this.dgvCmdFrn = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cIDFrn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelCmdFrn = new System.Windows.Forms.Panel();
-            this.btnSelectionnerCommande = new System.Windows.Forms.Button();
             this.btnAjouterCommande = new System.Windows.Forms.Button();
             this.tbNomfrn = new System.Windows.Forms.TextBox();
             this.lnNomFrn = new System.Windows.Forms.Label();
@@ -64,17 +74,6 @@ namespace ApplicationBaseDeDonnee
             this.lnIDfrn = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPrixAchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prixVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cIDFrn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCmdFrn)).BeginInit();
@@ -100,7 +99,7 @@ namespace ApplicationBaseDeDonnee
             this.panel.Controls.Add(this.tbPrixVente);
             this.panel.Controls.Add(this.lbTVA);
             this.panel.Controls.Add(this.tbNom);
-            this.panel.Location = new System.Drawing.Point(1307, 597);
+            this.panel.Location = new System.Drawing.Point(1159, 597);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(330, 228);
             this.panel.TabIndex = 24;
@@ -293,8 +292,66 @@ namespace ApplicationBaseDeDonnee
             this.dgvArticles.ReadOnly = true;
             this.dgvArticles.RowHeadersVisible = false;
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticles.Size = new System.Drawing.Size(733, 726);
+            this.dgvArticles.Size = new System.Drawing.Size(587, 726);
             this.dgvArticles.TabIndex = 20;
+            // 
+            // cID
+            // 
+            this.cID.DataPropertyName = "ID";
+            this.cID.HeaderText = "N°";
+            this.cID.Name = "cID";
+            this.cID.ReadOnly = true;
+            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cID.Width = 30;
+            // 
+            // cNom
+            // 
+            this.cNom.DataPropertyName = "Nom";
+            this.cNom.HeaderText = "Nom";
+            this.cNom.Name = "cNom";
+            this.cNom.ReadOnly = true;
+            this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cPrixAchat
+            // 
+            this.cPrixAchat.DataPropertyName = "prixAchat";
+            this.cPrixAchat.HeaderText = "Prix d\'achat";
+            this.cPrixAchat.Name = "cPrixAchat";
+            this.cPrixAchat.ReadOnly = true;
+            this.cPrixAchat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // prixVente
+            // 
+            this.prixVente.DataPropertyName = "prixVente";
+            this.prixVente.HeaderText = "Prix de vente";
+            this.prixVente.Name = "prixVente";
+            this.prixVente.ReadOnly = true;
+            this.prixVente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cTVA
+            // 
+            this.cTVA.DataPropertyName = "TVA";
+            this.cTVA.HeaderText = "T.V.A.";
+            this.cTVA.Name = "cTVA";
+            this.cTVA.ReadOnly = true;
+            this.cTVA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cTVA.Width = 45;
+            // 
+            // cQteStock
+            // 
+            this.cQteStock.DataPropertyName = "qteStock";
+            this.cQteStock.HeaderText = "Quantite en stock";
+            this.cQteStock.Name = "cQteStock";
+            this.cQteStock.ReadOnly = true;
+            this.cQteStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Quantite
+            // 
+            this.Quantite.DataPropertyName = "seuilStock";
+            this.Quantite.HeaderText = "Seuil de stock";
+            this.Quantite.Name = "Quantite";
+            this.Quantite.ReadOnly = true;
+            this.Quantite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // btnTest
             // 
@@ -325,9 +382,42 @@ namespace ApplicationBaseDeDonnee
             this.dgvCmdFrn.TabIndex = 26;
             this.dgvCmdFrn.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCmdFrn_CellMouseClick);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "cID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "N° commande";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 85;
+            // 
+            // cIDFrn
+            // 
+            this.cIDFrn.DataPropertyName = "IDFournisseur";
+            this.cIDFrn.HeaderText = "N° Fournisseur";
+            this.cIDFrn.Name = "cIDFrn";
+            this.cIDFrn.ReadOnly = true;
+            this.cIDFrn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cIDFrn.Width = 85;
+            // 
+            // Nom
+            // 
+            this.Nom.DataPropertyName = "Nom";
+            this.Nom.HeaderText = "Nom";
+            this.Nom.Name = "Nom";
+            this.Nom.ReadOnly = true;
+            this.Nom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cDateCommande
+            // 
+            this.cDateCommande.DataPropertyName = "dateCommande";
+            this.cDateCommande.HeaderText = "Date de la commande";
+            this.cDateCommande.Name = "cDateCommande";
+            this.cDateCommande.ReadOnly = true;
+            this.cDateCommande.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cDateCommande.Width = 150;
+            // 
             // panelCmdFrn
             // 
-            this.panelCmdFrn.Controls.Add(this.btnSelectionnerCommande);
             this.panelCmdFrn.Controls.Add(this.btnAjouterCommande);
             this.panelCmdFrn.Controls.Add(this.tbNomfrn);
             this.panelCmdFrn.Controls.Add(this.lnNomFrn);
@@ -340,15 +430,6 @@ namespace ApplicationBaseDeDonnee
             this.panelCmdFrn.Name = "panelCmdFrn";
             this.panelCmdFrn.Size = new System.Drawing.Size(439, 172);
             this.panelCmdFrn.TabIndex = 29;
-            // 
-            // btnSelectionnerCommande
-            // 
-            this.btnSelectionnerCommande.Location = new System.Drawing.Point(3, 123);
-            this.btnSelectionnerCommande.Name = "btnSelectionnerCommande";
-            this.btnSelectionnerCommande.Size = new System.Drawing.Size(210, 29);
-            this.btnSelectionnerCommande.TabIndex = 33;
-            this.btnSelectionnerCommande.Text = "Selectionner la commande a editer";
-            this.btnSelectionnerCommande.UseVisualStyleBackColor = true;
             // 
             // btnAjouterCommande
             // 
@@ -433,7 +514,7 @@ namespace ApplicationBaseDeDonnee
             this.panel1.Controls.Add(this.dgvArticles);
             this.panel1.Location = new System.Drawing.Point(503, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(798, 775);
+            this.panel1.Size = new System.Drawing.Size(635, 775);
             this.panel1.TabIndex = 30;
             // 
             // label2
@@ -446,98 +527,6 @@ namespace ApplicationBaseDeDonnee
             this.label2.TabIndex = 31;
             this.label2.Text = "Encoder une facture d\'achat du fournisseur";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // cID
-            // 
-            this.cID.DataPropertyName = "ID";
-            this.cID.HeaderText = "N°";
-            this.cID.Name = "cID";
-            this.cID.ReadOnly = true;
-            this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cID.Width = 30;
-            // 
-            // cNom
-            // 
-            this.cNom.DataPropertyName = "Nom";
-            this.cNom.HeaderText = "Nom";
-            this.cNom.Name = "cNom";
-            this.cNom.ReadOnly = true;
-            this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cPrixAchat
-            // 
-            this.cPrixAchat.DataPropertyName = "prixAchat";
-            this.cPrixAchat.HeaderText = "Prix d\'achat";
-            this.cPrixAchat.Name = "cPrixAchat";
-            this.cPrixAchat.ReadOnly = true;
-            this.cPrixAchat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // prixVente
-            // 
-            this.prixVente.DataPropertyName = "prixVente";
-            this.prixVente.HeaderText = "Prix de vente";
-            this.prixVente.Name = "prixVente";
-            this.prixVente.ReadOnly = true;
-            this.prixVente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cTVA
-            // 
-            this.cTVA.DataPropertyName = "TVA";
-            this.cTVA.HeaderText = "T.V.A.";
-            this.cTVA.Name = "cTVA";
-            this.cTVA.ReadOnly = true;
-            this.cTVA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cTVA.Width = 45;
-            // 
-            // cQteStock
-            // 
-            this.cQteStock.DataPropertyName = "qteStock";
-            this.cQteStock.HeaderText = "Quantite en stock";
-            this.cQteStock.Name = "cQteStock";
-            this.cQteStock.ReadOnly = true;
-            this.cQteStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Quantite
-            // 
-            this.Quantite.DataPropertyName = "seuilStock";
-            this.Quantite.HeaderText = "Seuil de stock";
-            this.Quantite.Name = "Quantite";
-            this.Quantite.ReadOnly = true;
-            this.Quantite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "cID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "N° commande";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 85;
-            // 
-            // cIDFrn
-            // 
-            this.cIDFrn.DataPropertyName = "IDFournisseur";
-            this.cIDFrn.HeaderText = "N° Fournisseur";
-            this.cIDFrn.Name = "cIDFrn";
-            this.cIDFrn.ReadOnly = true;
-            this.cIDFrn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cIDFrn.Width = 85;
-            // 
-            // Nom
-            // 
-            this.Nom.DataPropertyName = "Nom";
-            this.Nom.HeaderText = "Nom";
-            this.Nom.Name = "Nom";
-            this.Nom.ReadOnly = true;
-            this.Nom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cDateCommande
-            // 
-            this.cDateCommande.DataPropertyName = "dateCommande";
-            this.cDateCommande.HeaderText = "Date de la commande";
-            this.cDateCommande.Name = "cDateCommande";
-            this.cDateCommande.ReadOnly = true;
-            this.cDateCommande.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cDateCommande.Width = 150;
             // 
             // EncoderFactureFrn
             // 
@@ -596,7 +585,6 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAjouterUnFournisseur;
-        private System.Windows.Forms.Button btnSelectionnerCommande;
         private System.Windows.Forms.Button btnAjouterCommande;
         private System.Windows.Forms.TextBox tbIDFRn;
         private System.Windows.Forms.TextBox tbNomfrn;
