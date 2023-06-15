@@ -49,14 +49,31 @@ namespace ApplicationBaseDeDonnee
             this.btnAjouter = new System.Windows.Forms.Button();
             this.dgvAjoutAchat = new System.Windows.Forms.DataGridView();
             this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_commande_frn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_produit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_commande_frn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nom_frn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_produit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nom_produit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prixAchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prixVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seuilStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAjoutAchat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel
@@ -75,7 +92,7 @@ namespace ApplicationBaseDeDonnee
             this.panel.Controls.Add(this.btnConfirmer);
             this.panel.Controls.Add(this.lbID);
             this.panel.Controls.Add(this.lbNumCommandeFrn);
-            this.panel.Location = new System.Drawing.Point(178, 345);
+            this.panel.Location = new System.Drawing.Point(474, 345);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(449, 213);
             this.panel.TabIndex = 23;
@@ -238,18 +255,22 @@ namespace ApplicationBaseDeDonnee
             this.dgvAjoutAchat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAjoutAchat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cID,
-            this.ID_commande_frn,
-            this.ID_produit,
             this.cNom,
+            this.ID_commande_frn,
+            this.Nom_frn,
+            this.ID_produit,
+            this.Nom_produit,
+            this.prixAchat,
+            this.prixVente,
+            this.cTVA,
             this.cQteStock,
-            this.Quantite,
-            this.cTVA});
+            this.seuilStock});
             this.dgvAjoutAchat.Location = new System.Drawing.Point(5, 8);
             this.dgvAjoutAchat.Name = "dgvAjoutAchat";
             this.dgvAjoutAchat.ReadOnly = true;
             this.dgvAjoutAchat.RowHeadersVisible = false;
             this.dgvAjoutAchat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAjoutAchat.Size = new System.Drawing.Size(622, 328);
+            this.dgvAjoutAchat.Size = new System.Drawing.Size(918, 328);
             this.dgvAjoutAchat.TabIndex = 19;
             // 
             // cID
@@ -261,22 +282,6 @@ namespace ApplicationBaseDeDonnee
             this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.cID.Width = 30;
             // 
-            // ID_commande_frn
-            // 
-            this.ID_commande_frn.DataPropertyName = "ID_commande_frn";
-            this.ID_commande_frn.HeaderText = "ID_commande_frn";
-            this.ID_commande_frn.Name = "ID_commande_frn";
-            this.ID_commande_frn.ReadOnly = true;
-            this.ID_commande_frn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ID_produit
-            // 
-            this.ID_produit.DataPropertyName = "ID_produit";
-            this.ID_produit.HeaderText = "ID_produit";
-            this.ID_produit.Name = "ID_produit";
-            this.ID_produit.ReadOnly = true;
-            this.ID_produit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // cNom
             // 
             this.cNom.DataPropertyName = "Nom";
@@ -284,22 +289,55 @@ namespace ApplicationBaseDeDonnee
             this.cNom.Name = "cNom";
             this.cNom.ReadOnly = true;
             this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cNom.Width = 90;
             // 
-            // cQteStock
+            // ID_commande_frn
             // 
-            this.cQteStock.DataPropertyName = "qteStock";
-            this.cQteStock.HeaderText = "Quantite en stock";
-            this.cQteStock.Name = "cQteStock";
-            this.cQteStock.ReadOnly = true;
-            this.cQteStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ID_commande_frn.DataPropertyName = "ID_commande_frn";
+            this.ID_commande_frn.HeaderText = "N° Commande frn";
+            this.ID_commande_frn.Name = "ID_commande_frn";
+            this.ID_commande_frn.ReadOnly = true;
+            this.ID_commande_frn.Width = 120;
             // 
-            // Quantite
+            // Nom_frn
             // 
-            this.Quantite.DataPropertyName = "prix";
-            this.Quantite.HeaderText = "Prix unitaire";
-            this.Quantite.Name = "Quantite";
-            this.Quantite.ReadOnly = true;
-            this.Quantite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Nom_frn.DataPropertyName = "Nom_frn";
+            this.Nom_frn.HeaderText = "Nom du fournisseur";
+            this.Nom_frn.Name = "Nom_frn";
+            this.Nom_frn.ReadOnly = true;
+            this.Nom_frn.Width = 150;
+            // 
+            // ID_produit
+            // 
+            this.ID_produit.DataPropertyName = "ID_produit";
+            this.ID_produit.HeaderText = "N° Produit";
+            this.ID_produit.Name = "ID_produit";
+            this.ID_produit.ReadOnly = true;
+            // 
+            // Nom_produit
+            // 
+            this.Nom_produit.DataPropertyName = "Nom_produit";
+            this.Nom_produit.HeaderText = "Nom de l\'article";
+            this.Nom_produit.Name = "Nom_produit";
+            this.Nom_produit.ReadOnly = true;
+            // 
+            // prixAchat
+            // 
+            this.prixAchat.DataPropertyName = "prixAchat";
+            this.prixAchat.HeaderText = "Prix d\'achat";
+            this.prixAchat.Name = "prixAchat";
+            this.prixAchat.ReadOnly = true;
+            this.prixAchat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.prixAchat.Width = 90;
+            // 
+            // prixVente
+            // 
+            this.prixVente.DataPropertyName = "prixVente";
+            this.prixVente.HeaderText = "Prix de vente";
+            this.prixVente.Name = "prixVente";
+            this.prixVente.ReadOnly = true;
+            this.prixVente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.prixVente.Width = 90;
             // 
             // cTVA
             // 
@@ -310,22 +348,160 @@ namespace ApplicationBaseDeDonnee
             this.cTVA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.cTVA.Width = 45;
             // 
+            // cQteStock
+            // 
+            this.cQteStock.DataPropertyName = "qteStock";
+            this.cQteStock.HeaderText = "Quantite en stock";
+            this.cQteStock.Name = "cQteStock";
+            this.cQteStock.ReadOnly = true;
+            this.cQteStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cQteStock.Width = 110;
+            // 
+            // seuilStock
+            // 
+            this.seuilStock.DataPropertyName = "seuilStock";
+            this.seuilStock.HeaderText = "Seuil de stock";
+            this.seuilStock.Name = "seuilStock";
+            this.seuilStock.ReadOnly = true;
+            this.seuilStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.seuilStock.Width = 90;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11});
+            this.dataGridView1.Location = new System.Drawing.Point(5, 17);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(918, 328);
+            this.dataGridView1.TabIndex = 24;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Nom";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nom";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ID_commande_frn";
+            this.dataGridViewTextBoxColumn3.HeaderText = "N° Commande frn";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Nom_frn";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Nom du fournisseur";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "ID_produit";
+            this.dataGridViewTextBoxColumn5.HeaderText = "N° Produit";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Nom_produit";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Nom de l\'article";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "prixAchat";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Prix d\'achat";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn7.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "prixVente";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Prix de vente";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn8.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "TVA";
+            this.dataGridViewTextBoxColumn9.HeaderText = "T.V.A.";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn9.Width = 45;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "qteStock";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Quantite en stock";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn10.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "seuilStock";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Seuil de stock";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn11.Width = 90;
+            // 
             // AjouterAchat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 561);
+            this.ClientSize = new System.Drawing.Size(935, 561);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.dgvAjoutAchat);
             this.Controls.Add(this.panel);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "AjouterAchat";
             this.Text = "AjouterAchat";
             this.Load += new System.EventHandler(this.AjouterAchat_Load);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAjoutAchat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -352,11 +528,27 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.Label lbQte;
         private System.Windows.Forms.Label lbTVA;
         private System.Windows.Forms.DataGridViewTextBoxColumn cID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_commande_frn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_produit;
         private System.Windows.Forms.DataGridViewTextBoxColumn cNom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cQteStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_commande_frn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nom_frn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_produit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nom_produit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prixAchat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prixVente;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTVA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cQteStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn seuilStock;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
     }
 }

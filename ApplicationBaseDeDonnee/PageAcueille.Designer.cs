@@ -31,7 +31,8 @@ namespace ApplicationBaseDeDonnee
         {
             this.msPageAcueille = new System.Windows.Forms.MenuStrip();
             this.msManagment = new System.Windows.Forms.ToolStripMenuItem();
-            this.msManagmentListesArticles = new System.Windows.Forms.ToolStripMenuItem();
+            this.managmentEncoderFactureFrn = new System.Windows.Forms.ToolStripMenuItem();
+            this.emettreUneFactureAuClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msArticles = new System.Windows.Forms.ToolStripMenuItem();
             this.msFournisseur = new System.Windows.Forms.ToolStripMenuItem();
             this.commandesFournisseurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +42,7 @@ namespace ApplicationBaseDeDonnee
             this.msAjouterCmdClient = new System.Windows.Forms.ToolStripMenuItem();
             this.msAjouterDetailVente = new System.Windows.Forms.ToolStripMenuItem();
             this.lbAvertissement = new System.Windows.Forms.Label();
+            this.ajouterDetailAchat = new System.Windows.Forms.ToolStripMenuItem();
             this.msPageAcueille.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +54,8 @@ namespace ApplicationBaseDeDonnee
             this.msFournisseur,
             this.commandesFournisseurToolStripMenuItem,
             this.ajouterUnAchatToolStripMenuItem,
-            this.gestionsDesClientsToolStripMenuItem});
+            this.gestionsDesClientsToolStripMenuItem,
+            this.ajouterDetailAchat});
             this.msPageAcueille.Location = new System.Drawing.Point(0, 0);
             this.msPageAcueille.Name = "msPageAcueille";
             this.msPageAcueille.Size = new System.Drawing.Size(800, 24);
@@ -62,17 +65,24 @@ namespace ApplicationBaseDeDonnee
             // msManagment
             // 
             this.msManagment.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.msManagmentListesArticles});
+            this.managmentEncoderFactureFrn,
+            this.emettreUneFactureAuClientToolStripMenuItem});
             this.msManagment.Name = "msManagment";
             this.msManagment.Size = new System.Drawing.Size(84, 20);
             this.msManagment.Text = "Managment";
             // 
-            // msManagmentListesArticles
+            // managmentEncoderFactureFrn
             // 
-            this.msManagmentListesArticles.Name = "msManagmentListesArticles";
-            this.msManagmentListesArticles.Size = new System.Drawing.Size(164, 22);
-            this.msManagmentListesArticles.Text = "Listes des articles";
-            this.msManagmentListesArticles.Click += new System.EventHandler(this.msManagmentListesArticles_Click);
+            this.managmentEncoderFactureFrn.Name = "managmentEncoderFactureFrn";
+            this.managmentEncoderFactureFrn.Size = new System.Drawing.Size(242, 22);
+            this.managmentEncoderFactureFrn.Text = "Encoder une facture fournisseur";
+            this.managmentEncoderFactureFrn.Click += new System.EventHandler(this.managmentEncoderFactureFrn_Click);
+            // 
+            // emettreUneFactureAuClientToolStripMenuItem
+            // 
+            this.emettreUneFactureAuClientToolStripMenuItem.Name = "emettreUneFactureAuClientToolStripMenuItem";
+            this.emettreUneFactureAuClientToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.emettreUneFactureAuClientToolStripMenuItem.Text = "Emettre une facture au client";
             // 
             // msArticles
             // 
@@ -124,6 +134,7 @@ namespace ApplicationBaseDeDonnee
             this.msAjouterCmdClient.Name = "msAjouterCmdClient";
             this.msAjouterCmdClient.Size = new System.Drawing.Size(258, 22);
             this.msAjouterCmdClient.Text = "Ajouter une commande client";
+            this.msAjouterCmdClient.Click += new System.EventHandler(this.msAjouterCmdClient_Click);
             // 
             // msAjouterDetailVente
             // 
@@ -142,6 +153,13 @@ namespace ApplicationBaseDeDonnee
             this.lbAvertissement.TabIndex = 1;
             this.lbAvertissement.Text = "Serveur SQL ouvert ?";
             // 
+            // ajouterDetailAchat
+            // 
+            this.ajouterDetailAchat.Name = "ajouterDetailAchat";
+            this.ajouterDetailAchat.Size = new System.Drawing.Size(122, 20);
+            this.ajouterDetailAchat.Text = "Ajouter detail achat";
+            this.ajouterDetailAchat.Click += new System.EventHandler(this.ajouterDetailAchat_Click);
+            // 
             // PageAcueille
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,9 +167,11 @@ namespace ApplicationBaseDeDonnee
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lbAvertissement);
             this.Controls.Add(this.msPageAcueille);
+            this.Location = new System.Drawing.Point(10, 10);
             this.MainMenuStrip = this.msPageAcueille;
             this.Name = "PageAcueille";
-            this.Text = "A";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "E-Commerce Managment";
             this.Load += new System.EventHandler(this.PageAcueille_Load);
             this.msPageAcueille.ResumeLayout(false);
             this.msPageAcueille.PerformLayout();
@@ -164,7 +184,6 @@ namespace ApplicationBaseDeDonnee
 
         private System.Windows.Forms.MenuStrip msPageAcueille;
         private System.Windows.Forms.ToolStripMenuItem msManagment;
-        private System.Windows.Forms.ToolStripMenuItem msManagmentListesArticles;
         private System.Windows.Forms.Label lbAvertissement;
         private System.Windows.Forms.ToolStripMenuItem msFournisseur;
         private System.Windows.Forms.ToolStripMenuItem msArticles;
@@ -174,6 +193,9 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.ToolStripMenuItem msAjouterClient;
         private System.Windows.Forms.ToolStripMenuItem msAjouterCmdClient;
         private System.Windows.Forms.ToolStripMenuItem msAjouterDetailVente;
+        private System.Windows.Forms.ToolStripMenuItem managmentEncoderFactureFrn;
+        private System.Windows.Forms.ToolStripMenuItem emettreUneFactureAuClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ajouterDetailAchat;
     }
 }
 

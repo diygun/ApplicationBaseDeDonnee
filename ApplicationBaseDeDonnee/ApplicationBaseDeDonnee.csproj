@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\CommandeClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\CommandeClient.Designer.cs">
+      <DependentUpon>CommandeClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fournisseurs\DetailAchat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,18 @@
     <Compile Include="Clients\ListesClient.Designer.cs">
       <DependentUpon>ListesClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fournisseurs\EncoderFactureFrn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fournisseurs\EncoderFactureFrn.Designer.cs">
+      <DependentUpon>EncoderFactureFrn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fournisseurs\EncoderFactureFrn2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fournisseurs\EncoderFactureFrn2.Designer.cs">
+      <DependentUpon>EncoderFactureFrn2.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListesArticles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,19 +133,22 @@
     <Compile Include="PageAcueille.Designer.cs">
       <DependentUpon>PageAcueille.cs</DependentUpon>
     </Compile>
-    <Compile Include="PageDeStockageElements.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PageDeStockageElements.Designer.cs">
-      <DependentUpon>PageDeStockageElements.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Clients\CommandeClient.resx">
+      <DependentUpon>CommandeClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fournisseurs\DetailAchat.resx">
       <DependentUpon>DetailAchat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fournisseurs\CommandesFournisseur.resx">
       <DependentUpon>CommandesFournisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fournisseurs\EncoderFactureFrn.resx">
+      <DependentUpon>EncoderFactureFrn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fournisseurs\EncoderFactureFrn2.resx">
+      <DependentUpon>EncoderFactureFrn2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListesArticles.resx">
       <DependentUpon>ListesArticles.cs</DependentUpon>
@@ -140,9 +161,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PageAcueille.resx">
       <DependentUpon>PageAcueille.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PageDeStockageElements.resx">
-      <DependentUpon>PageDeStockageElements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

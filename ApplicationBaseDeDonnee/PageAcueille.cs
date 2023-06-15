@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
-
+using ApplicationBaseDeDonnee.Fournisseurs;
 using Projet_DB_ManagmentAPP;
 using DB_ManagmentAPP_Acces;
 using Projet_DB_ManagmentAPP_Gestion;
@@ -25,20 +25,17 @@ namespace ApplicationBaseDeDonnee
             sConnexion = ConfigurationManager.ConnectionStrings["ApplicationBaseDeDonnee.Properties.Settings.BD_Chaine_de_connexion_couches"].ConnectionString;
         }
 
-
-        private void msManagmentListesArticles_Click(object sender, EventArgs e)
+        private void managmentEncoderFactureFrn_Click(object sender, EventArgs e)
         {
-            var listesArticles = new ListesArticles(sConnexion);
-            listesArticles.Closed += delegate (object s, EventArgs args)
+            var encoderFactureFrn = new EncoderFactureFrn(sConnexion);
+            encoderFactureFrn.Closed += delegate (object s, EventArgs args)
             {
                 this.Show();
             };
 
-            listesArticles.Show();
-            listesArticles.Activate();
+            encoderFactureFrn.Show();
+            encoderFactureFrn.Activate();
         }
-
-
 
         private void msArticles_Click(object sender, EventArgs e)
         {
@@ -51,9 +48,6 @@ namespace ApplicationBaseDeDonnee
             listesArticles.Show();
             listesArticles.Activate();
         }
-
-
-
         private void msFournisseur_Click(object sender, EventArgs e)
         {
             var listesFournisseur = new ListesFournisseur(sConnexion);
@@ -65,7 +59,6 @@ namespace ApplicationBaseDeDonnee
             listesFournisseur.Show();
             listesFournisseur.Activate();
         }
-
         private void commandesFournisseurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var cmdFournisseur = new CommandesFournisseur(sConnexion);
@@ -77,9 +70,9 @@ namespace ApplicationBaseDeDonnee
             cmdFournisseur.Show();
             cmdFournisseur.Activate();
         }
-
         private void ajouterUnAchatToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // dtail achat
             var ajouterAchat = new AjouterAchat(sConnexion);
             ajouterAchat.Closed += delegate (object s, EventArgs args)
             {
@@ -89,7 +82,6 @@ namespace ApplicationBaseDeDonnee
             ajouterAchat.Show();
             ajouterAchat.Activate();
         }
-
         private void msAjouterClient_Click(object sender, EventArgs e)
         {
             var ajouterClient = new ListesClient(sConnexion);
@@ -100,6 +92,29 @@ namespace ApplicationBaseDeDonnee
 
             ajouterClient.Show();
             ajouterClient.Activate();
+        }
+        private void msAjouterCmdClient_Click(object sender, EventArgs e)
+        {
+            var ajouterCommandeClient = new CommandeClient(sConnexion);
+            ajouterCommandeClient.Closed += delegate (object s, EventArgs args)
+            {
+                this.Show();
+            };
+
+            ajouterCommandeClient.Show();
+            ajouterCommandeClient.Activate();
+        }
+
+        private void ajouterDetailAchat_Click(object sender, EventArgs e)
+        {
+            var ajouterDetailAchat = new EncoderFactureFrn2(sConnexion);
+            ajouterDetailAchat.Closed += delegate (object s, EventArgs args)
+            {
+                this.Show();
+            };
+
+            ajouterDetailAchat.Show();
+            ajouterDetailAchat.Activate();
         }
     }
 }

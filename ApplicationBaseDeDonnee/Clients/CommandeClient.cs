@@ -14,15 +14,15 @@ using Projet_DB_ManagmentAPP.Gestion;
 
 namespace ApplicationBaseDeDonnee
 {
-    public partial class CommandesFournisseur : Form
+    public partial class CommandeClient : Form
     {
         String sConnexion;
-        private DataTable dtCmdFrn; // joue un peu le role de dataset, on stock les donnee dedans
-        private BindingSource bsCmdFrn;
+        private DataTable dtCmdClient; // joue un peu le role de dataset, on stock les donnee dedans
+        private BindingSource bsCmdClient;
         int lastID = 1;
         int idDuFRNselectionnnee = -1;
 
-        public CommandesFournisseur(string sConnexion)
+        public CommandeClient(string sConnexion)
         {
             InitializeComponent();
             this.sConnexion = sConnexion;
@@ -30,17 +30,17 @@ namespace ApplicationBaseDeDonnee
         private void Activer(bool lPrincipale)
         {
 
-            dgvCmdFrn.Enabled = true;
+            dgvCmdClient.Enabled = true;
             btnAjouter.Enabled = btnModifier.Enabled = btnSupprimer.Enabled = lPrincipale;
-            panelCmdFrn.Enabled = !lPrincipale;
+            panelCmdClient.Enabled = !lPrincipale;
             btnConfirmer.Enabled = btnAnnuler.Enabled = !lPrincipale;
-            //panelFrn.Enabled = true;
+            //panelClient.Enabled = true;
         }
 
-        private void CommandesFournisseur_Load(object sender, EventArgs e)
+        private void CommandeClient_Load(object sender, EventArgs e)
         {
             RemplirDGV();
-            if (dgvCmdFrn.Rows.Count > 0)
+            if (dgvCmdClient.Rows.Count > 0)
             {
                 Activer(true);
             }
@@ -52,43 +52,42 @@ namespace ApplicationBaseDeDonnee
 
         private void RemplirDGV()
         {
-            dtCmdFrn = new DataTable();
-            dtCmdFrn.Columns.Add(new DataColumn("cID", System.Type.GetType("System.Int32")));
-            dtCmdFrn.Columns.Add(new DataColumn("IDFournisseur"));
-            dtCmdFrn.Columns.Add(new DataColumn("Nom"));
-            dtCmdFrn.Columns.Add(new DataColumn("dateCommande"));
+            dtCmdClient = new DataTable();
+            dtCmdClient.Columns.Add(new DataColumn("cID", System.Type.GetType("System.Int32")));
+            dtCmdClient.Columns.Add(new DataColumn("IDClient"));
+            dtCmdClient.Columns.Add(new DataColumn("Nom"));
+            dtCmdClient.Columns.Add(new DataColumn("dateCommande"));
 
-            List<C_t_commande_frn> listeTemporaire = new G_t_commande_frn(sConnexion).Lire("ID_frn");
-            List<C_t_frn> l2 = new G_t_frn(sConnexion).Lire("Nom");
-            foreach (C_t_frn d in l2)
+            List<C_t_commande_client> listeTemporaire = new G_t_commande_client(sConnexion).Lire("ID_client");
+            List<C_t_client> l2 = new G_t_client(sConnexion).Lire("Nom");
+            foreach (C_t_client d in l2)
             {
-                foreach (C_t_commande_frn p in listeTemporaire)
+                foreach (C_t_commande_client p in listeTemporaire)
                 {
-                    if (p.ID_frn == d.ID_frn)
-                        dtCmdFrn.Rows.Add((int)p.ID_commande_frn, p.ID_frn, d.Nom, p.Date_commande.ToString("dddd dd-MM-yyyy"));
+                    if (p.ID_client == d.ID_client)
+                        dtCmdClient.Rows.Add((int)p.ID_commande_client, p.ID_client, d.Nom, p.Date_commande.ToString("dddd dd-MM-yyyy"));
                 }
             }
 
-            bsCmdFrn = new BindingSource();
-            bsCmdFrn.DataSource = dtCmdFrn;
-            dgvCmdFrn.DataSource = bsCmdFrn;
+            bsCmdClient = new BindingSource();
+            bsCmdClient.DataSource = dtCmdClient;
+            dgvCmdClient.DataSource = bsCmdClient;
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            tbIDCmdFrn.Text = "";
-            cbIDFRn.SelectedItem = "";
+            tbIDCmdClient.Text = "";
+            cbIDClient.SelectedItem = "";
             dtpCmd.Value = DateTime.Today;
-            Activer(false);
             tbNom.Focus();
             RemplirDGV();
             Activer(false);
 
-            cbIDFRn.Items.Clear();
-            List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
-            foreach (C_t_frn p in listeTemporaire)
+            cbIDClient.Items.Clear();
+            List<C_t_client> listeTemporaire = new G_t_client(sConnexion).Lire("Nom");
+            foreach (C_t_client p in listeTemporaire)
             {
-                cbIDFRn.Items.Add(p.Nom);
+                cbIDClient.Items.Add(p.Nom);
             }
             tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text = tbNmCompte.Text = "";
 
@@ -97,8 +96,8 @@ namespace ApplicationBaseDeDonnee
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             // ---------------------------
-            tbIDCmdFrn.Text = "";
-            cbIDFRn.SelectedItem = "";
+            tbIDCmdClient.Text = "";
+            cbIDClient.SelectedItem = "";
             tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text = tbNmCompte.Text = "";
             dtpCmd.Value = DateTime.Today;
             // ---------------------------
@@ -107,17 +106,17 @@ namespace ApplicationBaseDeDonnee
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            if (dgvCmdFrn.SelectedRows.Count > 0)
+            if (dgvCmdClient.SelectedRows.Count > 0)
             {
-                tbIDCmdFrn.Text = dgvCmdFrn.SelectedRows[0].Cells["cID"].Value.ToString();
-                C_t_commande_frn pImp = new G_t_commande_frn(sConnexion).Lire_ID(int.Parse(tbIDCmdFrn.Text));
-                cbIDFRn.Items.Clear();
-                List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
-                foreach (C_t_frn p in listeTemporaire)
+                tbIDCmdClient.Text = dgvCmdClient.SelectedRows[0].Cells["cID"].Value.ToString();
+                C_t_commande_client pImp = new G_t_commande_client(sConnexion).Lire_ID(int.Parse(tbIDCmdClient.Text));
+                cbIDClient.Items.Clear();
+                List<C_t_client> listeTemporaire = new G_t_client(sConnexion).Lire("Nom");
+                foreach (C_t_client p in listeTemporaire)
                 {
-                    cbIDFRn.Items.Add(p.Nom);
+                    cbIDClient.Items.Add(p.Nom);
                 }
-                cbIDFRn.SelectedIndex = 1;
+                cbIDClient.SelectedIndex = 1;
 
                 dtpCmd.Value = pImp.Date_commande == null ? DateTime.Today : (DateTime)pImp.Date_commande;
                 Activer(false);
@@ -136,13 +135,13 @@ namespace ApplicationBaseDeDonnee
             }
             else
             {
-                if (string.IsNullOrEmpty(tbIDCmdFrn.Text)) // Ajout si id est vide
+                if (string.IsNullOrEmpty(tbIDCmdClient.Text)) // Ajout si id est vide
                 {
-                    if (tbNom.Text != "") // verifier s'il y a un nom suffit car sans frn pas de lien
+                    if (tbNom.Text != "") // verifier s'il y a un nom suffit car sans client pas de lien
                     {
                         //int idincre = lastID++;
                         DateTime dateAtransmettre = dtpCmd.Value;
-                        new G_t_commande_frn(sConnexion).Ajouter(0, idDuFRNselectionnnee, dtpCmd.Value);
+                        new G_t_commande_client(sConnexion).Ajouter(idDuFRNselectionnnee, dtpVente.Value, dtpCmd.Value);
                         RemplirDGV();
                         Activer(true);
                     }
@@ -153,12 +152,13 @@ namespace ApplicationBaseDeDonnee
                 }
                 else // Modification si id est remplie
                 {
-                    if (cbIDFRn.SelectedItem != null)
+                    if (cbIDClient.SelectedItem != null)
                     {
-                        //new G_t_commande_frn(sConnexion).Modifier(int.Parse(tbIDCmdFrn.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock);
+                        //new G_t_commande_client(sConnexion).Modifier(int.Parse(tbIDCmdClient.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock);
                         RemplirDGV(); // ! mettre a true 
                         Activer(true);
-                        new G_t_commande_frn(sConnexion).Modifier(int.Parse(tbIDCmdFrn.Text), idDuFRNselectionnnee, dtpCmd.Value);
+                        new G_t_commande_client(sConnexion).Modifier(int.Parse(tbIDCmdClient.Text), idDuFRNselectionnnee, dtpVente.Value, dtpCmd.Value);
+                        // erruer ???
                         RemplirDGV();
                         Activer(true);
                     }
@@ -170,37 +170,36 @@ namespace ApplicationBaseDeDonnee
             }
         }
 
-        private void cbIDFRn_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbIDClient_SelectedIndexChanged(object sender, EventArgs e)
         {
             Console.WriteLine($"lastID = {lastID}");
 
-            List<C_t_frn> listeTemporaire = new G_t_frn(sConnexion).Lire("Nom");
-            foreach (C_t_frn p in listeTemporaire)
+            List<C_t_client> listeTemporaire = new G_t_client(sConnexion).Lire("Nom");
+            foreach (C_t_client p in listeTemporaire)
             {
-                if (p.Nom == cbIDFRn.SelectedItem.ToString())
+                if (p.Nom == cbIDClient.SelectedItem.ToString())
                 {
-                    idDuFRNselectionnnee = p.ID_frn;
+                    idDuFRNselectionnnee = p.ID_client;
                 }
             }
 
-            C_t_frn pImp = new G_t_frn(sConnexion).Lire_ID(idDuFRNselectionnnee);
+            C_t_client pImp = new G_t_client(sConnexion).Lire_ID(idDuFRNselectionnnee);
             tbNom.Text = pImp.Nom;
             tbAdresse.Text = pImp.Adresse;
             tbEmail.Text = pImp.Email;
             tbGSM.Text = pImp.GSM;
-            tbNmCompte.Text = pImp.N_compte;
             //tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text =  tbNmCompte.Text = "";
         }
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            if (dgvCmdFrn.SelectedRows.Count > 0)
+            if (dgvCmdClient.SelectedRows.Count > 0)
             {
                 if (MessageBox.Show("Voulez-vous vraiment supprimer cet enregistrement ?", "Confirmer la suppression", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    int iID = (int)dgvCmdFrn.SelectedRows[0].Cells["cID"].Value;
-                    new G_t_commande_frn(sConnexion).Supprimer(iID);
-                    bsCmdFrn.RemoveCurrent();
+                    int iID = (int)dgvCmdClient.SelectedRows[0].Cells["cID"].Value;
+                    new G_t_commande_client(sConnexion).Supprimer(iID);
+                    bsCmdClient.RemoveCurrent();
                 }
             }
         }
@@ -208,8 +207,8 @@ namespace ApplicationBaseDeDonnee
         /*
         Charger la listes des cmds
         Btn d'ajout suppressiosn de cmd.
-        Pour l'id frn proposer une liste pas une tb
-        Et a chaque click de la commande, afficher le frn + plus tard le detail de la commande
+        Pour l'id client proposer une liste pas une tb
+        Et a chaque click de la commande, afficher le client + plus tard le detail de la commande
 
         Pour le btn date, proposer un date picker
 
