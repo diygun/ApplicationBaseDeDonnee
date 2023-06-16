@@ -290,7 +290,14 @@ namespace ApplicationBaseDeDonnee
 
         private void btnAfficherStock_Click(object sender, EventArgs e)
         {
+            var nav = new visionneurStockHtml();
+            nav.Closed += delegate (object s, EventArgs args)
+            {
+                this.Show();
+            };
 
+            nav.Show();
+            nav.Activate();
         }
     }
 }
