@@ -97,9 +97,9 @@ namespace ApplicationBaseDeDonnee
             this.lbDetailVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDetailVente.Location = new System.Drawing.Point(12, 9);
             this.lbDetailVente.Name = "lbDetailVente";
-            this.lbDetailVente.Size = new System.Drawing.Size(255, 25);
+            this.lbDetailVente.Size = new System.Drawing.Size(269, 25);
             this.lbDetailVente.TabIndex = 30;
-            this.lbDetailVente.Text = "Encoder un detail d\'vente";
+            this.lbDetailVente.Text = "Encoder un detail de vente";
             this.lbDetailVente.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // dgvArticles

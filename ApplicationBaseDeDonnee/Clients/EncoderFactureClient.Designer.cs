@@ -72,6 +72,7 @@ namespace ApplicationBaseDeDonnee.Clients
             this.lbTVA = new System.Windows.Forms.Label();
             this.btnCalculeCaHebdo = new System.Windows.Forms.Button();
             this.lbCA = new System.Windows.Forms.Label();
+            this.btnEtatStockHTML = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
             this.panelCmdFrn.SuspendLayout();
@@ -207,6 +208,7 @@ namespace ApplicationBaseDeDonnee.Clients
             // 
             // panelCmdFrn
             // 
+            this.panelCmdFrn.Controls.Add(this.btnEtatStockHTML);
             this.panelCmdFrn.Controls.Add(this.btnAjouterCommande);
             this.panelCmdFrn.Controls.Add(this.tbNomclient);
             this.panelCmdFrn.Controls.Add(this.lnNomFrn);
@@ -515,6 +517,16 @@ namespace ApplicationBaseDeDonnee.Clients
             this.lbCA.TabIndex = 39;
             this.lbCA.Text = "CA :";
             // 
+            // btnEtatStockHTML
+            // 
+            this.btnEtatStockHTML.Location = new System.Drawing.Point(4, 123);
+            this.btnEtatStockHTML.Name = "btnEtatStockHTML";
+            this.btnEtatStockHTML.Size = new System.Drawing.Size(286, 29);
+            this.btnEtatStockHTML.TabIndex = 40;
+            this.btnEtatStockHTML.Text = "Voir l\'etat du stock (HTML)";
+            this.btnEtatStockHTML.UseVisualStyleBackColor = true;
+            this.btnEtatStockHTML.Click += new System.EventHandler(this.btnEtatStockHTML_Click);
+            // 
             // EncoderFactureClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,5 +600,6 @@ namespace ApplicationBaseDeDonnee.Clients
         private System.Windows.Forms.DataGridViewTextBoxColumn cQteStock;
         private System.Windows.Forms.Button btnCalculeCaHebdo;
         private System.Windows.Forms.Label lbCA;
+        private System.Windows.Forms.Button btnEtatStockHTML;
     }
 }

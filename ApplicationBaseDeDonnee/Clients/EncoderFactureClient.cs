@@ -440,6 +440,42 @@ namespace ApplicationBaseDeDonnee.Clients
             decimal ca = CalculerChiffreAffaireHebdomadaire();
             lbCA.Text = "CA : " + ca.ToString() + "€";
         }
+
+        private void btnEtatStockHTML_Click(object sender, EventArgs e)
+        {
+            string nomFichier = "EtatStock.html";
+            StreamWriter sw = new StreamWriter(nomFichier);
+
+            sw.WriteLine("<html>");
+            sw.WriteLine("<body>");
+            sw.WriteLine("<table>");
+            for (int i = 0; i < 3; i++)
+            {
+                sw.WriteLine("<br>");
+            }
+
+            sw.WriteLine("<tr>");
+            foreach (DataGridViewColumn colonne in dgvArticles.Columns)
+            {
+                sw.WriteLine("<th>" + colonne.HeaderText + "</th>");
+            }
+            sw.WriteLine("</tr>");
+            foreach (DataGridViewRow ligne in dgvArticles.Rows)
+            {
+                sw.WriteLine("<tr>");
+                foreach (DataGridViewCell cellule in ligne.Cells)
+                {
+                    sw.WriteLine("<td>" + cellule.Value.ToString() + "</td>");
+                }
+                sw.WriteLine("</tr>");
+            }
+            sw.WriteLine("</table>");
+            sw.WriteLine("</body>");
+            sw.WriteLine("</html>");
+
+            sw.Close();
+
+        }
     }
 }
 
