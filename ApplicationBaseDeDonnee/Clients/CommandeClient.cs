@@ -57,6 +57,7 @@ namespace ApplicationBaseDeDonnee
             dtCmdClient.Columns.Add(new DataColumn("IDClient"));
             dtCmdClient.Columns.Add(new DataColumn("Nom"));
             dtCmdClient.Columns.Add(new DataColumn("dateCommande"));
+            dtCmdClient.Columns.Add(new DataColumn("dateVente"));
 
             List<C_t_commande_client> listeTemporaire = new G_t_commande_client(sConnexion).Lire("ID_client");
             List<C_t_client> l2 = new G_t_client(sConnexion).Lire("Nom");
@@ -65,7 +66,7 @@ namespace ApplicationBaseDeDonnee
                 foreach (C_t_commande_client p in listeTemporaire)
                 {
                     if (p.ID_client == d.ID_client)
-                        dtCmdClient.Rows.Add((int)p.ID_commande_client, p.ID_client, d.Nom, p.Date_commande.ToString("dddd dd-MM-yyyy"));
+                        dtCmdClient.Rows.Add((int)p.ID_commande_client, p.ID_client, d.Nom, p.Date_commande.ToString("dddd dd-MM-yyyy"), p.Date_vente.ToString("dddd dd-MM-yyyy"));
                 }
             }
 
@@ -89,18 +90,15 @@ namespace ApplicationBaseDeDonnee
             {
                 cbIDClient.Items.Add(p.Nom);
             }
-            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text = tbNmCompte.Text = "";
-
+            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text = "";
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            // ---------------------------
             tbIDCmdClient.Text = "";
             cbIDClient.SelectedItem = "";
-            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text = tbNmCompte.Text = "";
+            tbNom.Text = tbAdresse.Text = tbEmail.Text = tbGSM.Text = "";
             dtpCmd.Value = DateTime.Today;
-            // ---------------------------
             Activer(true);
         }
 
@@ -203,6 +201,14 @@ namespace ApplicationBaseDeDonnee
                 }
             }
         }
+
+        private void dtpCmd_ValueChanged(object sender, EventArgs e)
+        {
+            dtpVente.MinDate = dtpCmd.Value;
+            dtpVente.Value = dtpCmd.Value;
+        }
+
+
 
         /*
         Charger la listes des cmds

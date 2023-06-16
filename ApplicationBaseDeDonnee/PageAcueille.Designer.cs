@@ -34,15 +34,17 @@ namespace ApplicationBaseDeDonnee
             this.managmentEncoderFactureFrn = new System.Windows.Forms.ToolStripMenuItem();
             this.emettreUneFactureAuClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msArticles = new System.Windows.Forms.ToolStripMenuItem();
-            this.msFournisseur = new System.Windows.Forms.ToolStripMenuItem();
-            this.commandesFournisseurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajouterUnAchatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionsDesClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msGestionClient = new System.Windows.Forms.ToolStripMenuItem();
             this.msAjouterClient = new System.Windows.Forms.ToolStripMenuItem();
             this.msAjouterCmdClient = new System.Windows.Forms.ToolStripMenuItem();
             this.msAjouterDetailVente = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.msGestionFournisseur = new System.Windows.Forms.ToolStripMenuItem();
+            this.msAjouterFournisseur = new System.Windows.Forms.ToolStripMenuItem();
+            this.msAjouterCmdFournisseur = new System.Windows.Forms.ToolStripMenuItem();
+            this.msAjouterDetailAchat = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.lbAvertissement = new System.Windows.Forms.Label();
-            this.ajouterDetailAchat = new System.Windows.Forms.ToolStripMenuItem();
             this.msPageAcueille.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,14 +53,11 @@ namespace ApplicationBaseDeDonnee
             this.msPageAcueille.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.msManagment,
             this.msArticles,
-            this.msFournisseur,
-            this.commandesFournisseurToolStripMenuItem,
-            this.ajouterUnAchatToolStripMenuItem,
-            this.gestionsDesClientsToolStripMenuItem,
-            this.ajouterDetailAchat});
+            this.msGestionClient,
+            this.msGestionFournisseur});
             this.msPageAcueille.Location = new System.Drawing.Point(0, 0);
             this.msPageAcueille.Name = "msPageAcueille";
-            this.msPageAcueille.Size = new System.Drawing.Size(800, 24);
+            this.msPageAcueille.Size = new System.Drawing.Size(1213, 24);
             this.msPageAcueille.TabIndex = 0;
             this.msPageAcueille.Text = "menuStrip1";
             // 
@@ -83,6 +82,7 @@ namespace ApplicationBaseDeDonnee
             this.emettreUneFactureAuClientToolStripMenuItem.Name = "emettreUneFactureAuClientToolStripMenuItem";
             this.emettreUneFactureAuClientToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.emettreUneFactureAuClientToolStripMenuItem.Text = "Emettre une facture au client";
+            this.emettreUneFactureAuClientToolStripMenuItem.Click += new System.EventHandler(this.emettreUneFactureAuClientToolStripMenuItem_Click);
             // 
             // msArticles
             // 
@@ -91,36 +91,16 @@ namespace ApplicationBaseDeDonnee
             this.msArticles.Text = "Articles";
             this.msArticles.Click += new System.EventHandler(this.msArticles_Click);
             // 
-            // msFournisseur
+            // msGestionClient
             // 
-            this.msFournisseur.Name = "msFournisseur";
-            this.msFournisseur.Size = new System.Drawing.Size(85, 20);
-            this.msFournisseur.Text = "Fournisseurs";
-            this.msFournisseur.Click += new System.EventHandler(this.msFournisseur_Click);
-            // 
-            // commandesFournisseurToolStripMenuItem
-            // 
-            this.commandesFournisseurToolStripMenuItem.Name = "commandesFournisseurToolStripMenuItem";
-            this.commandesFournisseurToolStripMenuItem.Size = new System.Drawing.Size(151, 20);
-            this.commandesFournisseurToolStripMenuItem.Text = "Commandes Fournisseur";
-            this.commandesFournisseurToolStripMenuItem.Click += new System.EventHandler(this.commandesFournisseurToolStripMenuItem_Click);
-            // 
-            // ajouterUnAchatToolStripMenuItem
-            // 
-            this.ajouterUnAchatToolStripMenuItem.Name = "ajouterUnAchatToolStripMenuItem";
-            this.ajouterUnAchatToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
-            this.ajouterUnAchatToolStripMenuItem.Text = "Ajouter un achat";
-            this.ajouterUnAchatToolStripMenuItem.Click += new System.EventHandler(this.ajouterUnAchatToolStripMenuItem_Click);
-            // 
-            // gestionsDesClientsToolStripMenuItem
-            // 
-            this.gestionsDesClientsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msGestionClient.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.msAjouterClient,
             this.msAjouterCmdClient,
-            this.msAjouterDetailVente});
-            this.gestionsDesClientsToolStripMenuItem.Name = "gestionsDesClientsToolStripMenuItem";
-            this.gestionsDesClientsToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
-            this.gestionsDesClientsToolStripMenuItem.Text = "Gestions des clients";
+            this.msAjouterDetailVente,
+            this.toolStripSeparator1});
+            this.msGestionClient.Name = "msGestionClient";
+            this.msGestionClient.Size = new System.Drawing.Size(101, 20);
+            this.msGestionClient.Text = "Gestions clients";
             // 
             // msAjouterClient
             // 
@@ -141,6 +121,49 @@ namespace ApplicationBaseDeDonnee
             this.msAjouterDetailVente.Name = "msAjouterDetailVente";
             this.msAjouterDetailVente.Size = new System.Drawing.Size(258, 22);
             this.msAjouterDetailVente.Text = "Ajouter un detail de vente au client";
+            this.msAjouterDetailVente.Click += new System.EventHandler(this.msAjouterDetailVente_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
+            // 
+            // msGestionFournisseur
+            // 
+            this.msGestionFournisseur.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msAjouterFournisseur,
+            this.msAjouterCmdFournisseur,
+            this.msAjouterDetailAchat,
+            this.toolStripSeparator2});
+            this.msGestionFournisseur.Name = "msGestionFournisseur";
+            this.msGestionFournisseur.Size = new System.Drawing.Size(121, 20);
+            this.msGestionFournisseur.Text = "Gestion fournisseur";
+            // 
+            // msAjouterFournisseur
+            // 
+            this.msAjouterFournisseur.Name = "msAjouterFournisseur";
+            this.msAjouterFournisseur.Size = new System.Drawing.Size(282, 22);
+            this.msAjouterFournisseur.Text = "Ajouter un fournisseur";
+            this.msAjouterFournisseur.Click += new System.EventHandler(this.msFournisseur_Click);
+            // 
+            // msAjouterCmdFournisseur
+            // 
+            this.msAjouterCmdFournisseur.Name = "msAjouterCmdFournisseur";
+            this.msAjouterCmdFournisseur.Size = new System.Drawing.Size(282, 22);
+            this.msAjouterCmdFournisseur.Text = "Ajouter une commande au fournisseur";
+            this.msAjouterCmdFournisseur.Click += new System.EventHandler(this.msCommandesFournisseurToolStripMenuItem_Click);
+            // 
+            // msAjouterDetailAchat
+            // 
+            this.msAjouterDetailAchat.Name = "msAjouterDetailAchat";
+            this.msAjouterDetailAchat.Size = new System.Drawing.Size(282, 22);
+            this.msAjouterDetailAchat.Text = "Ajouter un detail d\'achat au fournisseur";
+            this.msAjouterDetailAchat.Click += new System.EventHandler(this.ajouterDetailAchat_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(279, 6);
             // 
             // lbAvertissement
             // 
@@ -153,18 +176,11 @@ namespace ApplicationBaseDeDonnee
             this.lbAvertissement.TabIndex = 1;
             this.lbAvertissement.Text = "Serveur SQL ouvert ?";
             // 
-            // ajouterDetailAchat
-            // 
-            this.ajouterDetailAchat.Name = "ajouterDetailAchat";
-            this.ajouterDetailAchat.Size = new System.Drawing.Size(122, 20);
-            this.ajouterDetailAchat.Text = "Ajouter detail achat";
-            this.ajouterDetailAchat.Click += new System.EventHandler(this.ajouterDetailAchat_Click);
-            // 
             // PageAcueille
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1213, 548);
             this.Controls.Add(this.lbAvertissement);
             this.Controls.Add(this.msPageAcueille);
             this.Location = new System.Drawing.Point(10, 10);
@@ -185,17 +201,19 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.MenuStrip msPageAcueille;
         private System.Windows.Forms.ToolStripMenuItem msManagment;
         private System.Windows.Forms.Label lbAvertissement;
-        private System.Windows.Forms.ToolStripMenuItem msFournisseur;
         private System.Windows.Forms.ToolStripMenuItem msArticles;
-        private System.Windows.Forms.ToolStripMenuItem commandesFournisseurToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ajouterUnAchatToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestionsDesClientsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem msGestionClient;
         private System.Windows.Forms.ToolStripMenuItem msAjouterClient;
         private System.Windows.Forms.ToolStripMenuItem msAjouterCmdClient;
         private System.Windows.Forms.ToolStripMenuItem msAjouterDetailVente;
         private System.Windows.Forms.ToolStripMenuItem managmentEncoderFactureFrn;
         private System.Windows.Forms.ToolStripMenuItem emettreUneFactureAuClientToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ajouterDetailAchat;
+        private System.Windows.Forms.ToolStripMenuItem msGestionFournisseur;
+        private System.Windows.Forms.ToolStripMenuItem msAjouterFournisseur;
+        private System.Windows.Forms.ToolStripMenuItem msAjouterCmdFournisseur;
+        private System.Windows.Forms.ToolStripMenuItem msAjouterDetailAchat;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 

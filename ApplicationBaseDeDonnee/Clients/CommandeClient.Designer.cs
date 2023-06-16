@@ -30,6 +30,8 @@ namespace ApplicationBaseDeDonnee
         private void InitializeComponent()
         {
             this.panelCmdClient = new System.Windows.Forms.Panel();
+            this.dtpVente = new System.Windows.Forms.DateTimePicker();
+            this.lbDateVente = new System.Windows.Forms.Label();
             this.tbIDCmdClient = new System.Windows.Forms.TextBox();
             this.cbIDClient = new System.Windows.Forms.ComboBox();
             this.dtpCmd = new System.Windows.Forms.DateTimePicker();
@@ -39,26 +41,23 @@ namespace ApplicationBaseDeDonnee
             this.lbDateCmd = new System.Windows.Forms.Label();
             this.lbID = new System.Windows.Forms.Label();
             this.panelClient = new System.Windows.Forms.Panel();
-            this.tbNmCompte = new System.Windows.Forms.TextBox();
             this.tbGSM = new System.Windows.Forms.TextBox();
             this.lbNom = new System.Windows.Forms.Label();
             this.lbAdresse = new System.Windows.Forms.Label();
             this.lbEmail = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.TextBox();
-            this.lbNmCompte = new System.Windows.Forms.Label();
             this.tbAdresse = new System.Windows.Forms.TextBox();
             this.lbGSM = new System.Windows.Forms.Label();
             this.tbNom = new System.Windows.Forms.TextBox();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.dgvCmdClient = new System.Windows.Forms.DataGridView();
+            this.btnAjouter = new System.Windows.Forms.Button();
             this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cIDClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAjouter = new System.Windows.Forms.Button();
-            this.dtpVente = new System.Windows.Forms.DateTimePicker();
-            this.lbDateVente = new System.Windows.Forms.Label();
+            this.dateVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelCmdClient.SuspendLayout();
             this.panelClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCmdClient)).BeginInit();
@@ -76,14 +75,31 @@ namespace ApplicationBaseDeDonnee
             this.panelCmdClient.Controls.Add(this.btnConfirmer);
             this.panelCmdClient.Controls.Add(this.lbDateCmd);
             this.panelCmdClient.Controls.Add(this.lbID);
-            this.panelCmdClient.Location = new System.Drawing.Point(406, 370);
+            this.panelCmdClient.Location = new System.Drawing.Point(212, 553);
             this.panelCmdClient.Name = "panelCmdClient";
-            this.panelCmdClient.Size = new System.Drawing.Size(460, 179);
+            this.panelCmdClient.Size = new System.Drawing.Size(397, 179);
             this.panelCmdClient.TabIndex = 34;
+            // 
+            // dtpVente
+            // 
+            this.dtpVente.Location = new System.Drawing.Point(210, 55);
+            this.dtpVente.Name = "dtpVente";
+            this.dtpVente.Size = new System.Drawing.Size(184, 20);
+            this.dtpVente.TabIndex = 32;
+            // 
+            // lbDateVente
+            // 
+            this.lbDateVente.AutoSize = true;
+            this.lbDateVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDateVente.Location = new System.Drawing.Point(73, 55);
+            this.lbDateVente.Name = "lbDateVente";
+            this.lbDateVente.Size = new System.Drawing.Size(125, 20);
+            this.lbDateVente.TabIndex = 31;
+            this.lbDateVente.Text = "Date de la vente";
             // 
             // tbIDCmdClient
             // 
-            this.tbIDCmdClient.Location = new System.Drawing.Point(273, 5);
+            this.tbIDCmdClient.Location = new System.Drawing.Point(210, 3);
             this.tbIDCmdClient.Name = "tbIDCmdClient";
             this.tbIDCmdClient.ReadOnly = true;
             this.tbIDCmdClient.Size = new System.Drawing.Size(184, 20);
@@ -92,7 +108,7 @@ namespace ApplicationBaseDeDonnee
             // cbIDClient
             // 
             this.cbIDClient.FormattingEnabled = true;
-            this.cbIDClient.Location = new System.Drawing.Point(273, 100);
+            this.cbIDClient.Location = new System.Drawing.Point(210, 81);
             this.cbIDClient.Name = "cbIDClient";
             this.cbIDClient.Size = new System.Drawing.Size(184, 21);
             this.cbIDClient.TabIndex = 30;
@@ -100,16 +116,17 @@ namespace ApplicationBaseDeDonnee
             // 
             // dtpCmd
             // 
-            this.dtpCmd.Location = new System.Drawing.Point(273, 30);
+            this.dtpCmd.Location = new System.Drawing.Point(210, 29);
             this.dtpCmd.Name = "dtpCmd";
             this.dtpCmd.Size = new System.Drawing.Size(184, 20);
             this.dtpCmd.TabIndex = 29;
+            this.dtpCmd.ValueChanged += new System.EventHandler(this.dtpCmd_ValueChanged);
             // 
             // lbIDCmdClient
             // 
             this.lbIDCmdClient.AutoSize = true;
             this.lbIDCmdClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbIDCmdClient.Location = new System.Drawing.Point(67, 5);
+            this.lbIDCmdClient.Location = new System.Drawing.Point(4, 3);
             this.lbIDCmdClient.Name = "lbIDCmdClient";
             this.lbIDCmdClient.Size = new System.Drawing.Size(194, 20);
             this.lbIDCmdClient.TabIndex = 4;
@@ -117,7 +134,7 @@ namespace ApplicationBaseDeDonnee
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(344, 144);
+            this.btnAnnuler.Location = new System.Drawing.Point(281, 142);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(113, 20);
             this.btnAnnuler.TabIndex = 8;
@@ -127,7 +144,7 @@ namespace ApplicationBaseDeDonnee
             // 
             // btnConfirmer
             // 
-            this.btnConfirmer.Location = new System.Drawing.Point(181, 144);
+            this.btnConfirmer.Location = new System.Drawing.Point(118, 142);
             this.btnConfirmer.Name = "btnConfirmer";
             this.btnConfirmer.Size = new System.Drawing.Size(113, 20);
             this.btnConfirmer.TabIndex = 7;
@@ -139,7 +156,7 @@ namespace ApplicationBaseDeDonnee
             // 
             this.lbDateCmd.AutoSize = true;
             this.lbDateCmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDateCmd.Location = new System.Drawing.Point(97, 30);
+            this.lbDateCmd.Location = new System.Drawing.Point(33, 28);
             this.lbDateCmd.Name = "lbDateCmd";
             this.lbDateCmd.Size = new System.Drawing.Size(165, 20);
             this.lbDateCmd.TabIndex = 5;
@@ -149,7 +166,7 @@ namespace ApplicationBaseDeDonnee
             // 
             this.lbID.AutoSize = true;
             this.lbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbID.Location = new System.Drawing.Point(148, 101);
+            this.lbID.Location = new System.Drawing.Point(128, 82);
             this.lbID.Name = "lbID";
             this.lbID.Size = new System.Drawing.Size(70, 20);
             this.lbID.TabIndex = 4;
@@ -157,32 +174,22 @@ namespace ApplicationBaseDeDonnee
             // 
             // panelClient
             // 
-            this.panelClient.Controls.Add(this.tbNmCompte);
             this.panelClient.Controls.Add(this.tbGSM);
             this.panelClient.Controls.Add(this.lbNom);
             this.panelClient.Controls.Add(this.lbAdresse);
             this.panelClient.Controls.Add(this.lbEmail);
             this.panelClient.Controls.Add(this.tbEmail);
-            this.panelClient.Controls.Add(this.lbNmCompte);
             this.panelClient.Controls.Add(this.tbAdresse);
             this.panelClient.Controls.Add(this.lbGSM);
             this.panelClient.Controls.Add(this.tbNom);
-            this.panelClient.Location = new System.Drawing.Point(492, 29);
+            this.panelClient.Location = new System.Drawing.Point(235, 401);
             this.panelClient.Name = "panelClient";
-            this.panelClient.Size = new System.Drawing.Size(374, 129);
+            this.panelClient.Size = new System.Drawing.Size(374, 146);
             this.panelClient.TabIndex = 33;
-            // 
-            // tbNmCompte
-            // 
-            this.tbNmCompte.Location = new System.Drawing.Point(186, 104);
-            this.tbNmCompte.Name = "tbNmCompte";
-            this.tbNmCompte.ReadOnly = true;
-            this.tbNmCompte.Size = new System.Drawing.Size(184, 20);
-            this.tbNmCompte.TabIndex = 11;
             // 
             // tbGSM
             // 
-            this.tbGSM.Location = new System.Drawing.Point(186, 78);
+            this.tbGSM.Location = new System.Drawing.Point(187, 81);
             this.tbGSM.Name = "tbGSM";
             this.tbGSM.ReadOnly = true;
             this.tbGSM.Size = new System.Drawing.Size(184, 20);
@@ -192,7 +199,7 @@ namespace ApplicationBaseDeDonnee
             // 
             this.lbNom.AutoSize = true;
             this.lbNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNom.Location = new System.Drawing.Point(28, 0);
+            this.lbNom.Location = new System.Drawing.Point(73, 3);
             this.lbNom.Name = "lbNom";
             this.lbNom.Size = new System.Drawing.Size(105, 20);
             this.lbNom.TabIndex = 5;
@@ -202,7 +209,7 @@ namespace ApplicationBaseDeDonnee
             // 
             this.lbAdresse.AutoSize = true;
             this.lbAdresse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAdresse.Location = new System.Drawing.Point(2, 26);
+            this.lbAdresse.Location = new System.Drawing.Point(47, 29);
             this.lbAdresse.Name = "lbAdresse";
             this.lbAdresse.Size = new System.Drawing.Size(131, 20);
             this.lbAdresse.TabIndex = 6;
@@ -212,7 +219,7 @@ namespace ApplicationBaseDeDonnee
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(124, 52);
+            this.lbEmail.Location = new System.Drawing.Point(127, 55);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(51, 20);
             this.lbEmail.TabIndex = 7;
@@ -220,25 +227,15 @@ namespace ApplicationBaseDeDonnee
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(186, 52);
+            this.tbEmail.Location = new System.Drawing.Point(187, 55);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.ReadOnly = true;
             this.tbEmail.Size = new System.Drawing.Size(184, 20);
             this.tbEmail.TabIndex = 3;
             // 
-            // lbNmCompte
-            // 
-            this.lbNmCompte.AutoSize = true;
-            this.lbNmCompte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNmCompte.Location = new System.Drawing.Point(31, 104);
-            this.lbNmCompte.Name = "lbNmCompte";
-            this.lbNmCompte.Size = new System.Drawing.Size(144, 20);
-            this.lbNmCompte.TabIndex = 8;
-            this.lbNmCompte.Text = "Numéro de compte";
-            // 
             // tbAdresse
             // 
-            this.tbAdresse.Location = new System.Drawing.Point(186, 26);
+            this.tbAdresse.Location = new System.Drawing.Point(187, 29);
             this.tbAdresse.Name = "tbAdresse";
             this.tbAdresse.ReadOnly = true;
             this.tbAdresse.Size = new System.Drawing.Size(184, 20);
@@ -248,7 +245,7 @@ namespace ApplicationBaseDeDonnee
             // 
             this.lbGSM.AutoSize = true;
             this.lbGSM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbGSM.Location = new System.Drawing.Point(129, 78);
+            this.lbGSM.Location = new System.Drawing.Point(132, 81);
             this.lbGSM.Name = "lbGSM";
             this.lbGSM.Size = new System.Drawing.Size(46, 20);
             this.lbGSM.TabIndex = 9;
@@ -256,7 +253,7 @@ namespace ApplicationBaseDeDonnee
             // 
             // tbNom
             // 
-            this.tbNom.Location = new System.Drawing.Point(186, 0);
+            this.tbNom.Location = new System.Drawing.Point(187, 3);
             this.tbNom.Name = "tbNom";
             this.tbNom.ReadOnly = true;
             this.tbNom.Size = new System.Drawing.Size(184, 20);
@@ -264,7 +261,7 @@ namespace ApplicationBaseDeDonnee
             // 
             // btnModifier
             // 
-            this.btnModifier.Location = new System.Drawing.Point(19, 390);
+            this.btnModifier.Location = new System.Drawing.Point(12, 616);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(200, 29);
             this.btnModifier.TabIndex = 32;
@@ -274,7 +271,7 @@ namespace ApplicationBaseDeDonnee
             // 
             // btnSupprimer
             // 
-            this.btnSupprimer.Location = new System.Drawing.Point(19, 425);
+            this.btnSupprimer.Location = new System.Drawing.Point(12, 651);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(200, 29);
             this.btnSupprimer.TabIndex = 31;
@@ -291,14 +288,25 @@ namespace ApplicationBaseDeDonnee
             this.cID,
             this.cIDClient,
             this.Nom,
-            this.cDateCommande});
+            this.cDateCommande,
+            this.dateVente});
             this.dgvCmdClient.Location = new System.Drawing.Point(12, 12);
             this.dgvCmdClient.Name = "dgvCmdClient";
             this.dgvCmdClient.ReadOnly = true;
             this.dgvCmdClient.RowHeadersVisible = false;
             this.dgvCmdClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCmdClient.Size = new System.Drawing.Size(425, 328);
+            this.dgvCmdClient.Size = new System.Drawing.Size(586, 383);
             this.dgvCmdClient.TabIndex = 29;
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.Location = new System.Drawing.Point(12, 578);
+            this.btnAjouter.Name = "btnAjouter";
+            this.btnAjouter.Size = new System.Drawing.Size(200, 29);
+            this.btnAjouter.TabIndex = 30;
+            this.btnAjouter.Text = "Ajouter une commande client";
+            this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // cID
             // 
@@ -335,38 +343,19 @@ namespace ApplicationBaseDeDonnee
             this.cDateCommande.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.cDateCommande.Width = 150;
             // 
-            // btnAjouter
+            // dateVente
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(19, 352);
-            this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(200, 29);
-            this.btnAjouter.TabIndex = 30;
-            this.btnAjouter.Text = "Ajouter une commande client";
-            this.btnAjouter.UseVisualStyleBackColor = true;
-            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
-            // 
-            // dtpVente
-            // 
-            this.dtpVente.Location = new System.Drawing.Point(273, 58);
-            this.dtpVente.Name = "dtpVente";
-            this.dtpVente.Size = new System.Drawing.Size(184, 20);
-            this.dtpVente.TabIndex = 32;
-            // 
-            // lbDateVente
-            // 
-            this.lbDateVente.AutoSize = true;
-            this.lbDateVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDateVente.Location = new System.Drawing.Point(97, 58);
-            this.lbDateVente.Name = "lbDateVente";
-            this.lbDateVente.Size = new System.Drawing.Size(165, 20);
-            this.lbDateVente.TabIndex = 31;
-            this.lbDateVente.Text = "Date de la commande";
+            this.dateVente.DataPropertyName = "dateVente";
+            this.dateVente.HeaderText = "Date de la vente";
+            this.dateVente.Name = "dateVente";
+            this.dateVente.ReadOnly = true;
+            this.dateVente.Width = 150;
             // 
             // CommandeClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 561);
+            this.ClientSize = new System.Drawing.Size(663, 744);
             this.Controls.Add(this.panelCmdClient);
             this.Controls.Add(this.panelClient);
             this.Controls.Add(this.btnModifier);
@@ -375,6 +364,7 @@ namespace ApplicationBaseDeDonnee
             this.Controls.Add(this.btnAjouter);
             this.Name = "CommandeClient";
             this.Text = "Commandes Client";
+            this.Load += new System.EventHandler(this.CommandeClient_Load);
             this.panelCmdClient.ResumeLayout(false);
             this.panelCmdClient.PerformLayout();
             this.panelClient.ResumeLayout(false);
@@ -396,25 +386,24 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.Label lbDateCmd;
         private System.Windows.Forms.Label lbID;
         private System.Windows.Forms.Panel panelClient;
-        private System.Windows.Forms.TextBox tbNmCompte;
         private System.Windows.Forms.TextBox tbGSM;
         private System.Windows.Forms.Label lbNom;
         private System.Windows.Forms.Label lbAdresse;
         private System.Windows.Forms.Label lbEmail;
         private System.Windows.Forms.TextBox tbEmail;
-        private System.Windows.Forms.Label lbNmCompte;
         private System.Windows.Forms.TextBox tbAdresse;
         private System.Windows.Forms.Label lbGSM;
         private System.Windows.Forms.TextBox tbNom;
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.DataGridView dgvCmdClient;
+        private System.Windows.Forms.Button btnAjouter;
+        private System.Windows.Forms.DateTimePicker dtpVente;
+        private System.Windows.Forms.Label lbDateVente;
         private System.Windows.Forms.DataGridViewTextBoxColumn cID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIDClient;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDateCommande;
-        private System.Windows.Forms.Button btnAjouter;
-        private System.Windows.Forms.DateTimePicker dtpVente;
-        private System.Windows.Forms.Label lbDateVente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateVente;
     }
 }

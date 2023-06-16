@@ -62,12 +62,6 @@
     <Compile Include="Clients\CommandeClient.Designer.cs">
       <DependentUpon>CommandeClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fournisseurs\DetailAchat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fournisseurs\DetailAchat.Designer.cs">
-      <DependentUpon>DetailAchat.cs</DependentUpon>
-    </Compile>
     <Compile Include="Acc_Gest_Classes\A_Base.cs" />
     <Compile Include="Acc_Gest_Classes\A_t_client.cs" />
     <Compile Include="Acc_Gest_Classes\A_t_commande_client.cs" />
@@ -76,6 +70,18 @@
     <Compile Include="Acc_Gest_Classes\A_t_detail_vente.cs" />
     <Compile Include="Acc_Gest_Classes\A_t_frn.cs" />
     <Compile Include="Acc_Gest_Classes\A_t_produit.cs" />
+    <Compile Include="Clients\EncoderFactureClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\EncoderFactureClient.Designer.cs">
+      <DependentUpon>EncoderFactureClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\EncoderFactureClient2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\EncoderFactureClient2.Designer.cs">
+      <DependentUpon>EncoderFactureClient2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fournisseurs\CommandesFournisseur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,8 +144,11 @@
     <EmbeddedResource Include="Clients\CommandeClient.resx">
       <DependentUpon>CommandeClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fournisseurs\DetailAchat.resx">
-      <DependentUpon>DetailAchat.cs</DependentUpon>
+    <EmbeddedResource Include="Clients\EncoderFactureClient.resx">
+      <DependentUpon>EncoderFactureClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\EncoderFactureClient2.resx">
+      <DependentUpon>EncoderFactureClient2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fournisseurs\CommandesFournisseur.resx">
       <DependentUpon>CommandesFournisseur.cs</DependentUpon>

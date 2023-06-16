@@ -12,28 +12,28 @@ using System.Windows.Forms;
 using Projet_DB_ManagmentAPP.Classes;
 using Projet_DB_ManagmentAPP.Gestion;
 
-namespace ApplicationBaseDeDonnee
+namespace ApplicationBaseDeDonnee.Clients
 {
-    public partial class EncoderFactureFrn : Form
+    public partial class EncoderFactureClient : Form
     {
         String sConnexion;
         private DataTable dtArticles; // joue un peu le role de dataset, on stock les donnee dedans
         private BindingSource bsArticles;
 
-        private DataTable dtCmdFrn; // joue un peu le role de dataset, on stock les donnee dedans
-        private BindingSource bsCmdFrn;
+        private DataTable dtCmdClient; // joue un peu le role de dataset, on stock les donnee dedans
+        private BindingSource bsCmdClient;
 
         int idCommSelectionnee = -1;
-        int idFrnSelectionnee = -1;
-        public EncoderFactureFrn(string sConnexion)
+        int idClientSelectionnee = -1;
+        public EncoderFactureClient(string sConnexion)
         {
             this.sConnexion = sConnexion;
             InitializeComponent();
         }
-        private void EncoderFactureFrn_Load(object sender, EventArgs e)
+        private void EncoderFactureClient_Load(object sender, EventArgs e)
         {
             RemplirDGV();
-            RemplirDGVcommandeFrn();
+            RemplirDGVcommandeClient();
             panelArticle.Enabled = false;
             if (dgvArticles.Rows.Count > 0)
             {
@@ -57,8 +57,8 @@ namespace ApplicationBaseDeDonnee
 
         private void RemplirDGV()
         {
-            // ajouter les articles seulement si leur id sont dans la t_detail_achat
-            // -- > qui a sont id_commande_frn == au commande_frn selectionnée 
+            // ajouter les articles seulement si leur id sont dans la t_detail_vente
+            // -- > qui a sont id_commande_client == au commande_client selectionnée 
             dtArticles = new DataTable();
             dtArticles.Columns.Add(new DataColumn("ID", System.Type.GetType("System.Int32")));
             dtArticles.Columns.Add(new DataColumn("Nom"));
@@ -72,29 +72,29 @@ namespace ApplicationBaseDeDonnee
 
             // ------------------------
 
-            //DataGridViewRow row = dgvCmdFrn.Rows[e.RowIndex];
-            //tbIDCmdFrn.Text = row.Cells[0].Value.ToString();
+            //DataGridViewRow row = dgvCmdClient.Rows[e.RowIndex];
+            //tbIDCmdClient.Text = row.Cells[0].Value.ToString();
             //tbIDFRn.Text = row.Cells[1].Value.ToString();
-            //tbNomfrn.Text = row.Cells[2].Value.ToString();
+            //tbNomclient.Text = row.Cells[2].Value.ToString();
 
 
             // ------------------------
             List<C_t_produit> produit = new G_t_produit(sConnexion).Lire("Nom");
-            List<C_t_detail_achat> detailAchat = new G_t_detail_achat(sConnexion).Lire("ID_commande_frn");
-            List<C_t_commande_frn> CommandeFrn = new G_t_commande_frn(sConnexion).Lire("ID_frn");
+            List<C_t_detail_vente> detailAchat = new G_t_detail_vente(sConnexion).Lire("ID_commande_client");
+            List<C_t_commande_client> CommandeClient = new G_t_commande_client(sConnexion).Lire("ID_client");
 
-            foreach (C_t_detail_achat a in detailAchat)
+            foreach (C_t_detail_vente a in detailAchat)
             {
                 Console.WriteLine("idCommSelectionnee = " + idCommSelectionnee);
-                Console.WriteLine("a.ID_detail_achat = " + a.ID_detail_achat);
-                foreach (C_t_commande_frn c in CommandeFrn)
+                Console.WriteLine("a.ID_detail_vente = " + a.ID_detail_vente);
+                foreach (C_t_commande_client c in CommandeClient)
                 {
-                    if (a.ID_commande_frn == c.ID_commande_frn)
+                    if (a.ID_commande_client == c.ID_commande_client)
                         foreach (C_t_produit p in produit)
                         {
-                            if (a.ID_commande_frn == c.ID_commande_frn && a.ID_produit == p.ID_produit && idCommSelectionnee == a.ID_commande_frn)
+                            if (a.ID_commande_client == c.ID_commande_client && a.ID_produit == p.ID_produit && idCommSelectionnee == a.ID_commande_client)
                             {
-                                dtArticles.Rows.Add(/*a.ID_detail_achat, a.ID_commande_frn,*/ a.ID_produit, p.Nom, p.Prix_achat, p.Prix_vente, a.TVA, p.Quantite_stock, p.Seuil_stock);
+                                dtArticles.Rows.Add(/*a.ID_detail_vente, a.ID_commande_client,*/ a.ID_produit, p.Nom, p.Prix_vente, p.Prix_vente, a.TVA, p.Quantite_stock, p.Seuil_stock);
                             }
                         }
                 }
@@ -104,7 +104,7 @@ namespace ApplicationBaseDeDonnee
             //foreach (C_t_produit p in listeTemporaire)
             //{
 
-            //    dtArticles.Rows.Add(p.ID_produit, p.Nom, p.Prix_achat, p.Prix_vente, p.TVA, p.Quantite_stock, p.Seuil_stock);
+            //    dtArticles.Rows.Add(p.ID_produit, p.Nom, p.Prix_vente, p.Prix_vente, p.TVA, p.Quantite_stock, p.Seuil_stock);
             //}
 
             bsArticles = new BindingSource();
@@ -140,7 +140,7 @@ namespace ApplicationBaseDeDonnee
                 C_t_produit pImp = new G_t_produit(sConnexion).Lire_ID(int.Parse(tbID.Text));
                 tbNom.Text = pImp.Nom;
                 tbPrixVente.Text = Math.Round(pImp.Prix_vente, 2).ToString();
-                tbPrixAchat.Text = Math.Round(pImp.Prix_achat, 2).ToString();
+                tbPrixAchat.Text = Math.Round(pImp.Prix_vente, 2).ToString();
                 tbTVA.Text = pImp.TVA.ToString();
                 tbStock.Text = pImp.Quantite_stock.ToString();
                 tbSeuilStock.Text = pImp.Seuil_stock.ToString();
@@ -162,7 +162,7 @@ namespace ApplicationBaseDeDonnee
                 {
                     int iID = (int)dgvArticles.SelectedRows[0].Cells["cID"].Value;
                     new G_t_produit(sConnexion).Supprimer(iID);
-                    new G_t_detail_achat(sConnexion).Supprimer(idCommSelectionnee);
+                    new G_t_detail_vente(sConnexion).Supprimer(idCommSelectionnee);
 
                     bsArticles.RemoveCurrent();
                 }
@@ -191,7 +191,7 @@ namespace ApplicationBaseDeDonnee
                         Console.WriteLine(prixVente);
                         int idProduitAjoutee = new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
 
-                        new G_t_detail_achat(sConnexion).Ajouter(idCommSelectionnee, idProduitAjoutee, stock, prixAchat, tva);
+                        new G_t_detail_vente(sConnexion).Ajouter(idCommSelectionnee, idProduitAjoutee, stock, prixAchat, tva);
 
 
                         RemplirDGV();
@@ -212,7 +212,7 @@ namespace ApplicationBaseDeDonnee
                         )
                     {
                         int idProduitModifiee = new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
-                        new G_t_detail_achat(sConnexion).Modifier(int.Parse(tbIDCmdFrn.Text), idFrnSelectionnee, idProduitModifiee, stock, Math.Round(prixAchat, 2), tva);
+                        new G_t_detail_vente(sConnexion).Modifier(int.Parse(tbIDCmdClient.Text), idClientSelectionnee, idProduitModifiee, stock, Math.Round(prixAchat, 2), tva);
                         RemplirDGV();
                         Activer(true);
                     }
@@ -233,30 +233,30 @@ namespace ApplicationBaseDeDonnee
         #endregion
 
 
-        #region Commande frn
+        #region Commande client
 
-        public void RemplirDGVcommandeFrn()
+        public void RemplirDGVcommandeClient()
         {
-            dtCmdFrn = new DataTable();
-            dtCmdFrn.Columns.Add(new DataColumn("cID", System.Type.GetType("System.Int32")));
-            dtCmdFrn.Columns.Add(new DataColumn("IDFournisseur"));
-            dtCmdFrn.Columns.Add(new DataColumn("Nom"));
-            dtCmdFrn.Columns.Add(new DataColumn("dateCommande"));
+            dtCmdClient = new DataTable();
+            dtCmdClient.Columns.Add(new DataColumn("cID", System.Type.GetType("System.Int32")));
+            dtCmdClient.Columns.Add(new DataColumn("IDClient"));
+            dtCmdClient.Columns.Add(new DataColumn("Nom"));
+            dtCmdClient.Columns.Add(new DataColumn("dateCommande"));
 
-            List<C_t_commande_frn> listeTemporaire = new G_t_commande_frn(sConnexion).Lire("ID_frn");
-            List<C_t_frn> l2 = new G_t_frn(sConnexion).Lire("Nom");
-            foreach (C_t_frn d in l2)
+            List<C_t_commande_client> listeTemporaire = new G_t_commande_client(sConnexion).Lire("ID_client");
+            List<C_t_client> l2 = new G_t_client(sConnexion).Lire("Nom");
+            foreach (C_t_client d in l2)
             {
-                foreach (C_t_commande_frn p in listeTemporaire)
+                foreach (C_t_commande_client p in listeTemporaire)
                 {
-                    if (p.ID_frn == d.ID_frn)
-                        dtCmdFrn.Rows.Add((int)p.ID_commande_frn, p.ID_frn, d.Nom, p.Date_commande.ToString("dddd dd-MM-yyyy"));
+                    if (p.ID_client == d.ID_client)
+                        dtCmdClient.Rows.Add((int)p.ID_commande_client, p.ID_client, d.Nom, p.Date_commande.ToString("dddd dd-MM-yyyy"));
                 }
             }
 
-            bsCmdFrn = new BindingSource();
-            bsCmdFrn.DataSource = dtCmdFrn;
-            dgvCmdFrn.DataSource = bsCmdFrn;
+            bsCmdClient = new BindingSource();
+            bsCmdClient.DataSource = dtCmdClient;
+            dgvCmdClient.DataSource = bsCmdClient;
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -264,25 +264,25 @@ namespace ApplicationBaseDeDonnee
             new G_t_produit(sConnexion).Ajouter("Generic prod", 100, 50, 10, 21, 1);
         }
 
-        private void btnAjouterUnFournisseur_Click(object sender, EventArgs e)
+        private void btnAjouterUnClient_Click(object sender, EventArgs e)
         {
-            var listesFournisseur = new ListesFournisseur(sConnexion);
-            listesFournisseur.ShowDialog();
-            listesFournisseur.Closed += delegate (object s, EventArgs args)
+            var listesClient = new ListesClient(sConnexion);
+            listesClient.ShowDialog();
+            listesClient.Closed += delegate (object s, EventArgs args)
             {
                 this.Show();
             };
 
-            //listesFournisseur.Show();
-            //listesFournisseur.Activate();
+            //listesClient.Show();
+            //listesClient.Activate();
         }
 
         private void btnAjouterCommande_Click(object sender, EventArgs e)
         {
-            var cmdFournisseur = new CommandesFournisseur(sConnexion);
-            cmdFournisseur.ShowDialog();
+            var cmdClient = new CommandeClient(sConnexion);
+            cmdClient.ShowDialog();
 
-            cmdFournisseur.Closed += delegate (object s, EventArgs args)
+            cmdClient.Closed += delegate (object s, EventArgs args)
             {
                 this.Show();
             };
@@ -290,16 +290,16 @@ namespace ApplicationBaseDeDonnee
 
         }
 
-        private void dgvCmdFrn_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvCmdClient_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgvCmdFrn.Rows[e.RowIndex];
-                tbIDCmdFrn.Text = row.Cells[0].Value.ToString();
+                DataGridViewRow row = dgvCmdClient.Rows[e.RowIndex];
+                tbIDCmdClient.Text = row.Cells[0].Value.ToString();
                 idCommSelectionnee = int.Parse(row.Cells[0].Value.ToString());
-                tbIDFRn.Text = row.Cells[1].Value.ToString();
-                idFrnSelectionnee = int.Parse(row.Cells[1].Value.ToString());
-                tbNomfrn.Text = row.Cells[2].Value.ToString();
+                tbIDClient.Text = row.Cells[1].Value.ToString();
+                idClientSelectionnee = int.Parse(row.Cells[1].Value.ToString());
+                tbNomclient.Text = row.Cells[2].Value.ToString();
             }
             RemplirDGV();
             Activer(true);

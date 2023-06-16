@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
 using ApplicationBaseDeDonnee.Fournisseurs;
+using ApplicationBaseDeDonnee.Clients;
 using Projet_DB_ManagmentAPP;
 using DB_ManagmentAPP_Acces;
 using Projet_DB_ManagmentAPP_Gestion;
@@ -13,8 +14,6 @@ namespace ApplicationBaseDeDonnee
     public partial class PageAcueille : Form
     {
         String sConnexion;
-        //private DataTable dtCommerce; // joue un peu le role de dataset, on stock les donnee dedans
-        //private BindingSource bsCommerce;
         public PageAcueille()
         {
             InitializeComponent();
@@ -25,17 +24,7 @@ namespace ApplicationBaseDeDonnee
             sConnexion = ConfigurationManager.ConnectionStrings["ApplicationBaseDeDonnee.Properties.Settings.BD_Chaine_de_connexion_couches"].ConnectionString;
         }
 
-        private void managmentEncoderFactureFrn_Click(object sender, EventArgs e)
-        {
-            var encoderFactureFrn = new EncoderFactureFrn(sConnexion);
-            encoderFactureFrn.Closed += delegate (object s, EventArgs args)
-            {
-                this.Show();
-            };
-
-            encoderFactureFrn.Show();
-            encoderFactureFrn.Activate();
-        }
+        
 
         private void msArticles_Click(object sender, EventArgs e)
         {
@@ -44,10 +33,12 @@ namespace ApplicationBaseDeDonnee
             {
                 this.Show();
             };
-
             listesArticles.Show();
             listesArticles.Activate();
         }
+
+        #region Gestion fournisseur
+
         private void msFournisseur_Click(object sender, EventArgs e)
         {
             var listesFournisseur = new ListesFournisseur(sConnexion);
@@ -59,7 +50,7 @@ namespace ApplicationBaseDeDonnee
             listesFournisseur.Show();
             listesFournisseur.Activate();
         }
-        private void commandesFournisseurToolStripMenuItem_Click(object sender, EventArgs e)
+        private void msCommandesFournisseurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var cmdFournisseur = new CommandesFournisseur(sConnexion);
             cmdFournisseur.Closed += delegate (object s, EventArgs args)
@@ -70,18 +61,24 @@ namespace ApplicationBaseDeDonnee
             cmdFournisseur.Show();
             cmdFournisseur.Activate();
         }
-        private void ajouterUnAchatToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ajouterDetailAchat_Click(object sender, EventArgs e)
         {
-            // dtail achat
-            var ajouterAchat = new AjouterAchat(sConnexion);
-            ajouterAchat.Closed += delegate (object s, EventArgs args)
+            var ajouterDetailAchat = new EncoderFactureFrn2(sConnexion);
+            ajouterDetailAchat.Closed += delegate (object s, EventArgs args)
             {
                 this.Show();
             };
 
-            ajouterAchat.Show();
-            ajouterAchat.Activate();
+            ajouterDetailAchat.Show();
+            ajouterDetailAchat.Activate();
         }
+
+        #endregion
+
+
+
+
+        #region Gestion client
         private void msAjouterClient_Click(object sender, EventArgs e)
         {
             var ajouterClient = new ListesClient(sConnexion);
@@ -104,17 +101,49 @@ namespace ApplicationBaseDeDonnee
             ajouterCommandeClient.Show();
             ajouterCommandeClient.Activate();
         }
-
-        private void ajouterDetailAchat_Click(object sender, EventArgs e)
+        private void msAjouterDetailVente_Click(object sender, EventArgs e)
         {
-            var ajouterDetailAchat = new EncoderFactureFrn2(sConnexion);
-            ajouterDetailAchat.Closed += delegate (object s, EventArgs args)
+            var ajouterDetailVente = new EncoderFactureClient2(sConnexion);
+            ajouterDetailVente.Closed += delegate (object s, EventArgs args)
             {
                 this.Show();
             };
 
-            ajouterDetailAchat.Show();
-            ajouterDetailAchat.Activate();
+            ajouterDetailVente.Show();
+            ajouterDetailVente.Activate();
         }
+
+        #endregion
+
+
+
+
+        #region encodages
+
+        private void managmentEncoderFactureFrn_Click(object sender, EventArgs e)
+        {
+            var encoderFactureFrn = new EncoderFactureFrn(sConnexion);
+            encoderFactureFrn.Closed += delegate (object s, EventArgs args)
+            {
+                this.Show();
+            };
+            encoderFactureFrn.Show();
+            encoderFactureFrn.Activate();
+        }
+        private void emettreUneFactureAuClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var encoderFactureClient = new EncoderFactureClient(sConnexion);
+            encoderFactureClient.Closed += delegate (object s, EventArgs args)
+            {
+                this.Show();
+            };
+            encoderFactureClient.Show();
+            encoderFactureClient.Activate();
+        }
+
+
+        #endregion
+
+
     }
 }
