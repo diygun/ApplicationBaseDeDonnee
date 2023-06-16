@@ -31,35 +31,16 @@ namespace ApplicationBaseDeDonnee.Clients
         {
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnTest = new System.Windows.Forms.Button();
+            this.btnFacturer = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.dgvArticles = new System.Windows.Forms.DataGridView();
             this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPrixAchat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prixVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cQteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelArticle = new System.Windows.Forms.Panel();
-            this.tbSeuilStock = new System.Windows.Forms.TextBox();
-            this.lbSeuilStock = new System.Windows.Forms.Label();
-            this.tbID = new System.Windows.Forms.TextBox();
-            this.btnAnnuler = new System.Windows.Forms.Button();
-            this.btnConfirmer = new System.Windows.Forms.Button();
-            this.lbID = new System.Windows.Forms.Label();
-            this.lbNom = new System.Windows.Forms.Label();
-            this.tbStock = new System.Windows.Forms.TextBox();
-            this.lbPrixVente = new System.Windows.Forms.Label();
-            this.tbTVA = new System.Windows.Forms.TextBox();
-            this.lbPrixAchat = new System.Windows.Forms.Label();
-            this.tbPrixAchat = new System.Windows.Forms.TextBox();
-            this.lbStock = new System.Windows.Forms.Label();
-            this.tbPrixVente = new System.Windows.Forms.TextBox();
-            this.lbTVA = new System.Windows.Forms.Label();
-            this.tbNom = new System.Windows.Forms.TextBox();
             this.panelCmdFrn = new System.Windows.Forms.Panel();
             this.btnAjouterCommande = new System.Windows.Forms.Button();
             this.tbNomclient = new System.Windows.Forms.TextBox();
@@ -71,47 +52,65 @@ namespace ApplicationBaseDeDonnee.Clients
             this.lnIDfrn = new System.Windows.Forms.Label();
             this.dgvCmdClient = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cIDFrn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cIDClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateVente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel = new System.Windows.Forms.Panel();
+            this.lbNom = new System.Windows.Forms.Label();
+            this.tbNom = new System.Windows.Forms.TextBox();
+            this.cbIDproduit = new System.Windows.Forms.ComboBox();
+            this.lbEncoderArticle = new System.Windows.Forms.Label();
+            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.btnConfirmer = new System.Windows.Forms.Button();
+            this.tbQtee = new System.Windows.Forms.TextBox();
+            this.lbQte = new System.Windows.Forms.Label();
+            this.lbIDclient = new System.Windows.Forms.Label();
+            this.tbTVA = new System.Windows.Forms.TextBox();
+            this.lbPrixVente = new System.Windows.Forms.Label();
+            this.tbPrixVente = new System.Windows.Forms.TextBox();
+            this.lbTVA = new System.Windows.Forms.Label();
+            this.btnCalculeCaHebdo = new System.Windows.Forms.Button();
+            this.lbCA = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
-            this.panelArticle.SuspendLayout();
             this.panelCmdFrn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCmdClient)).BeginInit();
+            this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(558, 14);
+            this.label2.Location = new System.Drawing.Point(583, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(424, 25);
+            this.label2.Size = new System.Drawing.Size(287, 25);
             this.label2.TabIndex = 36;
-            this.label2.Text = "Encoder une facture d\'achat du fournisseur";
+            this.label2.Text = "Emettre une facture au client";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnTest);
+            this.panel1.Controls.Add(this.btnFacturer);
             this.panel1.Controls.Add(this.btnSupprimer);
             this.panel1.Controls.Add(this.btnModifier);
             this.panel1.Controls.Add(this.btnAjouter);
             this.panel1.Controls.Add(this.dgvArticles);
-            this.panel1.Location = new System.Drawing.Point(510, 55);
+            this.panel1.Location = new System.Drawing.Point(574, 58);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(635, 775);
+            this.panel1.Size = new System.Drawing.Size(618, 775);
             this.panel1.TabIndex = 35;
             // 
-            // btnTest
+            // btnFacturer
             // 
-            this.btnTest.Location = new System.Drawing.Point(449, 739);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(140, 29);
-            this.btnTest.TabIndex = 25;
-            this.btnTest.Text = "Test";
-            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnFacturer.Location = new System.Drawing.Point(448, 739);
+            this.btnFacturer.Name = "btnFacturer";
+            this.btnFacturer.Size = new System.Drawing.Size(140, 29);
+            this.btnFacturer.TabIndex = 24;
+            this.btnFacturer.Text = "Emettre la facture";
+            this.btnFacturer.UseVisualStyleBackColor = true;
+            this.btnFacturer.Click += new System.EventHandler(this.btnFacturer_Click);
             // 
             // btnSupprimer
             // 
@@ -151,17 +150,15 @@ namespace ApplicationBaseDeDonnee.Clients
             this.dgvArticles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cID,
             this.cNom,
-            this.cPrixAchat,
             this.prixVente,
             this.cTVA,
-            this.cQteStock,
-            this.Quantite});
-            this.dgvArticles.Location = new System.Drawing.Point(11, 7);
+            this.cQteStock});
+            this.dgvArticles.Location = new System.Drawing.Point(3, 7);
             this.dgvArticles.Name = "dgvArticles";
             this.dgvArticles.ReadOnly = true;
             this.dgvArticles.RowHeadersVisible = false;
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticles.Size = new System.Drawing.Size(587, 726);
+            this.dgvArticles.Size = new System.Drawing.Size(612, 726);
             this.dgvArticles.TabIndex = 20;
             // 
             // cID
@@ -171,7 +168,6 @@ namespace ApplicationBaseDeDonnee.Clients
             this.cID.Name = "cID";
             this.cID.ReadOnly = true;
             this.cID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cID.Width = 30;
             // 
             // cNom
             // 
@@ -180,14 +176,7 @@ namespace ApplicationBaseDeDonnee.Clients
             this.cNom.Name = "cNom";
             this.cNom.ReadOnly = true;
             this.cNom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cPrixAchat
-            // 
-            this.cPrixAchat.DataPropertyName = "prixAchat";
-            this.cPrixAchat.HeaderText = "Prix d\'achat";
-            this.cPrixAchat.Name = "cPrixAchat";
-            this.cPrixAchat.ReadOnly = true;
-            this.cPrixAchat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cNom.Width = 225;
             // 
             // prixVente
             // 
@@ -196,6 +185,7 @@ namespace ApplicationBaseDeDonnee.Clients
             this.prixVente.Name = "prixVente";
             this.prixVente.ReadOnly = true;
             this.prixVente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.prixVente.Width = 175;
             // 
             // cTVA
             // 
@@ -204,186 +194,16 @@ namespace ApplicationBaseDeDonnee.Clients
             this.cTVA.Name = "cTVA";
             this.cTVA.ReadOnly = true;
             this.cTVA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cTVA.Width = 45;
+            this.cTVA.Width = 50;
             // 
             // cQteStock
             // 
-            this.cQteStock.DataPropertyName = "qteStock";
-            this.cQteStock.HeaderText = "Quantite en stock";
+            this.cQteStock.DataPropertyName = "qte";
+            this.cQteStock.HeaderText = "Quantite";
             this.cQteStock.Name = "cQteStock";
             this.cQteStock.ReadOnly = true;
             this.cQteStock.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Quantite
-            // 
-            this.Quantite.DataPropertyName = "seuilStock";
-            this.Quantite.HeaderText = "Seuil de stock";
-            this.Quantite.Name = "Quantite";
-            this.Quantite.ReadOnly = true;
-            this.Quantite.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // panelArticle
-            // 
-            this.panelArticle.Controls.Add(this.tbSeuilStock);
-            this.panelArticle.Controls.Add(this.lbSeuilStock);
-            this.panelArticle.Controls.Add(this.tbID);
-            this.panelArticle.Controls.Add(this.btnAnnuler);
-            this.panelArticle.Controls.Add(this.btnConfirmer);
-            this.panelArticle.Controls.Add(this.lbID);
-            this.panelArticle.Controls.Add(this.lbNom);
-            this.panelArticle.Controls.Add(this.tbStock);
-            this.panelArticle.Controls.Add(this.lbPrixVente);
-            this.panelArticle.Controls.Add(this.tbTVA);
-            this.panelArticle.Controls.Add(this.lbPrixAchat);
-            this.panelArticle.Controls.Add(this.tbPrixAchat);
-            this.panelArticle.Controls.Add(this.lbStock);
-            this.panelArticle.Controls.Add(this.tbPrixVente);
-            this.panelArticle.Controls.Add(this.lbTVA);
-            this.panelArticle.Controls.Add(this.tbNom);
-            this.panelArticle.Location = new System.Drawing.Point(1166, 602);
-            this.panelArticle.Name = "panelArticle";
-            this.panelArticle.Size = new System.Drawing.Size(330, 228);
-            this.panelArticle.TabIndex = 32;
-            // 
-            // tbSeuilStock
-            // 
-            this.tbSeuilStock.Location = new System.Drawing.Point(144, 159);
-            this.tbSeuilStock.Name = "tbSeuilStock";
-            this.tbSeuilStock.Size = new System.Drawing.Size(184, 20);
-            this.tbSeuilStock.TabIndex = 6;
-            // 
-            // lbSeuilStock
-            // 
-            this.lbSeuilStock.AutoSize = true;
-            this.lbSeuilStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSeuilStock.Location = new System.Drawing.Point(30, 159);
-            this.lbSeuilStock.Name = "lbSeuilStock";
-            this.lbSeuilStock.Size = new System.Drawing.Size(108, 20);
-            this.lbSeuilStock.TabIndex = 18;
-            this.lbSeuilStock.Text = "Seuil de stock";
-            // 
-            // tbID
-            // 
-            this.tbID.Location = new System.Drawing.Point(144, 3);
-            this.tbID.Name = "tbID";
-            this.tbID.ReadOnly = true;
-            this.tbID.Size = new System.Drawing.Size(184, 20);
-            this.tbID.TabIndex = 0;
-            // 
-            // btnAnnuler
-            // 
-            this.btnAnnuler.Location = new System.Drawing.Point(215, 190);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(113, 20);
-            this.btnAnnuler.TabIndex = 8;
-            this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = true;
-            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
-            // 
-            // btnConfirmer
-            // 
-            this.btnConfirmer.Location = new System.Drawing.Point(52, 190);
-            this.btnConfirmer.Name = "btnConfirmer";
-            this.btnConfirmer.Size = new System.Drawing.Size(113, 20);
-            this.btnConfirmer.TabIndex = 7;
-            this.btnConfirmer.Text = "Confirmer";
-            this.btnConfirmer.UseVisualStyleBackColor = true;
-            this.btnConfirmer.Click += new System.EventHandler(this.btnConfirmer_Click);
-            // 
-            // lbID
-            // 
-            this.lbID.AutoSize = true;
-            this.lbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbID.Location = new System.Drawing.Point(112, 3);
-            this.lbID.Name = "lbID";
-            this.lbID.Size = new System.Drawing.Size(26, 20);
-            this.lbID.TabIndex = 4;
-            this.lbID.Text = "ID";
-            // 
-            // lbNom
-            // 
-            this.lbNom.AutoSize = true;
-            this.lbNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNom.Location = new System.Drawing.Point(22, 29);
-            this.lbNom.Name = "lbNom";
-            this.lbNom.Size = new System.Drawing.Size(116, 20);
-            this.lbNom.TabIndex = 5;
-            this.lbNom.Text = "Nom de l\'article";
-            // 
-            // tbStock
-            // 
-            this.tbStock.Location = new System.Drawing.Point(144, 133);
-            this.tbStock.Name = "tbStock";
-            this.tbStock.Size = new System.Drawing.Size(184, 20);
-            this.tbStock.TabIndex = 5;
-            // 
-            // lbPrixVente
-            // 
-            this.lbPrixVente.AutoSize = true;
-            this.lbPrixVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrixVente.Location = new System.Drawing.Point(39, 55);
-            this.lbPrixVente.Name = "lbPrixVente";
-            this.lbPrixVente.Size = new System.Drawing.Size(99, 20);
-            this.lbPrixVente.TabIndex = 6;
-            this.lbPrixVente.Text = "Prix de vente";
-            // 
-            // tbTVA
-            // 
-            this.tbTVA.Location = new System.Drawing.Point(144, 107);
-            this.tbTVA.Name = "tbTVA";
-            this.tbTVA.Size = new System.Drawing.Size(184, 20);
-            this.tbTVA.TabIndex = 4;
-            // 
-            // lbPrixAchat
-            // 
-            this.lbPrixAchat.AutoSize = true;
-            this.lbPrixAchat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrixAchat.Location = new System.Drawing.Point(48, 81);
-            this.lbPrixAchat.Name = "lbPrixAchat";
-            this.lbPrixAchat.Size = new System.Drawing.Size(90, 20);
-            this.lbPrixAchat.TabIndex = 7;
-            this.lbPrixAchat.Text = "Prix d\'achat";
-            // 
-            // tbPrixAchat
-            // 
-            this.tbPrixAchat.Location = new System.Drawing.Point(144, 81);
-            this.tbPrixAchat.Name = "tbPrixAchat";
-            this.tbPrixAchat.Size = new System.Drawing.Size(184, 20);
-            this.tbPrixAchat.TabIndex = 3;
-            // 
-            // lbStock
-            // 
-            this.lbStock.AutoSize = true;
-            this.lbStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStock.Location = new System.Drawing.Point(4, 133);
-            this.lbStock.Name = "lbStock";
-            this.lbStock.Size = new System.Drawing.Size(134, 20);
-            this.lbStock.TabIndex = 8;
-            this.lbStock.Text = "Quantité en stock";
-            // 
-            // tbPrixVente
-            // 
-            this.tbPrixVente.Location = new System.Drawing.Point(144, 55);
-            this.tbPrixVente.Name = "tbPrixVente";
-            this.tbPrixVente.Size = new System.Drawing.Size(184, 20);
-            this.tbPrixVente.TabIndex = 2;
-            // 
-            // lbTVA
-            // 
-            this.lbTVA.AutoSize = true;
-            this.lbTVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTVA.Location = new System.Drawing.Point(70, 107);
-            this.lbTVA.Name = "lbTVA";
-            this.lbTVA.Size = new System.Drawing.Size(68, 20);
-            this.lbTVA.TabIndex = 9;
-            this.lbTVA.Text = "TVA (%)";
-            // 
-            // tbNom
-            // 
-            this.tbNom.Location = new System.Drawing.Point(144, 29);
-            this.tbNom.Name = "tbNom";
-            this.tbNom.Size = new System.Drawing.Size(184, 20);
-            this.tbNom.TabIndex = 1;
+            this.cQteStock.Width = 50;
             // 
             // panelCmdFrn
             // 
@@ -395,7 +215,7 @@ namespace ApplicationBaseDeDonnee.Clients
             this.panelCmdFrn.Controls.Add(this.lbIDCmdFrn);
             this.panelCmdFrn.Controls.Add(this.tbIDClient);
             this.panelCmdFrn.Controls.Add(this.lnIDfrn);
-            this.panelCmdFrn.Location = new System.Drawing.Point(19, 388);
+            this.panelCmdFrn.Location = new System.Drawing.Point(12, 453);
             this.panelCmdFrn.Name = "panelCmdFrn";
             this.panelCmdFrn.Size = new System.Drawing.Size(439, 172);
             this.panelCmdFrn.TabIndex = 34;
@@ -434,7 +254,7 @@ namespace ApplicationBaseDeDonnee.Clients
             this.btnAjouterUnClient.Name = "btnAjouterUnClient";
             this.btnAjouterUnClient.Size = new System.Drawing.Size(140, 29);
             this.btnAjouterUnClient.TabIndex = 32;
-            this.btnAjouterUnClient.Text = "Ajouter un fournisseur";
+            this.btnAjouterUnClient.Text = "Ajouter un client";
             this.btnAjouterUnClient.UseVisualStyleBackColor = true;
             this.btnAjouterUnClient.Click += new System.EventHandler(this.btnAjouterUnClient_Click);
             // 
@@ -481,16 +301,18 @@ namespace ApplicationBaseDeDonnee.Clients
             this.dgvCmdClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCmdClient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.cIDFrn,
+            this.cIDClient,
             this.Nom,
-            this.cDateCommande});
-            this.dgvCmdClient.Location = new System.Drawing.Point(19, 55);
+            this.cDateCommande,
+            this.dateVente});
+            this.dgvCmdClient.Location = new System.Drawing.Point(3, 62);
             this.dgvCmdClient.Name = "dgvCmdClient";
             this.dgvCmdClient.ReadOnly = true;
             this.dgvCmdClient.RowHeadersVisible = false;
             this.dgvCmdClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCmdClient.Size = new System.Drawing.Size(425, 327);
-            this.dgvCmdClient.TabIndex = 33;
+            this.dgvCmdClient.Size = new System.Drawing.Size(573, 373);
+            this.dgvCmdClient.TabIndex = 37;
+            this.dgvCmdClient.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCmdClient_CellMouseClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -498,16 +320,17 @@ namespace ApplicationBaseDeDonnee.Clients
             this.dataGridViewTextBoxColumn1.HeaderText = "N° commande";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn1.Width = 85;
             // 
-            // cIDFrn
+            // cIDClient
             // 
-            this.cIDFrn.DataPropertyName = "IDClient";
-            this.cIDFrn.HeaderText = "N° Client";
-            this.cIDFrn.Name = "cIDFrn";
-            this.cIDFrn.ReadOnly = true;
-            this.cIDFrn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cIDFrn.Width = 85;
+            this.cIDClient.DataPropertyName = "IDClient";
+            this.cIDClient.HeaderText = "N° Client";
+            this.cIDClient.Name = "cIDClient";
+            this.cIDClient.ReadOnly = true;
+            this.cIDClient.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cIDClient.Width = 85;
             // 
             // Nom
             // 
@@ -526,26 +349,195 @@ namespace ApplicationBaseDeDonnee.Clients
             this.cDateCommande.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.cDateCommande.Width = 150;
             // 
+            // dateVente
+            // 
+            this.dateVente.DataPropertyName = "dateVente";
+            this.dateVente.HeaderText = "Date de la vente";
+            this.dateVente.Name = "dateVente";
+            this.dateVente.ReadOnly = true;
+            this.dateVente.Width = 150;
+            // 
+            // panel
+            // 
+            this.panel.Controls.Add(this.lbNom);
+            this.panel.Controls.Add(this.tbNom);
+            this.panel.Controls.Add(this.cbIDproduit);
+            this.panel.Controls.Add(this.lbEncoderArticle);
+            this.panel.Controls.Add(this.btnAnnuler);
+            this.panel.Controls.Add(this.btnConfirmer);
+            this.panel.Controls.Add(this.tbQtee);
+            this.panel.Controls.Add(this.lbQte);
+            this.panel.Controls.Add(this.lbIDclient);
+            this.panel.Controls.Add(this.tbTVA);
+            this.panel.Controls.Add(this.lbPrixVente);
+            this.panel.Controls.Add(this.tbPrixVente);
+            this.panel.Controls.Add(this.lbTVA);
+            this.panel.Location = new System.Drawing.Point(1190, 574);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(354, 259);
+            this.panel.TabIndex = 38;
+            // 
+            // lbNom
+            // 
+            this.lbNom.AutoSize = true;
+            this.lbNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNom.Location = new System.Drawing.Point(26, 70);
+            this.lbNom.Name = "lbNom";
+            this.lbNom.Size = new System.Drawing.Size(116, 20);
+            this.lbNom.TabIndex = 37;
+            this.lbNom.Text = "Nom de l\'article";
+            // 
+            // tbNom
+            // 
+            this.tbNom.Location = new System.Drawing.Point(148, 70);
+            this.tbNom.Name = "tbNom";
+            this.tbNom.Size = new System.Drawing.Size(184, 20);
+            this.tbNom.TabIndex = 36;
+            // 
+            // cbIDproduit
+            // 
+            this.cbIDproduit.FormattingEnabled = true;
+            this.cbIDproduit.Location = new System.Drawing.Point(148, 43);
+            this.cbIDproduit.Name = "cbIDproduit";
+            this.cbIDproduit.Size = new System.Drawing.Size(184, 21);
+            this.cbIDproduit.TabIndex = 35;
+            this.cbIDproduit.SelectedIndexChanged += new System.EventHandler(this.cbIDproduit_SelectedIndexChanged);
+            // 
+            // lbEncoderArticle
+            // 
+            this.lbEncoderArticle.AutoSize = true;
+            this.lbEncoderArticle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEncoderArticle.Location = new System.Drawing.Point(86, 15);
+            this.lbEncoderArticle.Name = "lbEncoderArticle";
+            this.lbEncoderArticle.Size = new System.Drawing.Size(186, 25);
+            this.lbEncoderArticle.TabIndex = 33;
+            this.lbEncoderArticle.Text = "Encoder un article";
+            this.lbEncoderArticle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.Location = new System.Drawing.Point(219, 197);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(113, 20);
+            this.btnAnnuler.TabIndex = 8;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click_1);
+            // 
+            // btnConfirmer
+            // 
+            this.btnConfirmer.Location = new System.Drawing.Point(63, 197);
+            this.btnConfirmer.Name = "btnConfirmer";
+            this.btnConfirmer.Size = new System.Drawing.Size(113, 20);
+            this.btnConfirmer.TabIndex = 7;
+            this.btnConfirmer.Text = "Confirmer";
+            this.btnConfirmer.UseVisualStyleBackColor = true;
+            this.btnConfirmer.Click += new System.EventHandler(this.btnConfirmer_Click);
+            // 
+            // tbQtee
+            // 
+            this.tbQtee.Location = new System.Drawing.Point(148, 96);
+            this.tbQtee.Name = "tbQtee";
+            this.tbQtee.Size = new System.Drawing.Size(184, 20);
+            this.tbQtee.TabIndex = 5;
+            // 
+            // lbQte
+            // 
+            this.lbQte.AutoSize = true;
+            this.lbQte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQte.Location = new System.Drawing.Point(67, 96);
+            this.lbQte.Name = "lbQte";
+            this.lbQte.Size = new System.Drawing.Size(70, 20);
+            this.lbQte.TabIndex = 8;
+            this.lbQte.Text = "Quantité";
+            // 
+            // lbIDclient
+            // 
+            this.lbIDclient.AutoSize = true;
+            this.lbIDclient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIDclient.Location = new System.Drawing.Point(59, 44);
+            this.lbIDclient.Name = "lbIDclient";
+            this.lbIDclient.Size = new System.Drawing.Size(79, 20);
+            this.lbIDclient.TabIndex = 6;
+            this.lbIDclient.Text = "ID produit";
+            // 
+            // tbTVA
+            // 
+            this.tbTVA.Location = new System.Drawing.Point(148, 148);
+            this.tbTVA.Name = "tbTVA";
+            this.tbTVA.Size = new System.Drawing.Size(184, 20);
+            this.tbTVA.TabIndex = 4;
+            // 
+            // lbPrixVente
+            // 
+            this.lbPrixVente.AutoSize = true;
+            this.lbPrixVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrixVente.Location = new System.Drawing.Point(38, 122);
+            this.lbPrixVente.Name = "lbPrixVente";
+            this.lbPrixVente.Size = new System.Drawing.Size(99, 20);
+            this.lbPrixVente.TabIndex = 7;
+            this.lbPrixVente.Text = "Prix de vente";
+            // 
+            // tbPrixVente
+            // 
+            this.tbPrixVente.Location = new System.Drawing.Point(148, 122);
+            this.tbPrixVente.Name = "tbPrixVente";
+            this.tbPrixVente.Size = new System.Drawing.Size(184, 20);
+            this.tbPrixVente.TabIndex = 3;
+            // 
+            // lbTVA
+            // 
+            this.lbTVA.AutoSize = true;
+            this.lbTVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTVA.Location = new System.Drawing.Point(69, 148);
+            this.lbTVA.Name = "lbTVA";
+            this.lbTVA.Size = new System.Drawing.Size(68, 20);
+            this.lbTVA.TabIndex = 9;
+            this.lbTVA.Text = "TVA (%)";
+            // 
+            // btnCalculeCaHebdo
+            // 
+            this.btnCalculeCaHebdo.Location = new System.Drawing.Point(16, 644);
+            this.btnCalculeCaHebdo.Name = "btnCalculeCaHebdo";
+            this.btnCalculeCaHebdo.Size = new System.Drawing.Size(224, 29);
+            this.btnCalculeCaHebdo.TabIndex = 35;
+            this.btnCalculeCaHebdo.Text = "Chiffre d\'affaire hebdomadaire";
+            this.btnCalculeCaHebdo.UseVisualStyleBackColor = true;
+            this.btnCalculeCaHebdo.Click += new System.EventHandler(this.btnCalculeCaHebdo_Click);
+            // 
+            // lbCA
+            // 
+            this.lbCA.AutoSize = true;
+            this.lbCA.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCA.Location = new System.Drawing.Point(12, 676);
+            this.lbCA.Name = "lbCA";
+            this.lbCA.Size = new System.Drawing.Size(39, 20);
+            this.lbCA.TabIndex = 39;
+            this.lbCA.Text = "CA :";
+            // 
             // EncoderFactureClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1514, 845);
+            this.ClientSize = new System.Drawing.Size(1601, 845);
+            this.Controls.Add(this.lbCA);
+            this.Controls.Add(this.btnCalculeCaHebdo);
+            this.Controls.Add(this.panel);
+            this.Controls.Add(this.dgvCmdClient);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelArticle);
             this.Controls.Add(this.panelCmdFrn);
-            this.Controls.Add(this.dgvCmdClient);
             this.Name = "EncoderFactureClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EncoderFactureClient";
+            this.Text = "Emettre facture au client";
+            this.Load += new System.EventHandler(this.EncoderFactureClient_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
-            this.panelArticle.ResumeLayout(false);
-            this.panelArticle.PerformLayout();
             this.panelCmdFrn.ResumeLayout(false);
             this.panelCmdFrn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCmdClient)).EndInit();
+            this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,35 +547,10 @@ namespace ApplicationBaseDeDonnee.Clients
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.DataGridView dgvArticles;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cNom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPrixAchat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prixVente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cTVA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cQteStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantite;
-        private System.Windows.Forms.Panel panelArticle;
-        private System.Windows.Forms.TextBox tbSeuilStock;
-        private System.Windows.Forms.Label lbSeuilStock;
-        private System.Windows.Forms.TextBox tbID;
-        private System.Windows.Forms.Button btnAnnuler;
-        private System.Windows.Forms.Button btnConfirmer;
-        private System.Windows.Forms.Label lbID;
-        private System.Windows.Forms.Label lbNom;
-        private System.Windows.Forms.TextBox tbStock;
-        private System.Windows.Forms.Label lbPrixVente;
-        private System.Windows.Forms.TextBox tbTVA;
-        private System.Windows.Forms.Label lbPrixAchat;
-        private System.Windows.Forms.TextBox tbPrixAchat;
-        private System.Windows.Forms.Label lbStock;
-        private System.Windows.Forms.TextBox tbPrixVente;
-        private System.Windows.Forms.Label lbTVA;
-        private System.Windows.Forms.TextBox tbNom;
         private System.Windows.Forms.Panel panelCmdFrn;
         private System.Windows.Forms.Button btnAjouterCommande;
         private System.Windows.Forms.TextBox tbNomclient;
@@ -595,8 +562,31 @@ namespace ApplicationBaseDeDonnee.Clients
         private System.Windows.Forms.Label lnIDfrn;
         private System.Windows.Forms.DataGridView dgvCmdClient;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cIDFrn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cIDClient;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDateCommande;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateVente;
+        private System.Windows.Forms.Panel panel;
+        private System.Windows.Forms.ComboBox cbIDproduit;
+        private System.Windows.Forms.Label lbEncoderArticle;
+        private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.Button btnConfirmer;
+        private System.Windows.Forms.TextBox tbQtee;
+        private System.Windows.Forms.Label lbQte;
+        private System.Windows.Forms.Label lbIDclient;
+        private System.Windows.Forms.TextBox tbTVA;
+        private System.Windows.Forms.Label lbPrixVente;
+        private System.Windows.Forms.TextBox tbPrixVente;
+        private System.Windows.Forms.Label lbTVA;
+        private System.Windows.Forms.Label lbNom;
+        private System.Windows.Forms.TextBox tbNom;
+        private System.Windows.Forms.Button btnFacturer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cNom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prixVente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTVA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cQteStock;
+        private System.Windows.Forms.Button btnCalculeCaHebdo;
+        private System.Windows.Forms.Label lbCA;
     }
 }
