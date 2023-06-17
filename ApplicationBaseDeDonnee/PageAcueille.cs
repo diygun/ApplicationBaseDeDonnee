@@ -177,15 +177,15 @@ namespace ApplicationBaseDeDonnee
             dtArticles.Columns.Add(new DataColumn("prixVente"));
             dtArticles.Columns.Add(new DataColumn("TVA"));
             dtArticles.Columns.Add(new DataColumn("qte"));
+            dtArticles.Columns.Add(new DataColumn("DateSortie"));
 
             List<C_t_produit> produit = new G_t_produit(sConnexion).Lire("Nom");
             List<C_t_detail_vente> detailAchat = new G_t_detail_vente(sConnexion).Lire("ID_commande_client");
             List<C_t_commande_client> CommandeClient = new G_t_commande_client(sConnexion).Lire("ID_client");
             foreach (C_t_produit p in produit)
             {
-
                 {
-                    dtArticles.Rows.Add(p.ID_produit, p.Nom, p.Prix_vente, p.TVA, p.Quantite_stock);
+                    dtArticles.Rows.Add(p.ID_produit, p.Nom, p.Prix_vente, p.TVA, p.Quantite_stock, p.DateSortie);
                 }
             }
 
@@ -247,7 +247,7 @@ namespace ApplicationBaseDeDonnee
                         }
                         else
                         {
-                            new G_t_produit(sConnexion).Modifier(IDproduit, pImp.Nom, pImp.Prix_vente, pImp.Prix_achat, (pImp.Quantite_stock - int.Parse(tbQtee.Text)), pImp.TVA, pImp.Seuil_stock);
+                            new G_t_produit(sConnexion).Modifier(IDproduit, pImp.Nom, pImp.Prix_vente, pImp.Prix_achat, (pImp.Quantite_stock - int.Parse(tbQtee.Text)), pImp.TVA, pImp.Seuil_stock, pImp.DateSortie ?? DateTime.Now);
 
                         }
 

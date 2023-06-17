@@ -196,7 +196,7 @@ namespace ApplicationBaseDeDonnee
                         else
                         {
                             new G_t_detail_vente(sConnexion).Ajouter(IDcommandeClientSelectionnee, IDproduit, stock, prixVente, tva);
-                            new G_t_produit(sConnexion).Modifier(IDproduit, pImp.Nom, pImp.Prix_vente, pImp.Prix_achat, (pImp.Quantite_stock - int.Parse(tbQte.Text)) , pImp.TVA, pImp.Seuil_stock);
+                            new G_t_produit(sConnexion).Modifier(IDproduit, pImp.Nom, pImp.Prix_vente, pImp.Prix_achat, (pImp.Quantite_stock - int.Parse(tbQte.Text)) , pImp.TVA, pImp.Seuil_stock, pImp.DateSortie ?? DateTime.Now);
 
                             // emmettre un ticket de vente ??
                         }

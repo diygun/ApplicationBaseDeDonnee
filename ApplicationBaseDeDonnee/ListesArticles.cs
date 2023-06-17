@@ -17,7 +17,7 @@ namespace ApplicationBaseDeDonnee
     public partial class ListesArticles : Form
     {
         String sConnexion;
-        private DataTable dtArticles; // joue un peu le role de dataset, on stock les donnee dedans
+        private DataTable dtArticles;
         private BindingSource bsArticles;
 
         public ListesArticles(string sConnexion)
@@ -45,12 +45,12 @@ namespace ApplicationBaseDeDonnee
             dtArticles.Columns.Add(new DataColumn("TVA"));
             dtArticles.Columns.Add(new DataColumn("qteStock"));
             dtArticles.Columns.Add(new DataColumn("seuilStock"));
+            dtArticles.Columns.Add(new DataColumn("DateSortie"));
 
-            // !!!!! SI ERRUEUR ICI, CA VEUT DIRE QUE LE SERVEUR SQL N'EST PAS OUVERT 
             List<C_t_produit> listeTemporaire = new G_t_produit(sConnexion).Lire("Nom");
             foreach (C_t_produit p in listeTemporaire)
             {
-                dtArticles.Rows.Add(p.ID_produit, p.Nom, p.Prix_achat, p.Prix_vente, p.TVA, p.Quantite_stock, p.Seuil_stock);
+                dtArticles.Rows.Add(p.ID_produit, p.Nom, p.Prix_achat, p.Prix_vente, p.TVA, p.Quantite_stock, p.Seuil_stock, p.DateSortie ?? DateTime.Now);
             }
             bsArticles = new BindingSource();
             bsArticles.DataSource = dtArticles;
@@ -132,7 +132,7 @@ namespace ApplicationBaseDeDonnee
                         )
                     {
                         Console.WriteLine(prixVente);
-                        new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
+                        new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock, dtpSortie.Value);
                         RemplirDGV();
                         Activer(true);
                     }
@@ -150,7 +150,7 @@ namespace ApplicationBaseDeDonnee
                         && int.TryParse(tbSeuilStock.Text, out int seuilStock)
                         )
                     {
-                        new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock);
+                        new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), prixVente, prixAchat, stock, tva, seuilStock, dtpSortie.Value);
                         RemplirDGV();
                         Activer(true);
                     }
@@ -170,7 +170,7 @@ namespace ApplicationBaseDeDonnee
         
         private void btnTest_Click(object sender, EventArgs e)
         {
-            new G_t_produit(sConnexion).Ajouter("Carte mere", 100, 50, 10, 21, 1);
+            new G_t_produit(sConnexion).Ajouter("Carte mere", 100, 50, 10, 21, 1, DateTime.Today);
         }
     }
 }

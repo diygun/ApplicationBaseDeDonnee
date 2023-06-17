@@ -117,6 +117,7 @@ namespace ApplicationBaseDeDonnee
             if (idCommSelectionnee != -1)
             {
                 tbID.Text = tbNom.Text = tbPrixVente.Text = tbPrixAchat.Text = tbStock.Text = tbSeuilStock.Text = "";
+                dtpSortie.Value = DateTime.Today;
                 tbTVA.Text = "21";
                 Activer(false);
 
@@ -189,7 +190,7 @@ namespace ApplicationBaseDeDonnee
                         )
                     {
                         Console.WriteLine(prixVente);
-                        int idProduitAjoutee = new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
+                        int idProduitAjoutee = new G_t_produit(sConnexion).Ajouter(tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock, dtpSortie.Value);
 
                         new G_t_detail_achat(sConnexion).Ajouter(idCommSelectionnee, idProduitAjoutee, stock, prixAchat, tva);
 
@@ -211,7 +212,7 @@ namespace ApplicationBaseDeDonnee
                         && int.TryParse(tbSeuilStock.Text, out int seuilStock)
                         )
                     {
-                        int idProduitModifiee = new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock);
+                        int idProduitModifiee = new G_t_produit(sConnexion).Modifier(int.Parse(tbID.Text), tbNom.Text.ToString(), Math.Round(prixVente, 2), Math.Round(prixAchat, 2), stock, tva, seuilStock, dtpSortie.Value);
                         new G_t_detail_achat(sConnexion).Modifier(int.Parse(tbIDCmdFrn.Text), idFrnSelectionnee, idProduitModifiee, stock, Math.Round(prixAchat, 2), tva);
                         RemplirDGV();
                         Activer(true);
@@ -261,7 +262,7 @@ namespace ApplicationBaseDeDonnee
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            new G_t_produit(sConnexion).Ajouter("Generic prod", 100, 50, 10, 21, 1);
+            new G_t_produit(sConnexion).Ajouter("Generic prod", 100, 50, 10, 21, 1, dtpSortie.Value);
         }
 
         private void btnAjouterUnFournisseur_Click(object sender, EventArgs e)

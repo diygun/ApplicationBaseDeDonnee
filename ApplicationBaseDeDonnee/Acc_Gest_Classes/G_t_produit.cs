@@ -21,10 +21,10 @@ namespace Projet_DB_ManagmentAPP.Gestion
    : base(sChaineConnexion)
   { }
   #endregion
-  public int Ajouter(string Nom, decimal Prix_vente, decimal Prix_achat, int Quantite_stock, double TVA, int Seuil_stock)
-  { return new A_t_produit(ChaineConnexion).Ajouter(Nom, Prix_vente, Prix_achat, Quantite_stock, TVA, Seuil_stock); }
-  public int Modifier(int ID_produit, string Nom, decimal Prix_vente, decimal Prix_achat, int Quantite_stock, double TVA, int Seuil_stock)
-  { return new A_t_produit(ChaineConnexion).Modifier(ID_produit, Nom, Prix_vente, Prix_achat, Quantite_stock, TVA, Seuil_stock); }
+  public int Ajouter(string Nom, decimal Prix_vente, decimal Prix_achat, int Quantite_stock, double TVA, int Seuil_stock, DateTime DateSortie)
+  { return new A_t_produit(ChaineConnexion).Ajouter(Nom, Prix_vente, Prix_achat, Quantite_stock, TVA, Seuil_stock, DateSortie); }
+  public int Modifier(int ID_produit, string Nom, decimal Prix_vente, decimal Prix_achat, int Quantite_stock, double TVA, int Seuil_stock, DateTime DateSortie)
+  { return new A_t_produit(ChaineConnexion).Modifier(ID_produit, Nom, Prix_vente, Prix_achat, Quantite_stock, TVA, Seuil_stock, DateSortie); }
   public List<C_t_produit> Lire(string Index)
   { return new A_t_produit(ChaineConnexion).Lire(Index); }
   public C_t_produit Lire_ID(int ID_produit)

@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Projet_DB_ManagmentAPP.Classes;
 using Projet_DB_ManagmentAPP.Gestion;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 
 namespace ApplicationBaseDeDonnee.Clients
 {
@@ -191,7 +193,7 @@ namespace ApplicationBaseDeDonnee.Clients
                         else
                         {
                             new G_t_detail_vente(sConnexion).Ajouter(idCommSelectionnee, IDproduit, stock, prixVente, tva);
-                            new G_t_produit(sConnexion).Modifier(IDproduit, pImp.Nom, pImp.Prix_vente, pImp.Prix_achat, (pImp.Quantite_stock - int.Parse(tbQtee.Text)), pImp.TVA, pImp.Seuil_stock);
+                            new G_t_produit(sConnexion).Modifier(IDproduit, pImp.Nom, pImp.Prix_vente, pImp.Prix_achat, (pImp.Quantite_stock - int.Parse(tbQtee.Text)), pImp.TVA, pImp.Seuil_stock, pImp.DateSortie ?? DateTime.Now);
                         }
 
 
@@ -252,6 +254,7 @@ namespace ApplicationBaseDeDonnee.Clients
                 foreach (C_t_commande_client p in listeTemporaire)
                 {
                     if (p.ID_client == d.ID_client)
+
                         dtCmdClient.Rows.Add((int)p.ID_commande_client, p.ID_client, d.Nom, p.Date_commande.ToString("dddd dd-MM-yyyy"), p.Date_vente.ToString("dddd dd-MM-yyyy"));
                 }
             }
@@ -404,35 +407,22 @@ namespace ApplicationBaseDeDonnee.Clients
 
         private decimal CalculerChiffreAffaireHebdomadaire()
         {
-            //decimal chiffreAffaireTotal = 0;
-            //DateTime dateDebutSemaine = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
-            //DateTime dateFinSemaine = dateDebutSemaine.AddDays(7);
 
-            //foreach (DataGridViewRow row in dgvCmdClient.Rows)
-            //{
-            //    if (row.Cells["dateVente"].Value != null)
-            //    {
-            //        DateTime dateVente = Convert.ToDateTime(row.Cells["dateVente"].Value);
-            //        if (dateVente >= dateDebutSemaine && dateVente < dateFinSemaine)
-            //        {
-            //            int idProduit = Convert.ToInt32(row.Cells["ID"].Value);
-            //            DataGridViewRow articleRow = dgvArticles.Rows
-            //                .Cast<DataGridViewRow>()
-            //                .FirstOrDefault(r => Convert.ToInt32(r.Cells["ID"].Value) == idProduit);
 
-            //            if (articleRow != null && articleRow.Cells["prixVente"].Value != null)
-            //            {
-            //                decimal prixVente = Convert.ToDecimal(articleRow.Cells["prixVente"].Value);
-            //                int quantite = Convert.ToInt32(row.Cells["qte"].Value);
-            //                decimal chiffreAffaire = prixVente * quantite;
 
-            //                chiffreAffaireTotal += chiffreAffaire;
-            //            }
-            //        }
-            //    }
-            //}
-
-            return 1542;
+            var dt1 = DateTime.Today;
+            var dt2 = DateTime.Today.AddDays(-7);
+            decimal somme = 0;
+            string lienDeConnexion = sConnexion;
+            SqlConnection connexion = new SqlConnection(lienDeConnexion);
+            connexion.Open();
+            SqlCommand cmd = new SqlCommand($"SELECT SUM(Prix_vente) FROM t_detail_vente INNER JOIN t_commande_client ON t_commande_client.ID_commande_client = t_detail_vente.ID_commande_client WHERE Date_vente < '{ dt1.ToString("yyyyMMdd ")}' OR Date_vente > '{dt2.ToString("yyyyMMdd ")}';", connexion);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                somme = reader.GetDecimal(0);
+            }
+            return somme;
         }
 
         private void btnCalculeCaHebdo_Click(object sender, EventArgs e)

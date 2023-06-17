@@ -74,6 +74,8 @@ namespace ApplicationBaseDeDonnee
             this.lnIDfrn = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.dtpSortie = new System.Windows.Forms.DateTimePicker();
+            this.lbDateSortie = new System.Windows.Forms.Label();
             this.panelArticle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCmdFrn)).BeginInit();
@@ -83,6 +85,8 @@ namespace ApplicationBaseDeDonnee
             // 
             // panelArticle
             // 
+            this.panelArticle.Controls.Add(this.dtpSortie);
+            this.panelArticle.Controls.Add(this.lbDateSortie);
             this.panelArticle.Controls.Add(this.tbSeuilStock);
             this.panelArticle.Controls.Add(this.lbSeuilStock);
             this.panelArticle.Controls.Add(this.tbID);
@@ -99,9 +103,9 @@ namespace ApplicationBaseDeDonnee
             this.panelArticle.Controls.Add(this.tbPrixVente);
             this.panelArticle.Controls.Add(this.lbTVA);
             this.panelArticle.Controls.Add(this.tbNom);
-            this.panelArticle.Location = new System.Drawing.Point(1159, 597);
+            this.panelArticle.Location = new System.Drawing.Point(1159, 566);
             this.panelArticle.Name = "panelArticle";
-            this.panelArticle.Size = new System.Drawing.Size(330, 228);
+            this.panelArticle.Size = new System.Drawing.Size(330, 259);
             this.panelArticle.TabIndex = 24;
             // 
             // tbSeuilStock
@@ -131,7 +135,7 @@ namespace ApplicationBaseDeDonnee
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(215, 190);
+            this.btnAnnuler.Location = new System.Drawing.Point(214, 223);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(113, 20);
             this.btnAnnuler.TabIndex = 8;
@@ -141,7 +145,7 @@ namespace ApplicationBaseDeDonnee
             // 
             // btnConfirmer
             // 
-            this.btnConfirmer.Location = new System.Drawing.Point(52, 190);
+            this.btnConfirmer.Location = new System.Drawing.Point(51, 223);
             this.btnConfirmer.Name = "btnConfirmer";
             this.btnConfirmer.Size = new System.Drawing.Size(113, 20);
             this.btnConfirmer.TabIndex = 7;
@@ -292,7 +296,7 @@ namespace ApplicationBaseDeDonnee
             this.dgvArticles.ReadOnly = true;
             this.dgvArticles.RowHeadersVisible = false;
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticles.Size = new System.Drawing.Size(587, 726);
+            this.dgvArticles.Size = new System.Drawing.Size(621, 726);
             this.dgvArticles.TabIndex = 20;
             // 
             // cID
@@ -528,6 +532,23 @@ namespace ApplicationBaseDeDonnee
             this.label2.Text = "Encoder une facture d\'achat du fournisseur";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // dtpSortie
+            // 
+            this.dtpSortie.Location = new System.Drawing.Point(146, 185);
+            this.dtpSortie.Name = "dtpSortie";
+            this.dtpSortie.Size = new System.Drawing.Size(184, 20);
+            this.dtpSortie.TabIndex = 33;
+            // 
+            // lbDateSortie
+            // 
+            this.lbDateSortie.AutoSize = true;
+            this.lbDateSortie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDateSortie.Location = new System.Drawing.Point(31, 186);
+            this.lbDateSortie.Name = "lbDateSortie";
+            this.lbDateSortie.Size = new System.Drawing.Size(109, 20);
+            this.lbDateSortie.TabIndex = 32;
+            this.lbDateSortie.Text = "Date de sortie";
+            // 
             // EncoderFactureFrn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -600,5 +621,7 @@ namespace ApplicationBaseDeDonnee
         private System.Windows.Forms.DataGridViewTextBoxColumn cIDFrn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDateCommande;
+        private System.Windows.Forms.DateTimePicker dtpSortie;
+        private System.Windows.Forms.Label lbDateSortie;
     }
 }
